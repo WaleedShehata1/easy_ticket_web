@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('_metros', function (Blueprint $table) {
+        Schema::create('metros', function (Blueprint $table) {
             $table->id();
+            $table->point('position');
+            $table->foreignId('metro_line_id');
             $table->timestamps();
         });
     }

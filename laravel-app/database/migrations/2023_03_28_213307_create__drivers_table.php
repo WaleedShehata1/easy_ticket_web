@@ -13,8 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('_drivers', function (Blueprint $table) {
+        Schema::create('drivers', function (Blueprint $table) {
             $table->id();
+            $table->integer('national ID',14);
+            $table->double('salary');
+            $table->string('first_name',30);
+            $table->string('last_name',30);
+            $table->integer('password')->unique();
+            $table->integer('phone',11);
+            $table->date('date_of_birth');
+            $table->set('gender', ['male', 'female']);
             $table->timestamps();
         });
     }

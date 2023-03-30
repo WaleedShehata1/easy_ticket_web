@@ -13,8 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('_passenger', function (Blueprint $table) {
+        Schema::create('passengers', function (Blueprint $table) {
             $table->id();
+            $table->integer('national ID',14);
+            $table->string('first Name',30);
+            $table->string('last Name',30);
+            $table->set('gender', ['male', 'female']);
+            $table->integer('password')->unique();
+            $table->string('email')->unique();
+            $table->string('health status')->unique();
+            $table->date('date_of_birth');
+            $table->integer('phone',11);
             $table->timestamps();
         });
     }
