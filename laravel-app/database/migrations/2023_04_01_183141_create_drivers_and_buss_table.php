@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->datetime('end_of_work');
             $table->datetime('start_of_work');
+            $table->datetime('date');
             $table->foreignId('bus_id');
             $table->foreignId('driver_id');
             $table->timestamps();

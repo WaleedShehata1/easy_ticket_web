@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('metros', function (Blueprint $table) {
             $table->id();
+            $table->integer('metro_number');
             $table->point('position');
             $table->foreignId('metro_line_id');
             $table->timestamps();

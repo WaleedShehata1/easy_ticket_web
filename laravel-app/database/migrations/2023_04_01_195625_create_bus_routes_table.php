@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shippingoperations', function (Blueprint $table) {
+        Schema::create('bus_routes', function (Blueprint $table) {
             $table->id();
-            $table->intger('Shipping_number');
-            $table->datetime('date');
-            $table->datetime('time');
-            $table->float('Shipping_value');
-            $table->intger('Shipping_account_number');
-            $table->foreignId('national_id');
+            $table->intger('Bus_route_number');
+            $table->datetime('waiting_period');
+            $table->float('Ticket_price');
+            $table->datetime('Bus_timings');
+            $table->string('starting_station');
+            $table->string('end station');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shippingoperations');
+        Schema::dropIfExists('bus_routes');
     }
 };

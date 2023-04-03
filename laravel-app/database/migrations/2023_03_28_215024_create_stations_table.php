@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('stations', function (Blueprint $table) {
             $table->id();
             $table->integer('station_number');
+            $table->point('position');
             $table->string('station_name',40);
             $table->timestamps();
         });

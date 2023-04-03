@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->intger('line_number');
             $table->string('starting_station');
-            $table->string('end station');
+            $table->string('end_station');
             $table->intger('number_of_stations');
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('metrolines');
+        Schema::dropIfExists('metro_lines');
     }
 };

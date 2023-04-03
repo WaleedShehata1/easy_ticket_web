@@ -13,18 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('treatment', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->intger('Transaction_number');
             $table->datetime('Date_of_entry');
-            $table->datetime('Entrytime');
-            $table->datetime('time_to_go_out');
+            $table->datetime('time_of_Entry');
+            $table->datetime('time_of_out');
             $table->srting('Entry_station');
-            $table->srting('exitterminal');
+            $table->srting('Exit_station');
             $table->set('tiket_status', ['used', 'not used']);
             $table->datetime('date_of_use');
             $table->foreignId('tiket_id');
-            $table->foreignId('theoperation_id');
+            $table->foreignId('payment_transaction_id');
             $table->foreignId('bus_id');
             $table->timestamps();
         });
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('treatment');
+        Schema::dropIfExists('transactions');
     }
 };
