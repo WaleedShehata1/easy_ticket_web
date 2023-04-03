@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class metro_line extends Model
+class Metro_line extends Model
 {
     use HasFactory;
 }
