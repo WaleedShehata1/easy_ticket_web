@@ -13,16 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('drivers', function (Blueprint $table) {
+        Schema::create('passengers', function (Blueprint $table) {
             $table->id();
             $table->integer('national ID',14);
-            $table->double('salary');
-            $table->string('first_name',30);
-            $table->string('last_name',30);
-            $table->integer('password')->unique();
-            $table->integer('phone',11);
-            $table->date('date_of_birth');
+            $table->string('first Name',30);
+            $table->string('last Name',30);
             $table->set('gender', ['male', 'female']);
+            $table->integer('password')->unique();
+            $table->string('email')->unique();
+            $table->string('health status')->unique();
+            $table->date('date_of_birth');
+            $table->integer('phone',11);
             $table->timestamps();
         });
     }
@@ -34,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_drivers');
+        Schema::dropIfExists('passenger');
     }
 };

@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('_bustimings', function (Blueprint $table) {
+        Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->datetime('Bus timings');
-            $table->foreignId('line_id');
+            $table->integer('ticket_number');
+            $table->integer('number_of_stations');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_bustimings');
+        Schema::dropIfExists('ticket');
     }
 };

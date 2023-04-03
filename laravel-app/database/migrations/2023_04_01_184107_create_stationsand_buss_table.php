@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('buss', function (Blueprint $table) {
+        Schema::create('stationsand_buss', function (Blueprint $table) {
             $table->id();
-            $table->integer('bus_number');
-            $table->point('position');
-            $table->foreignId('bus_line_id');
+            $table->datetime('Bus arrival time');
+            $table->foreignId('bus_id');
+            $table->foreignId('station_id');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_buss');
+        Schema::dropIfExists('stationsand_buss');
     }
 };
