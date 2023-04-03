@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('shipping_operations', function (Blueprint $table) {
             $table->id();
-            $table->intger('Shipping_number');
+            $table->integer('Shipping_number');
             $table->datetime('date');
             $table->datetime('time');
             $table->float('Shipping_value');
-            $table->intger('Shipping_account_number');
+            $table->integer('Shipping_account_number');
             $table->foreignId('passenger_id');
             $table->timestamps();
         });

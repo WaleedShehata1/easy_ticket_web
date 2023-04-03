@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->intger('Transaction_number');
+            $table->integer('Transaction_number');
             $table->datetime('Date_of_entry');
             $table->datetime('time_of_Entry');
             $table->datetime('time_of_out');
-            $table->srting('Entry_station');
-            $table->srting('Exit_station');
+            $table->string('Entry_station');
+            $table->string('Exit_station');
             $table->set('tiket_status', ['used', 'not used']);
             $table->datetime('date_of_use');
             $table->foreignId('tiket_id');

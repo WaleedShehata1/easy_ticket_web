@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('metro_lines', function (Blueprint $table) {
             $table->id();
-            $table->intger('line_number');
+            $table->integer('line_number');
             $table->string('starting_station');
             $table->string('end_station');
-            $table->intger('number_of_stations');
+            $table->integer('number_of_stations');
             $table->timestamps();
         });
     }

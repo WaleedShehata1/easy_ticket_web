@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('bus_routes', function (Blueprint $table) {
             $table->id();
-            $table->intger('Bus_route_number');
+            $table->integer('Bus_route_number');
             $table->datetime('waiting_period');
             $table->float('Ticket_price');
             $table->datetime('Bus_timings');

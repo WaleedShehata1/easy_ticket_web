@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('payment_transactions', function (Blueprint $table) {
             $table->id();
-            $table->intger('operation_number');
+            $table->integer('operation_number');
             $table->datetime('Operation_date');
-            $table->intger('account_number');
+            $table->integer('account_number');
             $table->foreignId('passenger_id');
             $table->timestamps();
         });

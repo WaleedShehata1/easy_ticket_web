@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('passengers', function (Blueprint $table) {
             $table->id();
-            $table->integer('national ID',14);
+            $table->integer('national ID');
             $table->string('first Name',30);
             $table->string('last Name',30);
             $table->set('gender', ['male', 'female']);
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('health status')->unique();
             $table->date('date_of_birth');
-            $table->integer('phone',11);
+            $table->integer('phone');
             $table->timestamps();
         });
     }
