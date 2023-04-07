@@ -8,6 +8,7 @@ use App\Http\Controllers\Passengercontroller;
 
 class Bus extends Model
 {
+
     use HasFactory;
     protected $table="buss";
     public function passengers(){
@@ -17,5 +18,11 @@ class Bus extends Model
         relatedPivotKey:'passenger_id',
         parentKey:'id',
         realtedKey:'id');
+    }
+    public function stations(){
+        return $this -> belongsToMany(related:'APP\Models\station',table:'stations_and_buss',foreignPivotKey:' bus_id',relatedPivotKey:'station_id');
+    }
+    public function drivers(){
+
     }
 }
