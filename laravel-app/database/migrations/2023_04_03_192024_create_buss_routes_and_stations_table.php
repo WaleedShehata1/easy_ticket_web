@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('bus_route_id');
             $table->timestamps();
         });
+        #bus and passenger
     }
 
     /**

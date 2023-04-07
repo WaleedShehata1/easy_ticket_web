@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bus extends Model
 {
-    use HasFactory;
+    public function stations(){
+        return $this -> belongsToMany(related:'APP\Models\station',table:'stations_and_buss',foreignPivotKey:' bus_id',relatedPivotKey:'station_id');
+    }
+    public function drivers(){
+        return $this -> belongsToMany(related:'APP\Models\drivers',table:'drivers_and_buss',foreignPivotKey:'driver_id',relatedPivotKey:' bus_id');
+    }
 }
