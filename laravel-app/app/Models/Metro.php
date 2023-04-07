@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Metro extends Model
 {
+    use HasFactory;
     public function drivers(){
         return $this -> belongsToMany(related:'APP\Models\drivers',table:'drivers_and_metros',foreignPivotKey:'station_id',relatedPivotKey:'metro_id');
     }
