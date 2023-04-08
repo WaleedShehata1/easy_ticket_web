@@ -21,4 +21,12 @@ class Passenger extends Model
     public function Shipping_operations(){
         return $this-> hasMany(related:'App\Models\Shipping_operation',foreignKey:'passenger_id');
     }
+
+    public function transactions (){
+        return $this->hasMany(
+            related:'App\Models\Transaction',
+            foreignKey:'passenger_id',
+            localKey:'id'
+        );
+    }
 }
