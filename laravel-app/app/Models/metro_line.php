@@ -18,4 +18,7 @@ class Metro_line extends Model
     public function metros(){
         return $this-> hasMany(related:'App\Models\Metro',foreignKey:'metro_line_id');
     }
+    public function metro_timing(){
+        return $this-> hasMany(related:'App\Models\Metro_timing',foreignKey:'metro_line_id');
+    }
 }
