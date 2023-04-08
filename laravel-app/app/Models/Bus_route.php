@@ -22,4 +22,7 @@ class Bus_route extends Model
             localKey:'id'
         );
     }
+    public function Bus_timings(){
+        return $this-> hasMany(related:'App\Models\Bus_timing',foreignKey:'bus_route_id');
+    }
 }

@@ -15,4 +15,7 @@ class Metro extends Model
         foreignPivotKey:'metro_id',
         relatedPivotKey:'station_id',);
     }
+    public function metro_line(){
+        return $this-> belongsTo(related:'App\Models\Metro_line',foreignKey:'metro_line_id');
+    }
 }
