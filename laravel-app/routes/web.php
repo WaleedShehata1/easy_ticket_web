@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Passengercontroller;
+use App\Http\Controllers\Drivercontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,6 @@ use App\Http\Controllers\Passengercontroller;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/driver',[Drivercontroller::class,'getdrive']);
 

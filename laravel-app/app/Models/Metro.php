@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Metro extends Model
 {
     use HasFactory;
-    public function drivers(){
-        return $this -> belongsToMany(related:'APP\Models\drivers',table:'drivers_and_metros',foreignPivotKey:'station_id',relatedPivotKey:'metro_id');
+    public function stations(){
+        return $this -> belongsToMany(
+        related:'App\Models\Station',
+        table:'drivers_and_metros',
+        foreignPivotKey:'metro_id',
+        relatedPivotKey:'station_id',);
     }
 }

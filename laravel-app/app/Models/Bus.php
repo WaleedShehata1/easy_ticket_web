@@ -20,9 +20,17 @@ class Bus extends Model
         realtedKey:'id');
     }
     public function stations(){
-        return $this -> belongsToMany(related:'APP\Models\station',table:'stations_and_buss',foreignPivotKey:' bus_id',relatedPivotKey:'station_id');
+        return $this -> belongsToMany(
+        related:'App\Models\station',
+        table:'stations_and_buss',
+        foreignPivotKey:' bus_id',
+        relatedPivotKey:'station_id');
     }
     public function drivers(){
-
+        return $this -> belongsToMany(
+        related:'App\Models\Bus',
+        table:'stations_and_buss',
+        foreignPivotKey:' bus_id',
+        relatedPivotKey:'driver_id');
     }
 }
