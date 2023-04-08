@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Shipping_operation extends Model
 {
     use HasFactory;
+    public function Passengers(){
+        return $this-> belongsTo(related:'App\Models\Passenger',foreignKey:'passenger_id');
+    }
 }

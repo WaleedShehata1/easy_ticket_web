@@ -17,4 +17,8 @@ class Passenger extends Model
         parentKey:'id',
         relatedKey:'id');
     }
+
+    public function Shipping_operations(){
+        return $this-> hasMany(related:'App\Models\Shipping_operation',foreignKey:'passenger_id');
+    }
 }

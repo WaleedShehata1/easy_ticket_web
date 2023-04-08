@@ -15,4 +15,11 @@ class Bus_route extends Model
         foreignPivotKey:'bus_route_id',
         relatedPivotKey:'station_id');
     }
+    public function buss(){
+        return $this->hasMany(
+            related:'App\Models\Bus',
+            foreignKey:'bus_line_id',
+            localKey:'id'
+        );
+    }
 }

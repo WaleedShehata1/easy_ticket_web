@@ -33,4 +33,12 @@ class Bus extends Model
         foreignPivotKey:' bus_id',
         relatedPivotKey:'driver_id');
     }
+
+    public function bus_route(){
+        return $this->belongsto(
+            related:'App\Models\Bus_route',
+            foreignKey:'bus_line_id',
+            localKey:'id'
+        );
+    }
 }

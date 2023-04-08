@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Passengercontroller;
-use App\Http\Controllers\Drivercontroller;
+use App\Http\Controllers\Bus_route_andstationcontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +19,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/driver',[Drivercontroller::class,'getdrive']);
+Route::get('/bus',[Bus_route_andstationcontroller::class,'getbus']);
 
