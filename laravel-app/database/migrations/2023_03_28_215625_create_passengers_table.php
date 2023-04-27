@@ -21,7 +21,7 @@ return new class extends Migration
             $table->set('gender', ['male', 'female']);
             $table->integer('password')->unique();
             $table->string('email')->unique();
-            $table->string('health status')->unique();
+            $table->string('health status');
             $table->date('date_of_birth');
             $table->integer('phone');
             $table->timestamps();

@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Passengercontroller;
-use App\Http\Controllers\Bus_route_andstationcontroller;
+use App\Http\Controllers\LoginAndSignup\logandsigncontroller;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/bus',[Bus_route_andstationcontroller::class,'getbus']);
+// Route::get('/bus',[Bus_route_andstationcontroller::class,'getbus']);
+
+// Route::get('/passenger',[Passengercontroller::class,'getpassender'])->name('ahmed');
+Route::get('/home',[Buscontroller::class,'showHome']);
+Route::get('/login',[logandsigncontroller::class,'showlogin']);
+Route::get('/signup',[logandsigncontroller::class,'showsignup']);
 
