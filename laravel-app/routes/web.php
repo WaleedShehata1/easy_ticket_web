@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginAndSignup\logandsigncontroller;
+use App\Http\Controllers\LoginAndSignup\signupcontroller;
+use App\Http\Controllers\LoginAndSignup\logincontroller;
+
 
 
 /*
@@ -22,7 +24,10 @@ Route::get('/', function () {
 // Route::get('/bus',[Bus_route_andstationcontroller::class,'getbus']);
 
 // Route::get('/passenger',[Passengercontroller::class,'getpassender'])->name('ahmed');
-Route::get('/home',[Buscontroller::class,'showHome']);
-Route::get('/login',[logandsigncontroller::class,'showlogin']);
-Route::get('/signup',[logandsigncontroller::class,'showsignup']);
+Route::get('/home',[logincontroller::class,'showhome'])->name('home');
+Route::get('/login',[logincontroller::class,'showlogin'])->name('login');
+Route::post('/loginuser',[logincontroller::class,'loginuser'])->name('loginuser');
+Route::get('/logoutuser',[logincontroller::class,'logoutuser'])->name('logoutuser');
+Route::get('/signup',[signupcontroller::class,'showsignup']);
+Route::post('/creatuser',[signupcontroller::class,'creatuser'])->name('creatuser');
 

@@ -17,25 +17,25 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    
-      // protected $fillable = [
-    //     'national ID',
-    //     'first Name',
-    //     'last Name',
-    //     'gender',
-    //     'password ',
-    //     'email',
-    //     'health status',
-    //     'date_of_birth',
-    //     'phone',
-    //     'created_at',
-    //     'updated_at'
-    // ];
-    protected $fillable = [
-        'name',
+        protected $table='passengers';
+      protected $fillable = [
+        'national_ID',
+        'first_Name',
+        'last_Name',
+        'gender',
+        'password ',
         'email',
-        'password',
+        'health status',
+        'date_of_birth',
+        'phone',
+        'created_at',
+        'updated_at'
     ];
+    // protected $fillable = [
+    //     'name',
+    //     'email',
+    //     'password',
+    // ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -45,6 +45,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'created_at',
+        'updated_at',
     ];
 
     /**

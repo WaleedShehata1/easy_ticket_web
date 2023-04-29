@@ -11,7 +11,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto ">
-         
+        
           <li class="nav-item  mb me-5 ">
           <a class="nav-link active text-white fw-bolder" aria-current="page" href="#Home-page">Home</a>
           </li>
@@ -25,7 +25,7 @@
             <a class="nav-link me-5 text-white fw-bolder" href="#page_contact">Contact US</a>
           </li>
         </ul>
-        <button type="button" class="btn btn-primary btn-sm me-5 bg-white text-dark fw-bolder btn-outline-danger" id="signlogin" >Login / Sign Up</button>
+        <!-- <button type="button" class="btn btn-primary btn-sm me-5 bg-white text-dark fw-bolder btn-outline-danger" id="signlogin" >Login / Sign Up</button> -->
       </div>
       
     </div>
@@ -36,24 +36,31 @@
     <div class="">Log in</div>
   </div>
     <div class="tab-body00" >
-      <form class="log-in active">
+
+      <form class="log-in active" action="{{route('loginuser')}}" method="POST">
+        @csrf
         <div class="form_input" id="fast">
             <label for="National_ID" >National ID</label>
-            <input type="text" name="National_ID" id="National_ID" required>
-          </div>
+            <input type="text" name="national_ID" id="National_ID" required>
+        </div>
+
           <div class="form_input">
             <label for="password" >Password</label>
             <input type="password" name="password" id="password" required>
           </div>
+
           <div class="remember">
             <a href="#" class="text" id="forgot-password-1">Forgot your password</a>
           </div>
+
           <div class="form_input2">
             <button type="submit" class="sign_up_btn "> sign in</button>
           </div>
+
         </form>
         </div>
-        <a href="{{url('home')}}" class="close-btn" id="close-btn">&times;</a> 
+
+        <a href="{{route('home')}}" class="close-btn" id="close-btn">&times;</a> 
   
 </div>
 <!-- popoup1 -->

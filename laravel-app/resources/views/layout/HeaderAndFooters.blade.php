@@ -38,8 +38,16 @@
             <a class="nav-link me-5 text-white fw-bolder" href="#page_contact">Contact US</a>
           </li>
         </ul>
-        <a href="{{url('login')}}" type="button" class="btn btn-primary btn-light me-5 bg-white text-dark fw-bolder " id="signlogin" >Login</a>
-        <a href="{{url('signup')}}" type="button" class="btn btn-primary btn-light me-5 bg-white text-dark fw-bolder  " id="signlogin"  >Sign Up</a>
+        @guest
+        <a href="{{url('login')}}" type="button" class="btn btn-primary btn-light me-5 bg-white text-dark fw-bolder" id="signlogin" >Login</a>
+        <a href="{{url('signup')}}" type="button" class="btn btn-primary btn-light me-5 bg-white text-dark fw-bolder" id="signlogin">Sign Up</a>
+        @endguest
+
+        @auth
+        <a href="{{url('logoutuser')}}" type="button" class="btn btn-primary btn-light me-5 bg-white text-dark fw-bolder" id="signlogin">
+          logout {{auth()->user()->first_Name}}
+        </a>
+        @endauth
       </div>
       
     </div>
