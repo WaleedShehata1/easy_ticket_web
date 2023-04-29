@@ -33,6 +33,6 @@ class Driver extends Model
 /*
 php artisan make:migration create__table 
 php artisan make:model 
-php artisan make:controller Bus_route_andstationcontroller 
+php artisan make:controller controller 
 foreignId
  */

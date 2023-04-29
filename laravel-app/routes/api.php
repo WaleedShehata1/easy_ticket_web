@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\postcontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+                          ############ buss###################
+Route::get('/bus',[postcontroller::class,'index']);      //هنا عشان برجع البيانات
+Route::get('/bus/{id}',[postcontroller::class,'show']); //عشان يعرض بيانات معينة و يرجع ليا برسالة لما اختار الاي دي
+Route::post('/bus',[postcontroller::class,'store']);    // هنا عشان ادخل بيانات
+
+
