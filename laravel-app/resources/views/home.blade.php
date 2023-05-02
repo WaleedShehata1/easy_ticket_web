@@ -8,18 +8,18 @@
 <div id='login-form'class='login-page' >
     <div class="main " >
       <div class="title-mine">
-         <h1>Make you life<br>is easier with<br>
+        <h1>Make you life<br>is easier with<br>
         easyTicket
-       </h1>
-       <h2>Simplify your payments with EasyTicket PayPay for your EasyTicket rides and food orders, send funds to your family, and so much more with Careem Pay.</h2>
-       </div>
-     
+      </h1>
+      <h2>Simplify your payments with EasyTicket PayPay for your EasyTicket rides and food orders, send funds to your family, and so much more with Careem Pay.</h2>
+      </div>
         
           <div class="social-icons">
           <a href="" ><img src="image/android-download.png" class="googleplay-img" ></a>
           <a href="" ><img src="image/appstore.png"  class="iphon-img"></a>
           </div>
     </div>
+    @auth
     <div class="form-box">
         <div class='button-box'>
             <div id='btn'></div>
@@ -53,14 +53,14 @@
             </select>
 
             <button type='submit'class='submit-btn'>Buy Ticket Now</button>
-</form>
-<form id='BuyformMetro' class='input-group-Metro'>
+        </form>
+        <form id='BuyformMetro' class='input-group-Metro'>
             <select class="input-field ">
             <option selected>Starting station</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
-  </select>
+          </select>
           <select class="input-field ">
             <option selected>Fainal station</option>
             <option value="1">One</option>
@@ -74,8 +74,9 @@
             <option value="3">Three</option>
           </select>
             <button type='submit'class='submit-btn'>Buy Ticket Now</button>
-   </form>
+          </form>
     </div>
+    @endauth
   </div>
 </section>
 <div class="section-about" id="section-about">
