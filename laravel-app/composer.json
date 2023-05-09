@@ -10,7 +10,11 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+<<<<<<< HEAD
+        "tymon/jwt-auth": "^2.0"
+=======
         "simplesoftwareio/simple-qrcode": "^4.2"
+>>>>>>> 8045f9b5aa2624d6d8a6fa0af87b67951b616f02
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
