@@ -2,14 +2,19 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+<<<<<<< HEAD
 use Tymon\JWTAuth\Contracts\JWTSubject;
 // use App\Http\Controllers\Api\AuthController;
 class User extends Authenticatable implements JWTSubject
+=======
+
+class User extends Authenticatable implements MustVerifyEmail
+>>>>>>> 8045f9b5aa2624d6d8a6fa0af87b67951b616f02
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -24,13 +29,15 @@ class User extends Authenticatable implements JWTSubject
         'first_Name',
         'last_Name',
         'gender',
-        'password ',
+        'password',
         'email',
-        'health status',
+        'health_status',
         'date_of_birth',
         'phone',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'email_verified_at',
+        'profession'
     ];
     // protected $fillable = [
     //     'name',
