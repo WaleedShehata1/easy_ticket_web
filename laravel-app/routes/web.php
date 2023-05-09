@@ -2,8 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginAndSignup\signupcontroller;
-use App\Http\Controllers\LoginAndSignup\logincontroller;
+use App\Http\Controllers\Homecontroller;
 
 
 
@@ -22,13 +21,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/bus',[Bus_route_andstationcontroller::class,'getbus']);
+Route::get('/home', function () {
+    return view('home');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::get('/passenger',[Passengercontroller::class,'getpassender'])->name('ahmed');
-Route::get('/home',[logincontroller::class,'showhome'])->name('home');
-Route::get('/login',[logincontroller::class,'showlogin'])->name('login');
-Route::post('/loginuser',[logincontroller::class,'loginuser'])->name('loginuser');
-Route::get('/logoutuser',[logincontroller::class,'logoutuser'])->name('logoutuser');
-Route::get('/signup',[signupcontroller::class,'showsignup']);
-Route::post('/creatuser',[signupcontroller::class,'creatuser'])->name('creatuser');
+// Route::get('/home',[Homecontroller::class, 'showhome'])->name('home')->middleware(['auth', 'verified']);
+
+Route::middleware('auth')->group(function () {
+    Route::get('/showprofile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
 

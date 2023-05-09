@@ -33,8 +33,8 @@ class EditProfileController extends Controller
         ]);
 
         if($validated->fails()){
-            return 'fails';
-            // return redirect()->back()->withErrors($validated)->withInput($request->all);
+
+            return redirect()->back()->withErrors($validated)->withInput($request->all);
         }
         Test::findorfail($id)->update([
             'profession'=>$request->profession,
