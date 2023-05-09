@@ -1,137 +1,47 @@
-@extends('layout.HeaderAndFooter')
+<x-guest-layout>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
 
-@section('contant')
-<section class="Home-page" id="Home-page" >
-  <div class="container-fluid d-none" id="blur">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top "> 
-    <div class="container-fluid">
-      <a class="navbar-brand ms-2 " href="#"><img class ="logo-nav" src="image/jam_ticket-f.png" alt=""></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto ">
-        
-          <li class="nav-item  mb me-5 ">
-          <a class="nav-link active text-white fw-bolder" aria-current="page" href="#Home-page">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link me-5 text-white fw-bolder" href="#section-about">About US</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link me-5 text-white fw-bolder" href="#Services-contener">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link me-5 text-white fw-bolder" href="#page_contact">Contact US</a>
-          </li>
-        </ul>
-        <!-- <button type="button" class="btn btn-primary btn-sm me-5 bg-white text-dark fw-bolder btn-outline-danger" id="signlogin" >Login / Sign Up</button> -->
-      </div>
-      
-    </div>
-  </nav>
-</div>   
-<div class="tab-form00 " id="popup-tab-form">
-  <div class="tab-header">  
-    <div class="">Log in</div>
-  </div>
-    <div class="tab-body00" >
-
-      <form class="log-in active" action="{{route('loginuser')}}" method="POST">
+    <form method="POST" action="{{ route('login') }}">
         @csrf
-        <div class="form_input" id="fast">
-            <label for="National_ID" >National ID</label>
-            <input type="text" name="national_ID" id="National_ID" required>
+
+        <!-- Email Address -->
+        <div>
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-          <div class="form_input">
-            <label for="password" >Password</label>
-            <input type="password" name="password" id="password" required>
-          </div>
+        <!-- Password -->
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Password')" />
 
-          <div class="remember">
-            <a href="#" class="text" id="forgot-password-1">Forgot your password</a>
-          </div>
+            <x-text-input id="password" class="block mt-1 w-full"
+                            type="password"
+                            name="password"
+                            required autocomplete="current-password" />
 
-          <div class="form_input2">
-            <button type="submit" class="sign_up_btn "> sign in</button>
-          </div>
-
-        </form>
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <a href="{{route('home')}}" class="close-btn" id="close-btn">&times;</a> 
-  
-</div>
-<!-- popoup1 -->
-<div class="search-national-numbe" id="search-national-numbe">
-  <form action="">
-    <h2 class="search-national-title">Enter<br> the national number to search for your account.</h2>
- <div class="search-national-group">
-  <input type="text" name="search-national">
-  <button type="button" class="search-btn"  id="search-btn">Send</button>
- </div>
-</form>
-<div class="close-search-national" id="close-search-national">&times;</div> 
-</div>
+        <!-- Remember Me -->
+        <div class="block mt-4">
+            <label for="remember_me" class="inline-flex items-center">
+                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
+                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
+            </label>
+        </div>
 
-<!-- popoup2 -->
-<div class="contaner-user-Account" id="popupuser-Name-Account-1">
-  <img src="/image/logo.jpeg" class="logo-ticket">
-  <div class="parent">
-      <div class="text1">
-          <h1>User Name Account</h1><br>
-      </div>
-      <div class="text2">
-          <h2>How would you like to get a password reset code?</h2>
-      </div>
+        <div class="flex items-center justify-end mt-4">
+            @if (Route::has('password.request'))
+                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
+                    {{ __('Forgot your password?') }}
+                </a>
+            @endif
 
-      <div class="san">
-          <form class="form1"  method="">
-              <input type="radio" id="html" name="chosse_way" value="HTML" >
-              <div class="label1">
-                  <label for="html">Send the code to the phone number +*********14</label><br>
-              </div>
-              <input type="radio" id="css" name="chosse_way" value="CSS" class="chosse_way">
-              <div class="label1">
-                  <label for="css">Send the code to the e-mail w************9@gmail.com</label><br>
-              </div>
-              <button type="button" class="button1"  id="send-2">Send</button>
-          </form>
-      </div>
-      
-      <div class="close-btn-three" id="close-2">&times;</div> 
-  </div>
-</div>
-<!-- popoup3 -->
- <div class="Enter-code" id="popup-Enter-code-2">
-  <form action="">
-    <h2 class="title-code">Enter the 4-digit code</h2>
- <div class="enter-code-group">
-  <input type="text" name="codedigit">
-  <button type="button" class="send-code"  id="send-3">Send</button>
- </div>
-</form>
-<div class="close-btn-four" id="close-3">&times;</div> 
-</div> 
-<!-- popup4 -->
-<div class="new-password-form" id="popup-new-password-4">
-  <div class="new-password-body">
-    <form  method="">
-      <h2 class="title-new-password">Change Password</h2>
-   <div class="input-new-password">
-    <label for="new-password">New password</label>
-    <input type="password" name="new-Password" id="new-password">
-   </div>
-   <div class="input-new-password">
-    <label for="Confirm-Password-new">Confirm Password</label>
-    <input type="password" name="Confirm-Password-new" id="Confirm-Password-new">
-   </div>
-   
-    <button type="submit"  id="save-new-password" class="save-new-password" >Send</button>
-  </form>
-  </div>
-<div class="close-btn-five" id="close-4">&times;</div> 
-</div>
-
-@stop
+            <x-primary-button class="ml-3">
+                {{ __('Log in') }}
+            </x-primary-button>
+        </div>
+    </form>
+</x-guest-layout>

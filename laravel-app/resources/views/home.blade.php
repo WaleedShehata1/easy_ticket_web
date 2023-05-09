@@ -1,4 +1,4 @@
-@extends('layout.HeaderAndFooters')
+@extends('layouts.HeaderAndFooters')
 
 
 

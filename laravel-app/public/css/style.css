@@ -7,6 +7,13 @@
 
 }
 
+.user_name {
+    font-weight: bold;
+    padding-right: 15px;
+    color: white;
+    text-decoration: none;
+}
+
 :root {
     --main-color: #fe8668;
     --main-backgrond: #ffffff;
@@ -21,7 +28,7 @@ body {
 
 .Home-page {
     background-image: url(image/background.jpg);
-    height: 100vh;
+    height: 130vh;
     background-size: cover;
     background-attachment: fixed;
     background-position: center center;
@@ -109,8 +116,9 @@ body {
 
 .tab-form .tab-body {
     position: relative;
-    min-height: 610px;
-    overflow: hidden;
+    min-height: 620px;
+    max-height: 730px;
+    
 }
 
 .tab-form .tab-body>form {
@@ -181,6 +189,10 @@ body {
 }
 
 /*---------------------------------- sign  ---------------------------------*/
+.sign-in p {
+    margin-bottom: 0px;
+}
+
 .tab-form00 {
     position: absolute;
     top: 50%;
@@ -831,6 +843,12 @@ p {
 /* allpopup */
 /* popup1 */
 
+.search-national-error {
+    /* text-decoration: none; */
+    list-style-type: none;
+    color: red;
+}
+
 .search-national-numbe {
     position: absolute;
     top: 50%;
@@ -840,9 +858,9 @@ p {
     max-width: 353px;
     background-color: var(--main-backgrond);
     border-radius: 10px;
-    min-height: 200px;
+    min-height: 220px;
     box-shadow: 1px 7px 4px 0px #d0c7c785;
-    display: none;
+    /* display: none; */
 
 }
 
@@ -862,9 +880,10 @@ p {
 .search-national-group .search-btn {
     width: 25%;
     position: absolute;
-    left: 2px;
-    margin-top: 55px;
-    margin-left: 37%;
+    left: 130px;
+    top: 178px;
+    /* margin-top: 55px; */
+    /* margin-left: 37%; */
     border-radius: 18px;
     padding: 8px;
     color: var(--main-backgrond);
@@ -1244,6 +1263,9 @@ p {
 
 /* endpopoup3 */
 /* +++++++++++++++++++++++contact us +++++++++++++++++++++++++*/
+
+
+
 .page_contact {
     /* height: 110vh; */
     display: grid;
