@@ -29,6 +29,7 @@ Route::get('/home', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/showprofile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::get('/showprofile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
