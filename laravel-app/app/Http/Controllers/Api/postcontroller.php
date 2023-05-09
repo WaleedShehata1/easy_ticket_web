@@ -21,21 +21,21 @@ class postcontroller extends Controller
         if($post){
             return $this->apirespone($post, message:'ok',status:200);
         }
-        return $this->apirespone(data: null, message:'This Post Not Found',status:40);
+        return $this->apirespone(data: null, message:'This Post Not Found',status:400);
     }
     public function store(Request $request){
-         $post = Passenger::create($request->all());
-        // $post=Passenger::create([
-        //     'national_ID'=>$request ->national_ID,
-        //     'first_Name'=>$request ->first_Name,
-        //     'last_Name'=>$request ->last_Name,
-        //     'gender'=>$request ->gender,
-        //     'password'=>Hash::make($request ->password),
-        //     'email'=>$request ->email,
-        //     'health_status'=>$request ->health_status,
-        //     'date_of_birth'=>$request ->date_of_birth,
-        //     'phone'=> $request ->phone
-        // ]);
+        //  $post = Passenger::create($request->all());
+        $post=Passenger::create([
+            'national_ID'=>$request ->national_ID,
+            'first_Name'=>$request ->first_Name,
+            'last_Name'=>$request ->last_Name,
+            'gender'=>$request ->gender,
+            'password'=>Hash::make($request ->password),
+            'email'=>$request ->email,
+            'health_status'=>$request ->health_status,
+            'date_of_birth'=>$request ->date_of_birth,
+            'phone'=> $request ->phone
+        ]);
         if($post){
             return $this->apirespone($post, message:'The Post Saved',status:201);
         }
