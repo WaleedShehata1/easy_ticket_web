@@ -4,8 +4,6 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Homecontroller;
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,11 +26,9 @@ Route::get('/home', function () {
 // Route::get('/home',[Homecontroller::class, 'showhome'])->name('home')->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/showprofile', [ProfileController::class, 'edit'])->name('profile.edit');
-    // Route::get('/showprofile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::get('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profileupdate', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';
-

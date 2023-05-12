@@ -33,7 +33,6 @@ class RegisteredUserController extends Controller
         $request->validate([
             'first_Name' => ['required', 'string', 'max:10'],
             'last_Name' => ['required', 'string', 'max:10'],
-            'profession' => ['required', 'string', 'max:10'],
             'national_ID' => ['required', 'integer','unique:passengers,national_ID'],
             'email' => ['required', 'string', 'email', 'max:255','unique:passengers,email'],
             'gender' => ['required', 'string', 'max:10'],
@@ -41,7 +40,7 @@ class RegisteredUserController extends Controller
             'health_status' => ['required', 'string', 'max:30'],
             'date_of_birth' => ['required', 'string', 'max:30'],
             'phone' => ['required', 'integer'],
-
+            'profession' => ['required', 'string'],
         ],[
             
         ]);
@@ -51,12 +50,12 @@ class RegisteredUserController extends Controller
             'first_Name'=>$request ->first_Name,
             'last_Name'=>$request ->last_Name,
             'gender'=>$request ->gender,
-            'profession'=>$request ->profession,
             'password'=>Hash::make($request ->password),
             'email'=>$request ->email,
             'health_status'=>$request ->health_status,
             'date_of_birth'=>$request ->date_of_birth,
-            'phone'=> $request ->phone
+            'phone'=> $request ->phone,
+            'profession'=> $request->profession
         ]);
 
         event(new Registered($user));

@@ -53,36 +53,36 @@
       <a href="#wallet" id="wallet-btn">Wallet</a>
       <a  class="active"  href="#Edit-account-page" id="EditAccountBtn">Edit account</a>
     </div> 
-        <div class="Edit-account-page" id="Edit-account-page">
-            <form class="Edit-account-form " method="get" action="{{route('profile.update')}}">
-              @csrf
-              <div class="Edit-account-input2 ">
-                
-              <input type="hidden" name="id" class="input444" value='{{auth()->user()->id}}' >
+        <div class="Edit-account-page" id="Edit-account-page" >
 
-                <p type="text" id="First_Name"  >{{auth()->user()->first_Name}}</p>
+            <form class="Edit-account-form " method="get" action="{{url('profileupdate')}}">
+
+              <div class="Edit-account-input2 ">
+              <input type="hidden" name="id" id="profession" class="input444" value='{{auth()->user()->id}}' >
+                <p type="text" name="First_Name" id="First_Name">{{auth()->user()->first_Name}}</p>
               </div>
 
               <div class="Edit-account-input2">
-                <p type="text" id="Last_Name" required placeholder="Last Name">{{auth()->user()->last_Name}} </p>
+                <p type="text" name="Last_Name" id="Last_Name" required placeholder="Last Name">{{auth()->user()->last_Name}} </p>
               </div>
 
               <div class="Edit-account-input ">
-                  <p type="text" id="National_ID">{{auth()->user()->national_ID}}</p>
+                  <p type="text" name="National_ID" id="National_ID">{{auth()->user()->national_ID}}</p>
               </div>
 
               <div class="Edit-account-input2">
-                  <p type="text" id="date_birth" >{{auth()->user()->date_of_birth}}</p>
+                  <p type="text" name="date_birth" id="date_birth" >{{auth()->user()->date_of_birth}}</p>
               </div>
 
               <div class="Edit-account-input2 ">
                   <input type="text" name="profession" id="profession" required placeholder="{{auth()->user()->profession}}" class="input444" >
-                  @error('profession')<p style="width: auto; color: red;"><b>{{$message}}</b>@enderror
+                  <p style="width: auto; color: red;"><b> @error('profession'){{$message}}@enderror</b></p>
+
               </div>
 
               <div class="Edit-account-input2 ">
                   <input type="text" name="health_status" id="Health_status" class="National_IDx  input444" required placeholder="{{auth()->user()->health_status}}" >
-                  @error('Health_status')<p style="width: auto; color: red;"><b>{{$message}}</b>@enderror
+                  <p style="width: auto; color: red;"><b> @error('health_status'){{$message}}@enderror</b></p>
               </div>
               
               <div class="Edit-account-input2 ">
@@ -91,14 +91,16 @@
 
               <div class="Edit-account-input">
                 <input type="phone" name="phone" id="phone" required placeholder="{{auth()->user()->phone}}" class="input444" >
-                @error('phone')<p style="width: auto; color: red;"><b>{{$message}}</b>@enderror
+                <p style="width: auto; color: red;"><b> @error('phone'){{$message}}@enderror</b></p>
+
               </div>
 
               <div class="Edit-account-input">
                   <input type="email" name="email" id="Email" required  placeholder="{{auth()->user()->email}}" class="input444">
-                  @error('email')<p style="width: auto; color: red;"><b>{{$message}}</b>@enderror
+                  <p style="width: auto; color: red;"><b> @error('email'){{$message}}@enderror</b></p>
+
               </div>
-              
+
               <div class="Edit-account-input">
                 <button type="button" class="edit-Change-Password " id="edit-Change-Password">Change Password</button>
                 <button type="submit" class="edit-Save-Change " id="edit-Save-Change">Save Change</button>
@@ -106,7 +108,7 @@
             </form>
         </div>  
   </div>
-   start Notification
+   <!-- start Notification -->
    <div class="Notification" id="Notifications">
     <form action="" method="" class="form-Notification">
       <input for="" placeholder="27/2" class="input40"></input>
