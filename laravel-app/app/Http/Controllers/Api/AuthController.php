@@ -46,19 +46,7 @@ class AuthController extends Controller
             'user' => $user
         ], 201);
     }
-    public function login(Request $request){
-    	$validator = Validator::make($request->all(), [
-            'national_ID' => 'required|integer',
-            'password' => 'required|max:20',
-        ]);
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
-        if (! $token = auth()->attempt($validator->validated())) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-        return $this->createNewToken($token);
-    }
+
      /**
      * Log the user out (Invalidate the token).
      *

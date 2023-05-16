@@ -27,18 +27,18 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $id=$request->id;
-
         $validated=validator::make($request->all(),
         [
             'profession' => ['required','string'],
-            'email' => ['required', 'string', 'email','unique:passengers,email'],
-            'health_status' => ['required', 'string'],
+            'email' => ['required', 'string', 'email', 'max:255','unique:passengers,email'],
+            'health_status' => ['required', 'string', 'max:30'],
             'phone' => ['required', 'integer'],
         ],[
 
         ]);
 
         if($validated->fails()){
+            
             return redirect()->back()->withErrors($validated)->withInput($request->all);
         }
         User::findorfail($id)->update([
@@ -46,6 +46,7 @@ class ProfileController extends Controller
             'email'=>$request->email,
             'health_status'=>$request->health_status,
             'phone'=>$request->phone
+            
         ]);
 
         // $request->user()->fill($request->validated());
@@ -55,7 +56,9 @@ class ProfileController extends Controller
         }
 
         // $request->user()->save();
+
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
+
     }
 
     /**

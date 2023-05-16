@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{asset('css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
   <section class="Home-page">
@@ -23,24 +24,39 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto ">
             <li class="nav-item  mb me-5 ">
-              <a class="nav-link active text-white fw-bolder" aria-current="page" id="Log-out-btn" href="#">Log out</a>
+              <a class="nav-link active text-white fw-bolder" aria-current="page" id="Log-out-btn" href="{{url('home')}}">Log out</a>
               </li>
             <li class="nav-item  mb me-5 ">
-            <a class="nav-link active text-white fw-bolder" aria-current="page" href="#">Home</a>
+            <a class="nav-link active text-white fw-bolder" aria-current="page" href="{{url('home')}}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link me-5 text-white fw-bolder" href="#">About US</a>
+              <a class="nav-link me-5 text-white fw-bolder" href="{{url('home')}}">About US</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link me-5 text-white fw-bolder" href="#">Services</a>
+              <a class="nav-link me-5 text-white fw-bolder" href="{{url('home')}}">Services</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link me-5 text-white fw-bolder" href="#">Contact US</a>
+              <a class="nav-link me-5 text-white fw-bolder" href="{{url('home')}}">Contact US</a>
             </li>
+          
           </ul>
-          <button type="button" class="btn btn-primary btn-sm me-5 bg-white text-dark fw-bolder btn-outline-danger" id="signlogin" >Login / Sign Up</button>
-        </div>
+
+
+
+          @guest
+        <a href="{{route('login')}}" type="button" class="btn btn-primary btn-light me-5 bg-white text-dark fw-bolder" id="signlogin" >Login</a>
+        <a href="{{route('register')}}" type="button" class="btn btn-primary btn-light me-5 bg-white text-dark fw-bolder" id="signlogin">Sign Up</a>
+        @endguest
+
         
+        @auth
+
+        <a href="{{route('logout')}}" type="button" class="btn btn-primary btn-light me-5 bg-white text-dark fw-bolder" id="signlogin">
+          logout
+          <a href="" class="user_name">{{auth()->user()->first_Name}}</a>
+        </a>
+        @endauth
+
       </div>
     </nav>
   </div>  
@@ -53,13 +69,13 @@
       <a href="#wallet" id="wallet-btn">Wallet</a>
       <a  class="active"  href="#Edit-account-page" id="EditAccountBtn">Edit account</a>
     </div> 
-        <div class="Edit-account-page" id="Edit-account-page" >
-
-            <form class="Edit-account-form " method="get" action="{{url('profileupdate')}}">
+        <div class="Edit-account-page" id="Edit-account-page">
+            <form class="Edit-account-form" method="post" action="{{url('/profileUpdate')}}">
+              @csrf
 
               <div class="Edit-account-input2 ">
               <input type="hidden" name="id" id="profession" class="input444" value='{{auth()->user()->id}}' >
-                <p type="text" name="First_Name" id="First_Name">{{auth()->user()->first_Name}}</p>
+                <p type="text" name="First_Name" id="First_Name"  >{{auth()->user()->first_Name}}</p>
               </div>
 
               <div class="Edit-account-input2">
@@ -76,13 +92,12 @@
 
               <div class="Edit-account-input2 ">
                   <input type="text" name="profession" id="profession" required placeholder="{{auth()->user()->profession}}" class="input444" >
-                  <p style="width: auto; color: red;"><b> @error('profession'){{$message}}@enderror</b></p>
-
+                  @error('profession')<p style="width: auto; color: red;"><b>{{$message}}</b>@enderror
               </div>
 
               <div class="Edit-account-input2 ">
                   <input type="text" name="health_status" id="Health_status" class="National_IDx  input444" required placeholder="{{auth()->user()->health_status}}" >
-                  <p style="width: auto; color: red;"><b> @error('health_status'){{$message}}@enderror</b></p>
+                  @error('health_status')<p style="width: auto; color: red;"><b>{{$message}}</b>@enderror
               </div>
               
               <div class="Edit-account-input2 ">
@@ -91,14 +106,12 @@
 
               <div class="Edit-account-input">
                 <input type="phone" name="phone" id="phone" required placeholder="{{auth()->user()->phone}}" class="input444" >
-                <p style="width: auto; color: red;"><b> @error('phone'){{$message}}@enderror</b></p>
-
+                @error('phone')<p style="width: auto; color: red;"><b>{{$message}}</b>@enderror
               </div>
 
               <div class="Edit-account-input">
                   <input type="email" name="email" id="Email" required  placeholder="{{auth()->user()->email}}" class="input444">
-                  <p style="width: auto; color: red;"><b> @error('email'){{$message}}@enderror</b></p>
-
+                  @error('email')<p style="width: auto; color: red;"><b>{{$message}}</b>@enderror
               </div>
 
               <div class="Edit-account-input">

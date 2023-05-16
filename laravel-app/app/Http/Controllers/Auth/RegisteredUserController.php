@@ -11,7 +11,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\support\facades\Validator;
 use Illuminate\View\View;
+use App\Notifications\NotificationPayment;
+use Illuminate\Support\Facades\Notification;
+
 
 class RegisteredUserController extends Controller
 {
@@ -33,14 +37,15 @@ class RegisteredUserController extends Controller
         $request->validate([
             'first_Name' => ['required', 'string', 'max:10'],
             'last_Name' => ['required', 'string', 'max:10'],
-            'national_ID' => ['required', 'integer','unique:passengers,national_ID'],
+            'national_ID' => ['required', 'integer','digits_between:14,14','unique:passengers,national_ID'],
             'email' => ['required', 'string', 'email', 'max:255','unique:passengers,email'],
             'gender' => ['required', 'string', 'max:10'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'health_status' => ['required', 'string', 'max:30'],
             'date_of_birth' => ['required', 'string', 'max:30'],
-            'phone' => ['required', 'integer'],
+            'phone' => ['required', 'integer','digits_between:11,11'],
             'profession' => ['required', 'string'],
+
         ],[
             
         ]);
@@ -55,14 +60,14 @@ class RegisteredUserController extends Controller
             'health_status'=>$request ->health_status,
             'date_of_birth'=>$request ->date_of_birth,
             'phone'=> $request ->phone,
-            'profession'=> $request->profession
+            'profession'=> $request ->profession
         ]);
 
         event(new Registered($user));
 
-        Auth::login($user);
-        
+        Notification::send($user,new NotificationPayment($request ->first_Name));
 
+        Auth::login($user);
         return redirect(RouteServiceProvider::HOME);
     }
 }

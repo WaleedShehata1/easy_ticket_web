@@ -59,7 +59,7 @@
           <div class="form_input2">
               <label for="profession" >profession</label>
               <input type="text" name="profession" id="profession" required>
-              <span style="width: auto; color: red;"><b> @error('profession'){{$message}}@enderror</b></p>
+              @error('profession')<p style="width: auto; color: red;"><b>{{$message}}</b>@enderror
           </div>
 
 
@@ -73,10 +73,12 @@
 
           <div class="form_input2">
               <label for="gender" >gender</label>
-            <select name="gender" id="gender" class="form-select" >
+              <!-- <input type="text" name="gender" id="gender" required> -->
+              <select name="gender" id="gender" class="form-select" >
               <option value='male'>Mela</option>
               <option value='female'>Femela</option>
             </select>
+
               <p style="width: auto; color: red;"><b>@error('gender'){{$message}}@enderror</b></p>
           </div>
 

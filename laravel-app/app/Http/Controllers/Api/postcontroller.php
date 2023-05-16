@@ -21,7 +21,7 @@ class postcontroller extends Controller
         if($post){
             return $this->apirespone($post, message:'ok',status:200);
         }
-        return $this->apirespone(data: null, message:'This Post Not Found',status:400);
+        return $this->apirespone(data: null, message:'This Post Not Found',status:401);
     }
     public function store(Request $request){
         //  $post = Passenger::create($request->all());
@@ -37,24 +37,24 @@ class postcontroller extends Controller
             'phone'=> $request ->phone
         ]);
         if($post){
-            return $this->apirespone($post, message:'The Post Saved',status:201);
+            return $this->apirespone($post, message:'The Post Saved',status:200);
         }
-        return $this->apirespone(data: null, message:'The Post Not Save',status:404);
+        return $this->apirespone(data: null, message:'The Post Not Save',status:401);
     }
     public function update(Request $request,$id){
         $post = Passenger::find($id);
         if(!$post){
-            return $this->apirespone(data: null, message:'The Post Not found',status:404);
+            return $this->apirespone(data: null, message:'The Post Not found',status:401);
         }
         $post->update($request->all());
         if($post){
-            return $this->apirespone($post, message:'The Post updated',status:201);
+            return $this->apirespone($post, message:'The Post updated',status:200);
         }
         }
         public function destroy($id){
             $post = Passenger::find($id);
             if(!$post){
-                return $this->apirespone(data: null, message:'The Post Not found',status:404);
+                return $this->apirespone(data: null, message:'The Post Not found',status:401);
             }
             $post->delete($id);
             if($post){
