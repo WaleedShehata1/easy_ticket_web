@@ -25,6 +25,7 @@ class Passenger extends Model
       'health_status',
       'date_of_birth',
       'phone',
+      'profession',
       'created_at',
       'updated_at'
   ];

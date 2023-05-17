@@ -7,14 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-<<<<<<< HEAD
+
 use Tymon\JWTAuth\Contracts\JWTSubject;
 // use App\Http\Controllers\Api\AuthController;
-class User extends Authenticatable implements JWTSubject
-=======
 
-class User extends Authenticatable implements MustVerifyEmail
->>>>>>> 8045f9b5aa2624d6d8a6fa0af87b67951b616f02
+
+class User extends Authenticatable implements MustVerifyEmail,JWTSubject
+
 {
     use HasApiTokens, HasFactory, Notifiable;
 

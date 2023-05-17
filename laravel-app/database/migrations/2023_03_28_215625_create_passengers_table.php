@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('health_status');
             $table->date('date_of_birth');
             $table->integer('phone');
+            $table->string('profession');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
