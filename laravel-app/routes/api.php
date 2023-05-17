@@ -25,14 +25,10 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
 ], function ($router) {
-<<<<<<< HEAD
    // Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
-=======
-    Route::post('/register', [AuthController::class, 'register']);
-    Route::post('/login', [postcontroller::class, 'login']);
-    Route::post('/logout', [AuthController::class, 'logout']);
->>>>>>> 95fa834e1d3a9535b8993febfaaae998a99f0fbb
+    // Route::post('/register', [AuthController::class, 'register']);
+    // Route::post('/logout', [AuthController::class, 'logout']);
     });
 
 

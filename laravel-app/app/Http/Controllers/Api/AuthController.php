@@ -23,29 +23,6 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    // public function register(Request $request) {
-    //     $validator = Validator::make($request->all(), [
-    //         'national_ID' => 'required|integer|unique:passengers,national_ID',
-    //         'first_Name' => 'required|string|max:20',
-    //         'last_Name' => 'required|string|max:20',
-    //         'gender' => 'required|string|max:10',
-    //         'password' => 'required|max:20|confirmed',
-    //         'email' => 'required|email|unique:passengers,email',
-    //         'health_status'=>'required|string|max:30',
-    //         'date_of_birth'=>'required|string|max:20',
-    //     ]);
-    //     if($validator->fails()){
-    //         return response()->json($validator->errors()->toJson(), 400);
-    //     }
-    //     $user = Passenger::create(array_merge(
-    //                 $validator->validated(),
-    //                 ['password' => bcrypt($request->password)]
-    //             ));
-    //     return response()->json([
-    //         'message' => 'User successfully registered',
-    //         'user' => $user
-    //     ], 201);
-    //}
     public function login(Request $request){
     	$validator = Validator::make($request->all(), [
             'national_ID' => 'required|integer',
