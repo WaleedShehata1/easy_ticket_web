@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\postcontroller;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\postcontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,16 +16,23 @@ use App\Http\Controllers\Api\AuthController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
 
 Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
 ], function ($router) {
+<<<<<<< HEAD
    // Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
+=======
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [postcontroller::class, 'login']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+>>>>>>> 95fa834e1d3a9535b8993febfaaae998a99f0fbb
     });
 
 
@@ -35,6 +42,5 @@ Route::get('/passengers/{id}',[postcontroller::class,'show']); //عشان يعر
 Route::post('/passengers',[postcontroller::class,'store']);    // هنا عشان ادخل بيانات
 Route::post('/passengers/{id}',[postcontroller::class,'update']);
 Route::post('/passenger/{id}',[postcontroller::class,'destroy']);
-
 
 

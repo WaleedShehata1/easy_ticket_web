@@ -61,14 +61,21 @@ class AuthController extends Controller
         return $this->createNewToken($token);
     }
      
+
+/*
+     * Get the token array structure.
+     *
+     * @param  string $token
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     protected function createNewToken($token){
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => auth()->user(),
-            'status'=>'201',
-            'message'=>'Done'
+            'expires_in' => auth()->factory()->getTTL() *60,
+            'user' => auth()->user()
         ]);
     }
 }
+

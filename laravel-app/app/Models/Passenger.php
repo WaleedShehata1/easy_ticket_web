@@ -4,9 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Http\Controllers\postcontroller;
-use App\Http\Controllers\Api\AuthController;
-
 
 class Passenger extends Model
 {

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+<<<<<<< HEAD
 
 use Tymon\JWTAuth\Contracts\JWTSubject;
 // use App\Http\Controllers\Api\AuthController;
@@ -14,6 +15,10 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements MustVerifyEmail,JWTSubject
 
+=======
+
+class User extends Authenticatable implements MustVerifyEmail
+>>>>>>> 95fa834e1d3a9535b8993febfaaae998a99f0fbb
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -64,20 +69,4 @@ class User extends Authenticatable implements MustVerifyEmail,JWTSubject
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-      /**
-     * Get the identifier that will be stored in the subject claim of the JWT.
-     *
-     * @return mixed
-     */
-    public function getJWTIdentifier() {
-        return $this->getKey();
-    }
-     /**
-     * Return a key value array, containing any custom claims to be added to the JWT.
-     *
-     * @return array
-     */
-    public function getJWTCustomClaims() {
-        return [];
-    }    
 }

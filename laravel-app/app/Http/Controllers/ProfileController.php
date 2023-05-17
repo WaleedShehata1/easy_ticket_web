@@ -6,9 +6,9 @@ use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\support\facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\support\facades\Validator;
 use App\Models\User;
 
 class ProfileController extends Controller
@@ -26,12 +26,11 @@ class ProfileController extends Controller
      */
     public function update(Request $request)
     {
-
         $id=$request->id;
         $validated=validator::make($request->all(),
         [
             'profession' => ['required','string'],
-            'email' => ['required', 'string', 'email','unique:passengers,email'],
+            'email' => ['required', 'string', 'email', 'max:255','unique:passengers,email'],
             'health_status' => ['required', 'string', 'max:30'],
             'phone' => ['required', 'integer'],
         ],[
@@ -39,6 +38,7 @@ class ProfileController extends Controller
         ]);
 
         if($validated->fails()){
+            
             return redirect()->back()->withErrors($validated)->withInput($request->all);
         }
         User::findorfail($id)->update([
@@ -46,6 +46,7 @@ class ProfileController extends Controller
             'email'=>$request->email,
             'health_status'=>$request->health_status,
             'phone'=>$request->phone
+            
         ]);
 
         // $request->user()->fill($request->validated());
@@ -54,10 +55,11 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
 
-        $request->user()->save();
+        // $request->user()->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
-    // }
+
+    }
 
     /**
      * Delete the user's account.
@@ -78,5 +80,5 @@ class ProfileController extends Controller
     //     $request->session()->regenerateToken();
 
     //     return Redirect::to('/');
-    }
+    // }
 }

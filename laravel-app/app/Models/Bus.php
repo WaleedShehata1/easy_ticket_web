@@ -5,15 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Controllers\Passengercontroller;
-use App\Http\Controllers\postcontroller;
 
 class Bus extends Model
 {
 
     use HasFactory;
     protected $table="buss";
-    protected $fillable=['bus_number','position','bus_line_id'];
-    // protected $spatialFields = ['location'];
     public function passengers(){
         return $this->belongsToMany(related:'App\Models\Passenger',
         table:'buss_and_passengers',

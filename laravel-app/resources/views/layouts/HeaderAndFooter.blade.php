@@ -49,7 +49,7 @@
 
         <a href="{{route('logout')}}" type="button" class="btn btn-primary btn-light me-5 bg-white text-dark fw-bolder" id="signlogin">
           logout
-          <a href="{{url('/showprofile')}}" class="user_name">{{auth()->user()->first_Name}}</a>
+          <a href="" class="user_name">{{auth()->user()->first_Name}}</a>
         </a>
         @endauth
       </div>
