@@ -19,7 +19,7 @@ class User extends Authenticatable implements MustVerifyEmail,JWTSubject
      * @var array<int, string>
      */
         protected $table='passengers';
-    protected $fillable = [
+      protected $fillable = [
         'national_ID',
         'first_Name',
         'last_Name',
