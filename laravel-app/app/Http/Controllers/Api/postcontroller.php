@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Passenger;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -13,11 +13,11 @@ class postcontroller extends Controller
     use ApiResponeTrait;
 
     public function index(){
-        $posts = Passenger::get();
+        $posts = User::get();
         return $this->apirespone($posts, message:'ok',status:200);
     }
     public function show($id){
-        $post = Passenger::find($id);
+        $post = User::find($id);
         if($post){
             return $this->apirespone($post, message:'ok',status:200);
         }
@@ -43,7 +43,7 @@ class postcontroller extends Controller
             // return $this->apirespone($validator->errors(),);
         }
         //  $post = Passenger::create($request->all());
-        $post=Passenger::create([
+        $post=User::create([
             'national_ID'=>$request ->national_ID,
             'first_Name'=>$request ->first_Name,
             'last_Name'=>$request ->last_Name,
@@ -61,7 +61,7 @@ class postcontroller extends Controller
         return $this->apirespone(data: null, message:'The Post Not Save',status:401);
     }
     public function update(Request $request,$id){
-        $post = Passenger::find($id);
+        $post = User::find($id);
         if(!$post){
             return $this->apirespone(data: null, message:'The Post Not found',status:401);
         }
@@ -71,7 +71,7 @@ class postcontroller extends Controller
         }
         }
         public function destroy($id){
-            $post = Passenger::find($id);
+            $post = User::find($id);
             if(!$post){
                 return $this->apirespone(data: null, message:'The Post Not found',status:401);
             }
