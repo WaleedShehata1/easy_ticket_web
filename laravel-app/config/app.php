@@ -213,8 +213,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
-    'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
-    'Otp' => Ichtrojan\Otp\Otp::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
     ])->toArray(),
         
 ];

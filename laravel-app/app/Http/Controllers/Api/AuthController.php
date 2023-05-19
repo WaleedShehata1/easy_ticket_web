@@ -21,7 +21,6 @@ class AuthController extends Controller
     /**
      * Register a User.
      *
-     * @return \Illuminate\Http\JsonResponse
      */
     // public function register(Request $request) {
     //     $validator = Validator::make($request->all(), [
@@ -48,19 +47,30 @@ class AuthController extends Controller
     // }
 
 
+
+     /**
+     * Get a JWT via given credentials.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function login(Request $request){
     	$validator = Validator::make($request->all(), [
             'national_ID' => 'required|integer',
-            'password' => 'required|max:20',
+            'password' => 'required|string|min:6',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
         if (! $token = auth()->attempt($validator->validated())) {
-            return response()->json(['massage' => 'the national_ID or password is invalid','status'=>401], 401);
+            return response()->json(['error' => 'the national_ID or password is invalid','statu'=>'false'], 401);
         }
         return $this->createNewToken($token);
     }
+
+
+
+
+
      /**
      * Log the user out (Invalidate the token).
      *
@@ -68,8 +78,13 @@ class AuthController extends Controller
      */
     public function logout() {
         auth()->logout();
-        return response()->json(['message' => 'User successfully signed out']);
+        return response()->json(['message' => 'User successfully signed out','statu'=>'true']);
     }
+
+
+
+
+
     /**
      * Get the token array structure.
      *
@@ -83,8 +98,8 @@ class AuthController extends Controller
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
             'user' => auth()->user(),
-            'status'=>200,
-            'message'=>
+            'statu'=>'true',
+            'message'=>'done'
         ]);
     }
 }

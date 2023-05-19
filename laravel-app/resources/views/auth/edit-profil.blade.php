@@ -126,7 +126,15 @@
     <form action="" method="" class="form-Notification">
       <input for="" placeholder="27/2" class="input40"></input>
       <input for="" placeholder="7:30pm" class="input40"></input>
-     <label for="">باقي 15 دقيقة علي وصول باص رقم 200 الي المحطة المختاره (محطة العتبة) برجاء الانتظار في المحطه </label>
+     <label for="">
+
+     @forelse ($user->notifications as $notification )
+     <p> {{$notification->data['name']}} </p>
+     @empty
+       
+     @endforelse
+
+     </label>
      <button id="edit-ticket" type="button" class="edit-ticket" name="edit-ticket">هل تريد تعديل التذكره</button> 
      </form>
       </div>

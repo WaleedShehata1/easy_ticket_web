@@ -15,16 +15,15 @@ return new class extends Migration
     {
         Schema::create('passengers', function (Blueprint $table) {
             $table->id();
-            $table->integer('national_ID');
-            $table->string('first_Name',30);
-            $table->string('last_Name',30);
+            $table->integer('national ID');
+            $table->string('first Name',30);
+            $table->string('last Name',30);
             $table->set('gender', ['male', 'female']);
             $table->integer('password')->unique();
             $table->string('email')->unique();
-            $table->string('health_status');
-            $table->string('profession');
+            $table->string('health status');
             $table->date('date_of_birth');
-            $table->string('phone');
+            $table->integer('phone');
             $table->timestamps();
         });
     }

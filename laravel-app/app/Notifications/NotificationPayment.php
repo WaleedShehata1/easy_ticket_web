@@ -16,9 +16,9 @@ class NotificationPayment extends Notification
      *
      * @return void
      */
-    public function __construct($name)
+    public function __construct($massag)
     {
-        $this->name =$name;
+        $this->name =$massag;
     }
 
     /**

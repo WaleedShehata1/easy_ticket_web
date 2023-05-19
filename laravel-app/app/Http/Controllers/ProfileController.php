@@ -18,7 +18,8 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        return view('auth.edit-profil');
+        $user= User::find(auth()->user()->id);
+        return view('auth.edit-profil',compact('user'));
     }
 
     /**
@@ -32,13 +33,12 @@ class ProfileController extends Controller
             'profession' => ['required','string'],
             'email' => ['required', 'string', 'email', 'max:255','unique:passengers,email'],
             'health_status' => ['required', 'string', 'max:30'],
-            'phone' => ['required', 'integer'],
+            'phone' => ['required', 'integer','unique:passengers,phone'],
         ],[
 
         ]);
 
         if($validated->fails()){
-            
             return redirect()->back()->withErrors($validated)->withInput($request->all);
         }
         User::findorfail($id)->update([
@@ -57,7 +57,8 @@ class ProfileController extends Controller
 
         // $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        // return redirect(url('/profile'))->with('status', 'profile-updated');
+        return redirect(url('/profile'));
 
     }
 
