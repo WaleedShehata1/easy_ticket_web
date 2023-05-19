@@ -65,7 +65,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Notification::send($user,new NotificationPayment($request ->first_Name));
+        Notification::send($user,new NotificationPayment($massag="you are new here"));
 
         Auth::login($user);
         return redirect(RouteServiceProvider::HOME);

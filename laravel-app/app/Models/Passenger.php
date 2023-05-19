@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Passenger extends Authenticatable 
+class Passenger extends Model
 {
     use HasFactory;
 
@@ -23,7 +22,6 @@ class Passenger extends Authenticatable
       'health_status',
       'date_of_birth',
       'phone',
-      'profession',
       'created_at',
       'updated_at'
   ];
@@ -33,5 +31,4 @@ class Passenger extends Authenticatable
     'created_at',
     'updated_at',
 ];
-  
 }
