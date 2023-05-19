@@ -25,7 +25,7 @@ class AuthController extends Controller
     // public function register(Request $request) {
     //     $validator = Validator::make($request->all(), [
     //         'national_ID' => 'required|integer|unique:passengers,national_ID',
-    //         'first_Name' => 'required|string|max:20',
+    //         '' => 'required|string|max:20',
     //         'last_Name' => 'required|string|max:20',
     //         'gender' => 'required|string|max:10',
     //         'password' => 'required|max:20|confirmed',
