@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Notifications\EmailverificationNotification;
 
 class ApiController extends Controller
 {
@@ -16,17 +17,17 @@ class ApiController extends Controller
         // print_r($data);
             if (!$user || !Hash::check($request->password, $user->password)) {
                 return response([
-                    'massage' => 'the national_ID or password is invalid',
-                    'status'=> true
+                    'message' => 'the national_ID or password is invalid',
+                    'status'=> false
                 ], 404);
             }
         
-            $token = $user->createToken('my-app-token')->plainTextToken;
+            $token = $user->createToken($user->first_Name, ['post:login'])->plainTextToken;
         
             $response = [
-                'user' => $user,
+                'data' => $user,
                 'token' => $token,
-                'massage' => 'succeeded',
+                'message' => 'succeeded',
                 'status'=> true
             ];
         
@@ -50,7 +51,7 @@ class ApiController extends Controller
 
         if ($validator->fails()){
 
-            return response(['massege' => $validator->errors(),'status'=>'false'],404);
+            return response(['message' => $validator->errors(),'status'=> false],404);
         }
         $user=User::create([
             'national_ID'=>$request ->national_ID,
@@ -66,16 +67,16 @@ class ApiController extends Controller
         ]);
         
         if($user){
-
+            $user ->notify(new EmailVerificationNotification());
             $response = [
                 'data' => $user,
-                'massage' => 'succeeded',
+                'message' => 'succeeded',
                 'status'=> true
             ];
 
             return response($response, 200);
         }
-        return response(['massage' => 'The Post Not Save','status'=>'false'],404);
+        return response(['message' => 'The Post Not Save','status'=> false],404);
                                 
     }
 
@@ -84,9 +85,9 @@ class ApiController extends Controller
         $user = User::find($id);
         if(!$user){
             $response = [
-                'date'=> null ,
-                'massage' => 'The updata invalid',
-                'status'=>'false',
+                'data'=> null ,
+                'message' => 'The updata invalid',
+                'status'=> false,
             ];
             return response($response,404);
         }
@@ -100,9 +101,9 @@ class ApiController extends Controller
         if($user){
 
             $response = [
-                'date'=>$user ,
-                'massage' => 'The updata succeeded',
-                'status'=>'true',
+                'data'=>$user ,
+                'message' => 'The updata succeeded',
+                'status'=> true,
             ];
 
             return response($response,404);
@@ -139,21 +140,23 @@ class ApiController extends Controller
         $user = User::find($id);
         if(!$user){
             $response = [
-                'date'=> null ,
-                'massage' => 'The user is invalid',
-                'status'=>'false',
+                'data'=> null ,
+                'message' => 'The user is invalid',
+                'status'=> false,
             ];
             return response($response,200);
         }
 
         if($user){
-            $response = [
-                'date'=>$user ,
-                'massage' => 'The user is succeeded',
-                'status'=>'true',
-            ];
-
-            return response($response,404);
+            if (auth()->user()->tokenCan('post:login')) {
+                $response = [
+                    'data'=>$user ,
+                    'message' => 'The user is succeeded',
+                    'status'=> true,
+                ];
+    
+                return response($response,404);
+            }
                                     
             }
     }
