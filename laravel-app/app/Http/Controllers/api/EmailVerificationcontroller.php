@@ -4,10 +4,10 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Request\Api\EmailVerificationRequest;
+use App\Http\Requests\Api\EmailVerificationRequest;
 use otp;
 use App\Models\User;
-class EmailVerificationcontroller extends Controller
+class EmailVerificationcontroller extends Controller 
 {
     private $otp;
     public function _construct(){
