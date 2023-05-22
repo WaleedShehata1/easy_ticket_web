@@ -35,23 +35,25 @@ class ApiController extends Controller
     }
 
 
+
+
+
     public function register(Request $request){
         $validator = Validator::make($request->all(), [
-            'first_Name' => 'required |string | max:10',
-            'last_Name' => 'required |string | max:10',
-            'national_ID' => 'required | integer | digits_between:14,14 | unique:passengers,national_ID',
-            'email' => 'required |string |email |max:255 |unique:passengers,email',
-            'gender' => 'required | string |max:10',
-            'password' => 'required',
-            'health_status' => 'required | string | max:30',
-            'date_of_birth' => 'required | string | max:30',
-            'phone' => 'required|string| digits_between:11,11',
-            'profession' => 'required|string',
+            // 'first_Name' => 'required |string | max:10',
+            // 'last_Name' => 'required |string | max:10',
+            'national_ID' => 'unique:passengers,national_ID',
+            'email' => 'unique:passengers,email',
+            // 'gender' => 'required | string |max:10',
+            // 'password' => 'required',
+            // 'health_status' => 'required | string | max:30',
+            // 'date_of_birth' => 'required | string | max:30',
+            // 'phone' => 'required|string| digits_between:11,11',
+            // 'profession' => 'required|string',
         ]);
 
         if ($validator->fails()){
-
-            return response(['message' => $validator->errors(),'status'=> false],404);
+            return response(['message'=> 'the national_ID or email has already been taken','status'=> false],404);
         }
         $user=User::create([
             'national_ID'=>$request ->national_ID,
