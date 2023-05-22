@@ -23,6 +23,7 @@ class ResetPasswordcontroller extends Controller
         ]);
 
 
+        
         if(! $otp22->status){
             return response()->json(['error' => $otp22],404);
         }

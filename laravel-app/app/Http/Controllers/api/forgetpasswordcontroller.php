@@ -17,7 +17,7 @@ class forgetpasswordcontroller extends Controller
         // ]);
 
         $input = Validator::make($request->all(), [
-             'email' => ['required','email','exists:passengers,email'],
+            'email' => ['required','email','exists:passengers,email'],
         ]);
 
         if ( $input->fails()){
