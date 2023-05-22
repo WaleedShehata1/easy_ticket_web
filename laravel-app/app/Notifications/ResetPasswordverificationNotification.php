@@ -49,7 +49,7 @@ class ResetPasswordverificationNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $otp = $this->otp->generate($notifiable->email,6,20);
+        $otp = $this->otp->generate($notifiable->email,6,200);
         return (new MailMessage)
         ->mailer('smtp')
         ->subject($this->subject)
