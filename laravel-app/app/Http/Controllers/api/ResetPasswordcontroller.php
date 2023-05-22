@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\Api\ResetPasswordRequest;
 use Otp;
 use App\Models\User;
 use Hash;
@@ -14,8 +13,16 @@ class ResetPasswordcontroller extends Controller
     public function __construct(){
     $this->otp = new Otp; 
     }
-    public function passwordRest(ResetPasswordRequest $request){
-        $otp22 = $this->otp->validate($request->email,$request->otp);
+    public function passwordRest(Request $request){
+        // $otp22 = $this->otp->validate($request->email,$request->otp);
+
+        $otp22 = $this->otp->validate($request->email,$request->otp,[
+            'email' => ['required','email','exists:users'],
+            'otp' => ['required','max:6'],
+            'password' => ['required','string','min:6'],
+        ]);
+
+
         if(! $otp22->status){
             return response()->json(['error' => $otp22],404);
         }

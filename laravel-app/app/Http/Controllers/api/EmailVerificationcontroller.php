@@ -4,7 +4,6 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\Api\Emailverctionrequest;
 use Otp;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
@@ -24,10 +23,6 @@ class EmailVerificationcontroller extends Controller
             'otp' => ['required','max:6'],
         ]);
     
-        if(!$otp22->status){
-            return response()->json([$otp22],201);
-        }
-
         $user =User::where('email',$request->email)->first();
         $user->update(['email_verified_at' => now()]);
         $Done['status'] = true;
