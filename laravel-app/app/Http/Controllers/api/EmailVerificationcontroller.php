@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Api\EmailVerificationRequest;
 use otp;
 use App\Models\User;
+use Illuminate\Contracts\Container\BindingResolutionException;
 class EmailVerificationcontroller extends Controller 
 {
     private $otp;
