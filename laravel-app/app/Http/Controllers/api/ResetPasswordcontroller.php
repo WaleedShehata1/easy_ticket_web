@@ -23,9 +23,9 @@ class ResetPasswordcontroller extends Controller
         ]);
 
 
-        
+
         if(! $otp22->status){
-            return response()->json(['error' => $otp22],404);
+            return response()->json(['error' => $otp22],201);
         }
         $user = User::where('email',$request->email)->first();
         $user->update(['password' => Hash::make( $request->password)]);
