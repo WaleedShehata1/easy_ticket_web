@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Api\Emailverctionrequest;
 use Otp;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 // use Illuminate\Contracts\Container\BindingResolutionException;
 class EmailVerificationcontroller extends Controller 
 {
@@ -15,8 +16,14 @@ class EmailVerificationcontroller extends Controller
         $this->otp = new Otp;
 
     }
-    public function email_verification(Emailverctionrequest $request){
-        $otp22 = $this->otp->validate($request->email,$request->otp);
+    public function email_verification(Request $request){
+        // $otp22 = $this->otp->validate($request->email,$request->otp);
+        
+        $otp22 = $this->otp->validate($request->email,$request->otp,[
+            'email' => ['required','email','exists:users'],
+            'otp' => ['required','max:6'],
+        ]);
+    
         if(!$otp22->status){
             return response()->json(['error' => $otp22],404);
         }
