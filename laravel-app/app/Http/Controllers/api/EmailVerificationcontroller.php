@@ -25,12 +25,13 @@ class EmailVerificationcontroller extends Controller
         ]);
     
         if(!$otp22->status){
-            return response()->json(['error' => $otp22],404);
+            return response()->json([$otp22],201);
         }
 
         $user =User::where('email',$request->email)->first();
         $user->update(['email_verified_at' => now()]);
-        $Done['Done'] = true;
+        $Done['status'] = true;
+        $Done['message'] = 'succeeded';
         return response()->json($Done,201);
     }
 }
