@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\ApiController;
 use App\Http\Controllers\api\EmailVerificationcontroller;
+use App\Http\Requests\Api\Emailverctionrequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,12 +27,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post("login",[ApiController::class,'login']);
 Route::post("register",[ApiController::class,'register']);
 
+Route::post("emailverification",[EmailVerificationcontroller::class,'email_verification']);
+
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/updatae/{id}', [ApiController::class, 'update']);
     Route::get('/show/{id}', [ApiController::class, 'show']);
     Route::post('/logout', [ApiController::class, 'logout']);
-    Route::post("emailverification",[EmailVerificationcontroller::class,'email_verification']);
 });
 
 

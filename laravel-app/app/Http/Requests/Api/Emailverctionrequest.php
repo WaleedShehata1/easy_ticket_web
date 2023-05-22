@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Requests\Api;
+namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\User;
 
 class Emailverctionrequest extends FormRequest
 {
@@ -21,7 +22,7 @@ class Emailverctionrequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'email' => ['required','email','exists:users'],

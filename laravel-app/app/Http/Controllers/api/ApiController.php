@@ -17,6 +17,7 @@ class ApiController extends Controller
         // print_r($data);
             if (!$user || !Hash::check($request->password, $user->password)) {
                 return response([
+                    'data' => null,
                     'message' => 'the national_ID or password is invalid',
                     'status'=> false
                 ], 404);
@@ -53,7 +54,7 @@ class ApiController extends Controller
         ]);
 
         if ($validator->fails()){
-            return response(['message'=> 'the national_ID or email has already been taken','status'=> false],404);
+            return response(['message'=> 'the national_ID or email has already been taken','status'=> false,'data' => null,],404);
         }
         $user=User::create([
             'national_ID'=>$request ->national_ID,
@@ -78,7 +79,7 @@ class ApiController extends Controller
 
             return response($response, 200);
         }
-        return response(['message' => 'The Post Not Save','status'=> false],404);
+        return response(['message' => 'The Post Not Save','status'=> false,'data' => null],404);
                                 
     }
 
@@ -138,7 +139,7 @@ class ApiController extends Controller
 
 
 
-    public function show(Request $request,$id){
+    public function show( $request,$id){
         $user = User::find($id);
         if(!$user){
             $response = [
