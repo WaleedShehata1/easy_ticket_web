@@ -17,16 +17,19 @@ class forgetpasswordcontroller extends Controller
         // ]);
 
         $input = Validator::make($request->all(), [
-            'email' => ['required','email','exists:passengers,email'],
+            'national_ID' => ['required','integer','exists:passengers,national_ID'],
         ]);
 
         if ( $input->fails()){
             return response(['message'=> 'not found','status'=> false,'data' => null,],201);
         }
 
-        $user = User::where('email',$request->email)->first();
+        $user = User::where('national_ID',$request->national_ID)->first();
         $user ->notify(new ResetPasswordverificationNotification());
-        $Done['Done'] = true;
+        $Done['status'] = true;
+        $Done['message'] = "succeeded";
+        $Done['data'] = $user;
+
         return response()->json($Done,201);
 
 

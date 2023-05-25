@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Homecontroller;
+use App\Http\Controllers\PapPalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,24 @@ Route::get('/home', function () {
     return view('home');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+/*
+|--------------------------------------------------------------------------
+| payment paypal
+|--------------------------------------------------------------------------
+*/
+
+Route::get('go-payment', [PapPalController::class, 'goPayment'])->name('payment.go');
+Route::get('payment',[PapPalController::class, 'payment'])->name('payment');
+Route::get('cancel',[PapPalController::class, 'cancel'])->name('payment.cancel');
+Route::get('payment/success', [PapPalController::class, 'success'])->name('payment.success');
+
 // Route::get('/home',[Homecontroller::class, 'showhome'])->name('home')->middleware(['auth', 'verified']);
+
+/*
+|--------------------------------------------------------------------------
+| edit profile
+|--------------------------------------------------------------------------
+*/
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

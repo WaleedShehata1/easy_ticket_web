@@ -22,15 +22,32 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-
-
+/*
+|--------------------------------------------------------------------------
+| login and register
+|--------------------------------------------------------------------------
+*/
 Route::post("login",[ApiController::class,'login']);
 Route::post("register",[ApiController::class,'register']);
+
+/*
+|--------------------------------------------------------------------------
+| emailverification
+|--------------------------------------------------------------------------
+*/
 Route::post("emailverification",[EmailVerificationcontroller::class,'email_verification']);
 
+/*
+|--------------------------------------------------------------------------
+| password 
+|--------------------------------------------------------------------------
+*/
 Route::post("password/forget-password",[forgetpasswordcontroller::class,'forgetpassword']);
-Route::post("password/rest",[ResetPasswordcontroller::class,'passwordRest']);
+Route::post("password/reset",[ResetPasswordcontroller::class,'passwordRest']);
+Route::post("password/resetpassword",[ResetPasswordcontroller::class,'passwordRest2']);
+Route::post("password/updata",[ResetPasswordcontroller::class,'passwordupdata']);
+
+
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/updatae/{id}', [ApiController::class, 'update']);

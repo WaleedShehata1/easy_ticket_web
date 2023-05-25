@@ -20,7 +20,7 @@ class ApiController extends Controller
                     'data' => null,
                     'message' => 'the national_ID or password is invalid',
                     'status'=> false
-                ], 404);
+                ], 201);
             }
         
             $token = $user->createToken($user->first_Name, ['post:login'])->plainTextToken;
@@ -41,20 +41,18 @@ class ApiController extends Controller
 
     public function register(Request $request){
         $validator = Validator::make($request->all(), [
-            // 'first_Name' => 'required |string | max:10',
-            // 'last_Name' => 'required |string | max:10',
+
             'national_ID' => 'unique:passengers,national_ID',
             'email' => 'unique:passengers,email',
-            // 'gender' => 'required | string |max:10',
-            // 'password' => 'required',
-            // 'health_status' => 'required | string | max:30',
-            // 'date_of_birth' => 'required | string | max:30',
-            // 'phone' => 'required|string| digits_between:11,11',
-            // 'profession' => 'required|string',
+
         ]);
 
         if ($validator->fails()){
-            return response(['message'=> 'the national_ID or email has already been taken','status'=> false,'data' => null,],404);
+            return response([
+                'message'=> 'the national_ID or email has already been taken',
+                'status'=> false,
+                'data' => null,
+            ],201);
         }
         $user=User::create([
             'national_ID'=>$request ->national_ID,
@@ -79,7 +77,11 @@ class ApiController extends Controller
 
             return response($response, 200);
         }
-        return response(['message' => 'The Post Not Save','status'=> false,'data' => null],404);
+        return response([
+        'message' => 'The Post Not Save',
+        'status'=> false,
+        'data' => null
+        ],201);
                                 
     }
 
@@ -92,7 +94,7 @@ class ApiController extends Controller
                 'message' => 'The updata invalid',
                 'status'=> false,
             ];
-            return response($response,404);
+            return response($response,201);
         }
 
         $user->update([
@@ -109,23 +111,11 @@ class ApiController extends Controller
                 'status'=> true,
             ];
 
-            return response($response,404);
+            return response($response,201);
                                     
             }
         }
 
-
-    // public function update(Request $request, $id)
-    // {
-    //     $product = User::find($id);
-    //     $product->update([
-    //         'email'=>$request ->email,
-    //         'health_status'=>$request ->health_status,
-    //         'profession'=> $request ->profession,
-    //         'phone'=> $request ->phone,
-    //     ]);
-    //     return $product;
-    // }
 
 
         public function logout(Request $request) {
@@ -134,7 +124,7 @@ class ApiController extends Controller
             return response( [
                 'message' => 'succeeded',
                 'status'=> true
-            ],200);
+            ],201);
         }
 
 
@@ -147,7 +137,7 @@ class ApiController extends Controller
                 'message' => 'The user is invalid',
                 'status'=> false,
             ];
-            return response($response,200);
+            return response($response,201);
         }
 
         if($user){
@@ -158,7 +148,7 @@ class ApiController extends Controller
                     'status'=> true,
                 ];
     
-                return response($response,404);
+                return response($response,201);
             }
                                     
             }

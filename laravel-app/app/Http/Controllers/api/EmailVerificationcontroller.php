@@ -22,9 +22,13 @@ class EmailVerificationcontroller extends Controller
             'email' => ['required','email','exists:users'],
             'otp' => ['required','max:6'],
         ]);
+        
+        if (!$otp22->status){
+            return response([$otp22],201);
+        }
     
         $user =User::where('email',$request->email)->first();
-        $user->update(['email_verified_at' => now()]);
+        $user->update(['email_verified_at'=>now()]);
         $Done['status'] = true;
         $Done['message'] = 'succeeded';
         return response()->json($Done,201);
