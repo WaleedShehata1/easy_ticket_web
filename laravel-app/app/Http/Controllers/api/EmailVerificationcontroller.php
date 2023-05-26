@@ -24,7 +24,7 @@ class EmailVerificationcontroller extends Controller
         ]);
         
         if (!$otp22->status){
-            return response([$otp22],201);
+            return response(['status'=> false,'message'=>'OTP is not valid'],201);
         }
     
         $user =User::where('email',$request->email)->first();

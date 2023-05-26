@@ -35,6 +35,6 @@ class Station extends Model
         related:'App\Models\Metro_line',
         table:'stations_and_metro_lines',
         foreignPivotKey:'station_id',
-        relatedPivotKey:'metro_line_id	');
+        relatedPivotKey:'metro_line_id');
     }
 }
