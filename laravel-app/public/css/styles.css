@@ -59,8 +59,9 @@ body{
 .user_name{
   font-weight: bold;
   text-transform: uppercase;
-  padding-right: 15px;
+  padding-right: 42px;
   color: white;
+  margin-right: 121px;
   text-decoration: none;
 }
 /* gender */
@@ -258,7 +259,7 @@ body{
 
     .form-box {
         width: 446px;
-        height: 445px;
+        height: 380px;
         position: relative;
         margin: 2% auto;
         background: var(--main-backgrond);

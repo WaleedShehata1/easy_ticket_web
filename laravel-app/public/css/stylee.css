@@ -1,64 +1,69 @@
-*{
+* {
     padding: 0;
     margin: 0px;
     box-sizing: border-box;
-    
+    text-decoration: none;
+
 
 }
+
 :root {
---main-color:#FE8668;
---main-backgrond:#ffffff;
+    --main-color: #FE8668;
+    --main-backgrond: #ffffff;
 }
 
 
 
 
-.logo-nav{
-    transform: rotate(45deg);
-    margin-left: 224%;
-    width: 32px;
-    }
-    .navbar{
-        background-color:var(--main-color);
-        border-radius: 0px 0px 30px 30px ;
-        height: 67px;
-    }
+.logo-nav {
+    transform: rotate(6deg);
+    margin-left: 47%;
+    width: 72px;
+}
 
-    .nav-link:hover{
-        background-color:#b6472e;
-        transition: all 0.2s ease-in-out;
-        border-radius: 10px;
-        box-shadow: 0px 0px 3px white;
-    }  
-    
+.navbar {
+    background-color: var(--main-color);
+    border-radius: 0px 0px 30px 30px;
+    height: 67px;
+}
+
+.nav-link:hover {
+    background-color: #b6472e;
+    transition: all 0.2s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px white;
+}
 
 
-.container-fluid#blur.activee{
-    filter:blur(40px);
+
+.container-fluid#blur.activee {
+    filter: blur(40px);
     pointer-events: none;
     user-select: none;
 }
 
-.edit#blurr.activeet{
-    filter:blur(40px);
+.edit#blurr.activeet {
+    filter: blur(40px);
     pointer-events: none;
     user-select: none;
 
 }
+
 /* popup login */
-.Log-out-form{
+.Log-out-form {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%) ;
+    transform: translate(-50%, -50%);
     width: 95%;
     max-width: 440px;
     background-color: var(--main-color);
     border-radius: 10px;
-    display: none;  
+    display: none;
 
 }
-.Log-out-body{
+
+.Log-out-body {
     display: flex;
     flex-wrap: wrap;
     width: 50%;
@@ -66,7 +71,8 @@
     justify-content: space-between;
 
 }
-.Log-out-form .Log-out-body{
+
+.Log-out-form .Log-out-body {
     position: relative;
     min-height: 203px;
     width: 100%;
@@ -74,7 +80,8 @@
     width: 100%;
     overflow: hidden;
 }
-.Log-out-yas{
+
+.Log-out-yas {
     width: 25%;
     left: -22%;
     position: absolute;
@@ -89,22 +96,24 @@
     font-weight: 600;
     cursor: pointer;
 }
-.Log-out-no{
-width: 25%;
-left: 27%;
-position: absolute;
-margin-top: 14%;
-margin-left: 37%;
-border-radius: 18px;
-padding: 8px;
-background-color: var(--main-backgrond);
-color: var(--main-color);
-border: 1px solid rgb(251, 247, 247);
-font-size: small;
-font-weight: 600;
-cursor: pointer;
+
+.Log-out-no {
+    width: 25%;
+    left: 27%;
+    position: absolute;
+    margin-top: 14%;
+    margin-left: 37%;
+    border-radius: 18px;
+    padding: 8px;
+    background-color: var(--main-backgrond);
+    color: var(--main-color);
+    border: 1px solid rgb(251, 247, 247);
+    font-size: small;
+    font-weight: 600;
+    cursor: pointer;
 }
-.title-Log-out{
+
+.title-Log-out {
     font-size: 23px;
     color: white;
     text-align: center;
@@ -112,7 +121,8 @@ cursor: pointer;
     top: 26px;
     position: absolute;
 }
-.close-btn-logout{
+
+.close-btn-logout {
     position: absolute;
     top: -6px;
     height: 40px;
@@ -123,17 +133,18 @@ cursor: pointer;
     font-size: x-large;
     font-weight: 900;
     border-radius: 31px;
-    font-style:normal;
+    font-style: normal;
     cursor: pointer;
 }
+
 /* popup logout */
 
 
-.change-password-form{
+.change-password-form {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%) ;
+    transform: translate(-50%, -50%);
     width: 95%;
     max-width: 440px;
     background-color: var(--main-color);
@@ -142,13 +153,14 @@ cursor: pointer;
 }
 
 
-.change-password-form .tab-header > div.active{
+.change-password-form .tab-header>div.active {
     color: var(--main-backgrond);
     background-color: var(--main-color);
     padding: 20px;
     overflow: visible;
-    border-radius:10px;
+    border-radius: 10px;
 }
+
 .change-password-form .change-password-body {
     position: relative;
     min-height: 350px;
@@ -157,7 +169,8 @@ cursor: pointer;
     width: 100%;
     overflow: hidden;
 }
-.title-change{
+
+.title-change {
     font-size: 23px;
     color: white;
     text-align: center;
@@ -165,7 +178,7 @@ cursor: pointer;
 
 
 
-.save{
+.save {
     width: 25%;
     left: -11px;
     position: absolute;
@@ -180,31 +193,33 @@ cursor: pointer;
     font-weight: 600;
     cursor: pointer;
 }
-.user_name{
+
+.user_name {
     font-weight: bold;
     text-transform: uppercase;
     padding-right: 15px;
     color: white;
     text-decoration: none;
-  }
+}
 
-  /* gender */
-.form-select{
+/* gender */
+.form-select {
     height: 23px;
     width: 176px;
     border-radius: 8px;
     outline: none;
-  }
+}
 
-.change-password-body{
+.change-password-body {
     display: flex;
     flex-wrap: wrap;
     width: 50%;
     padding-bottom: 15px;
     justify-content: space-between;
 }
-.change-password-body input{
-  
+
+.change-password-body input {
+
     border-radius: 5px;
     outline: none;
     box-shadow: none;
@@ -213,7 +228,8 @@ cursor: pointer;
     border: #fdfaf9;
     margin: 11px 9px;
 }
-.change-password-body label{
+
+.change-password-body label {
     width: 91%;
     border-radius: 10px;
     border: none;
@@ -223,7 +239,7 @@ cursor: pointer;
 }
 
 
-.close-btn{
+.close-btn {
     position: absolute;
     top: -6px;
     height: 40px;
@@ -234,16 +250,17 @@ cursor: pointer;
     font-size: x-large;
     font-weight: 900;
     border-radius: 31px;
-    font-style:normal;
+    font-style: normal;
     cursor: pointer;
 }
-.container-fluid#blur.activee{
-    filter:blur(20px);
+
+.container-fluid#blur.activee {
+    filter: blur(20px);
     pointer-events: none;
     user-select: none;
 }
 
-.login-page{
+.login-page {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -252,20 +269,21 @@ cursor: pointer;
 }
 
 
-.save-password-form{
+.save-password-form {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%) ;
+    transform: translate(-50%, -50%);
     width: 95%;
     max-width: 440px;
     background-color: var(--main-color);
     border-radius: 10px;
     box-shadow: 1px 7px 4px 0px #d0c7c785;
-     display: none; 
+    display: none;
 
 }
-.save-password-body{
+
+.save-password-body {
     display: flex;
     flex-wrap: wrap;
     width: 50%;
@@ -273,6 +291,7 @@ cursor: pointer;
     justify-content: space-between;
 
 }
+
 .save-password-form .save-password-body {
     position: relative;
     min-height: 203px;
@@ -281,7 +300,8 @@ cursor: pointer;
     width: 100%;
     overflow: hidden;
 }
-.save-yas{
+
+.save-yas {
     width: 25%;
     left: -22%;
     position: absolute;
@@ -296,29 +316,32 @@ cursor: pointer;
     font-weight: 600;
     cursor: pointer;
 }
-.save-no{
-width: 25%;
-left: 27%;
-position: absolute;
-margin-top: 14%;
-margin-left: 37%;
-border-radius: 18px;
-padding: 8px;
-background-color: var(--main-backgrond);
-color: var(--main-color);
-border: 1px solid rgb(251, 247, 247);
-font-size: small;
-font-weight: 600;
-cursor: pointer;
+
+.save-no {
+    width: 25%;
+    left: 27%;
+    position: absolute;
+    margin-top: 14%;
+    margin-left: 37%;
+    border-radius: 18px;
+    padding: 8px;
+    background-color: var(--main-backgrond);
+    color: var(--main-color);
+    border: 1px solid rgb(251, 247, 247);
+    font-size: small;
+    font-weight: 600;
+    cursor: pointer;
 }
-.title-save{
+
+.title-save {
     font-size: 23px;
     color: white;
     text-align: center;
     left: 33%;
     position: absolute;
 }
-.close-btn-two{
+
+.close-btn-two {
     position: absolute;
     top: -6px;
     height: 40px;
@@ -329,15 +352,17 @@ cursor: pointer;
     font-size: x-large;
     font-weight: 900;
     border-radius: 31px;
-    font-style:normal;
+    font-style: normal;
     cursor: pointer;
 }
-.remember-user{
+
+.remember-user {
     width: 94%;
     text-align: center;
     margin-top: 15%;
 }
-.remember-user .text{
+
+.remember-user .text {
     position: absolute;
     top: 71%;
     left: 43%;
@@ -370,26 +395,27 @@ cursor: pointer;
     border-radius: 23px;
 }
 
-.text1{
+.text1 {
     height: 64px;
-    border-color: transparent transparent white transparent ;
+    border-color: transparent transparent white transparent;
     border-width: 2px;
-    border-style:dashed ;
+    border-style: dashed;
     color: #fdfaf9;
 }
-.text1 h1{
+
+.text1 h1 {
     font-size: 26px;
     margin-top: 10px;
     color: white;
 }
 
-.text2 h2{
+.text2 h2 {
     font-size: 23px;
     color: white;
     margin-top: 13px;
 }
 
-.san{
+.san {
     width: 249px;
     height: 125px;
     background-color: white;
@@ -399,21 +425,21 @@ cursor: pointer;
     border-radius: 23px;
 }
 
-.form1{
+.form1 {
     font-size: small;
     position: absolute;
     margin-left: 19px;
 }
 
-.label1{
-width:207px;
- height: 30px;
-background-color: #FE8668;
-display: inline-block;
-border-radius: 11px;
-margin-bottom: 6px; 
-font-size: 10px;
-color: #ffffff;
+.label1 {
+    width: 207px;
+    height: 30px;
+    background-color: #FE8668;
+    display: inline-block;
+    border-radius: 11px;
+    margin-bottom: 6px;
+    font-size: 10px;
+    color: #ffffff;
 }
 
 .button1 {
@@ -430,24 +456,28 @@ color: #ffffff;
     bottom: 3%;
     background-color: white;
     border-radius: 15px;
-  }
-   .logo-ticket{
-   width: 12%;
+}
+
+.logo-ticket {
+    width: 12%;
     margin-top: 2%;
     margin-left: 44%;
     transform: rotate(45deg);
-  }
- .chosse_way {
+}
+
+.chosse_way {
     position: relative;
     left: -8%;
     top: 27px;
- }
- .chosse_way0 {
+}
+
+.chosse_way0 {
     position: relative;
     left: -8%;
     top: 24px;
- }
- .close-btn-three{
+}
+
+.close-btn-three {
     position: absolute;
     top: -39%;
     height: 40px;
@@ -458,36 +488,40 @@ color: #ffffff;
     font-size: x-large;
     font-weight: 900;
     border-radius: 31px;
-    font-style:normal;
+    font-style: normal;
     cursor: pointer;
 
- }
- /* end hesham */
-  
- /* start popoup enter code */
- .Enter-code{
+}
+
+/* end hesham */
+
+/* start popoup enter code */
+.Enter-code {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%) ;
+    transform: translate(-50%, -50%);
     width: 95%;
     max-width: 353px;
     background-color: var(--main-color);
     border-radius: 10px;
     min-height: 200px;
     box-shadow: 1px 7px 4px 0px #d0c7c785;
-     display: none; 
- }
-  .Enter-code .title-code{
+    display: none;
+}
+
+.Enter-code .title-code {
     font-size: 20px;
     text-align: center;
     margin-top: 21px;
- }
- .enter-code-group {
-    text-align: center;
-    margin-top: 40px; 
 }
- .enter-code-group .send-code{
+
+.enter-code-group {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.enter-code-group .send-code {
     width: 25%;
     position: absolute;
     left: 2px;
@@ -501,8 +535,9 @@ color: #ffffff;
     font-size: small;
     font-weight: 600;
     cursor: pointer;
- }
- .enter-code-group input{
+}
+
+.enter-code-group input {
     width: 64%;
     border-radius: 5px;
     outline: none;
@@ -512,7 +547,8 @@ color: #ffffff;
     background-color: #ffffff;
 
 }
-.close-btn-four{
+
+.close-btn-four {
     position: absolute;
     top: -15%;
     height: 40px;
@@ -526,12 +562,13 @@ color: #ffffff;
     font-style: normal;
     cursor: pointer;
 }
+
 /* start new password */
-.new-password-form{
+.new-password-form {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%) ;
+    transform: translate(-50%, -50%);
     width: 95%;
     max-width: 360px;
     background-color: var(--main-color);
@@ -541,7 +578,7 @@ color: #ffffff;
     display: none;
 }
 
-.input-new-password input{
+.input-new-password input {
     border-radius: 5px;
     outline: none;
     box-shadow: none;
@@ -550,7 +587,8 @@ color: #ffffff;
     border: #fdfaf9;
     margin: 12px 25px;
 }
-.input-new-password label{
+
+.input-new-password label {
     width: 91%;
     border-radius: 10px;
     border: none;
@@ -559,7 +597,8 @@ color: #ffffff;
     font-size: medium;
     margin: 5px 27px;
 }
-.save-new-password{
+
+.save-new-password {
     width: 25%;
     position: absolute;
     left: 2px;
@@ -574,7 +613,8 @@ color: #ffffff;
     font-weight: 600;
     cursor: pointer;
 }
-.close-btn-five{
+
+.close-btn-five {
     position: absolute;
     top: -15%;
     height: 40px;
@@ -589,18 +629,20 @@ color: #ffffff;
     cursor: pointer;
 
 }
+
 .title-new-password {
     font-size: 23px;
     margin-top: 11px;
     color: white;
     text-align: center;
 }
+
 /* end new password */
 
 
- /* start edit */
- 
- .edit{
+/* start edit */
+
+.edit {
     position: absolute;
     top: 56%;
     left: 45%;
@@ -608,17 +650,18 @@ color: #ffffff;
     max-width: 745px;
     background-color: var(--main-backgrond);
     border-radius: 10px;
-    box-shadow: 0 0 1px 1px  rgb(184, 109, 82);
+    box-shadow: 0 0 1px 1px rgb(184, 109, 82);
     height: 86%;
 }
-    
-    
 
- .topnav {
+
+
+.topnav {
     background-color: var(--main-color);
-    overflow: hidden; 
+    overflow: hidden;
     border-radius: 5px;
 }
+
 .topnav a {
     float: left;
     color: #f2f2f2;
@@ -627,15 +670,16 @@ color: #ffffff;
     text-decoration: none;
     font-size: 17px;
 }
+
 .topnav a:hover {
     background-color: var(--main-backgrond);
     color: var(--main-color);
 }
 
- .topnav a.active {
-    background-color:var(--main-backgrond);
+.topnav a.active {
+    background-color: var(--main-backgrond);
     color: var(--main-color);
-} 
+}
 
 
 /* Edit-account-form  */
@@ -644,8 +688,9 @@ color: #ffffff;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 37px 12px;
-    
+
 }
+
 .Edit-account-input2 {
     display: flex;
     flex-wrap: wrap;
@@ -654,62 +699,65 @@ color: #ffffff;
     justify-content: space-between;
 }
 
-.Edit-account-input2  input{
+.Edit-account-input2 input {
     width: 91%;
     outline: none;
     box-shadow: none;
     margin: 10px 20px;
 }
 
-.Edit-account-input{
+.Edit-account-input {
     width: 95%;
 }
 
-.Edit-account-input input{
+.Edit-account-input input {
     box-shadow: none;
-    border-color:azure;
+    border-color: azure;
     margin: 18px 18px;
     width: 99%;
     border-bottom: 1px solid #9e9e9e;
-	outline:none;
-	background: transparent;
-    border-left:0;
-	border-top:0;
-	border-right:0;
-   
+    outline: none;
+    background: transparent;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+
 }
-.Edit-account-input p{
+
+.Edit-account-input p {
     box-shadow: none;
-    border-color:azure;
+    border-color: azure;
     margin: 18px 18px;
     width: 99%;
     color: rgb(1, 0, 0);
     border-bottom: 1px solid #9e9e9e;
-	outline:none;
-	background: transparent;
-    border-left:0;
-	border-top:0;
-	border-right:0;
+    outline: none;
+    background: transparent;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
     color: rgb(89, 82, 82);
     font-weight: bold;
-    
-    
-   
-}
-.Edit-account-input2 input{
-    
-    box-shadow: none;
-    outline: none;
-    border-color:azure;
-    border-bottom: 1px solid #9e9e9e;
-	outline:none;
-	background: transparent;
-    border-left:0;
-	border-top:0;
-	border-right:0;
+
+
 
 }
-.Edit-account-input2 p{
+
+.Edit-account-input2 input {
+
+    box-shadow: none;
+    outline: none;
+    border-color: azure;
+    border-bottom: 1px solid #9e9e9e;
+    outline: none;
+    background: transparent;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+
+}
+
+.Edit-account-input2 p {
     width: 87%;
     box-shadow: none;
     outline: none;
@@ -727,7 +775,7 @@ color: #ffffff;
 
 }
 
-.close-btn{
+.close-btn {
     position: absolute;
     top: -6px;
     height: 40px;
@@ -738,9 +786,10 @@ color: #ffffff;
     font-size: x-large;
     font-weight: 900;
     border-radius: 31px;
-    font-style:normal;
+    font-style: normal;
     cursor: pointer;
 }
+
 .edit-Change-Password {
     width: 30%;
     position: absolute;
@@ -756,7 +805,8 @@ color: #ffffff;
     font-weight: 600;
     cursor: pointer;
 }
-.edit-Save-Change{
+
+.edit-Save-Change {
     width: 30%;
     position: absolute;
     left: -18%;
@@ -773,27 +823,31 @@ color: #ffffff;
     color: var(--main-backgrond);
 
 }
-.Edit-account-page{
+
+.Edit-account-page {
     display: block;
     width: 608px;
     margin: 10px 43px;
 }
+
 /* ------------------------------------------------------------------- */
 /* end Edit-account-page */
 /* start Notification contener */
-.Notification{
+.Notification {
     position: absolute;
     top: 46%;
     left: 45%;
-    transform: translate(-50%,-50%);
-    width: 608px;
+    transform: translate(-50%, -50%);
+    width: 491px;
+    ;
     background-color: var(--main-color);
     border-radius: 10px;
     min-height: 200px;
     border-radius: 10px;
-    display: none; 
+    display: none;
 }
-.form-Notification input{
+
+.form-Notification input {
     text-align: right;
     width: 100%;
     background-color: var(--main-color);
@@ -801,21 +855,24 @@ color: #ffffff;
     padding: 4px 20px;
     border-radius: 10px;
     border-bottom: 0;
-    border-left:0;
-	border-top:0;
-	border-right:0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
 }
-.form-Notification label{
+
+.form-Notification label {
     text-align: right;
     padding: 4px 20px;
     color: var(--main-backgrond);
 }
-.edit-ticket{
-    width: 54%;
+
+.edit-ticket {
+    width: 20%;
     position: absolute;
     left: -9%;
-    margin-top: 75px;
-    margin-left: 31%;
+    display: none;
+    margin-top: 7px;
+    margin-left: 3%;
     border-radius: 18px;
     padding: 8px;
     background-color: var(--main-backgrond);
@@ -827,12 +884,13 @@ color: #ffffff;
     color: var(--main-color);
 
 }
+
 /* start  popup Notification */
-.Notification-popup{
+.Notification-popup {
     position: absolute;
     top: 56%;
     left: 45%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 307px;
     background-color: var(--main-color);
     border-radius: 10px;
@@ -842,7 +900,8 @@ color: #ffffff;
     display: none;
 
 }
-.group-natification-input label{
+
+.group-natification-input label {
     left: 67%;
     position: absolute;
     text-decoration: rtl;
@@ -850,28 +909,32 @@ color: #ffffff;
     font-size: medium;
     color: var(--main-backgrond);
 }
-.group-natification-input select{
+
+.group-natification-input select {
     margin-left: 28px;
     margin-top: 10px;
     width: 51%;
-   border-radius: 5px;
-   background-color: var(--main-backgrond);
+    border-radius: 5px;
+    background-color: var(--main-backgrond);
 }
-.group-natification-input input{
+
+.group-natification-input input {
     margin-left: 28px;
     margin-top: 10px;
     width: 51%;
-   border-radius: 5px;
-   background-color: var(--main-backgrond);
+    border-radius: 5px;
+    background-color: var(--main-backgrond);
 }
-.form-Notification-popup .title-notification{
+
+.form-Notification-popup .title-notification {
     font-size: large;
     color: var(--main-backgrond);
     text-align: center;
     margin: 10px;
-    
+
 }
-.save-edit-ticket{
+
+.save-edit-ticket {
     width: 56%;
     position: absolute;
     left: -9%;
@@ -888,7 +951,8 @@ color: #ffffff;
     color: var(--main-color);
 
 }
-.close-btn-six{
+
+.close-btn-six {
     position: absolute;
     top: -15%;
     height: 40px;
@@ -903,23 +967,24 @@ color: #ffffff;
     cursor: pointer;
 
 }
+
 /* end Notification contener */
 /* start wallet */
-.wallet{
+.wallet {
     position: absolute;
     top: 56%;
     left: 45%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 391px;
     background-color: var(--main-backgrond);
     border-radius: 10px;
     min-height: 347px;
     border-radius: 10px;
     display: none;
-   
+
 }
 
-.label_1{
+.label_1 {
     width: 69%;
     height: 35px;
     background-color: #E6E6E6;
@@ -930,7 +995,7 @@ color: #ffffff;
     box-shadow: 1px 7px 4px 0px #d0c7c785;
 }
 
-.p_0{
+.p_0 {
     right: 10%;
     top: 0;
     position: absolute;
@@ -938,7 +1003,7 @@ color: #ffffff;
     font-weight: 500;
 }
 
-.p_9{
+.p_9 {
     left: 10%;
     top: 0;
     position: absolute;
@@ -946,24 +1011,24 @@ color: #ffffff;
     font-weight: 500;
 }
 
-.label_2{
-    width: 74%;
-    height: 53%;
+.label_2 {
+    width: 125%;
+    height: 60%;
     background-color: #E6E6E6;
-    right: 14%;
+    right: -12%;
     top: 33%;
     position: absolute;
     border-radius: 11px;
     box-shadow: 1px 7px 4px 0px #d0c7c785;
 }
 
-.h_990{
+.h_990 {
     position: absolute;
-    right: 27%;
-    top: 1%;
+    right: 9%;
+    top: 11%;
 }
 
-#Payment_Method{
+#Payment_Method {
     position: absolute;
     right: 6%;
     top: 38%;
@@ -972,7 +1037,7 @@ color: #ffffff;
     height: 24px;
 }
 
-.la{
+.la {
     position: absolute;
     top: 19%;
     right: 5%;
@@ -980,43 +1045,48 @@ color: #ffffff;
     font-size: medium;
 }
 
-.lab{
+.lab {
     position: absolute;
-    top: 61%;
-    right: 10%;
-    font-size: medium;
+    top: 29%;
+    right: 65%;
+    font-size: 17px;
     font-weight: 500;
+    font-weight: bold;
+    color: #b6472e;;
 }
 
-.inp{    
-    width: 84%;
-    height: 18px;
-    top: 145px;
-    right: 6%;
+.inp {
+    width: 79%;
+    height: 33px;
+    top: 84px;
+    right: 9%;
     position: absolute;
     border-radius: 6px;
     border-style: none;
+    padding-left: 10px;
 }
 
 
-.but{
-    bottom: -34%;
-    right: 38%;
+.but {
+    bottom: 23%;
+    right: 60%;
     position: absolute;
-    background-color: #FE8668;
+    background-color: rgb(254, 134, 104);
     border-style: none;
     border-radius: 8px;
     color: white;
     margin: 0px -30% -25px 13px;
-    width: 80%;
+    width: 40%;
+    height: 31px;
 }
+
 /* end wallet */
 /* start popup wallet */
-.wallet-popup{
+.wallet-popup {
     position: absolute;
     top: 50%;
     left: 45%;
-    transform: translate(-50%,-50%) ;
+    transform: translate(-50%, -50%);
     width: 95%;
     max-width: 353px;
     background-color: var(--main-backgrond);
@@ -1025,21 +1095,24 @@ color: #ffffff;
     box-shadow: 1px 7px 4px 0px #d0c7c785;
     display: none;
 }
-.wallet-popup .title-wallet-popup{
+
+.wallet-popup .title-wallet-popup {
     font-size: 20px;
     text-align: center;
     margin-top: 21px;
-    background-color:var(--main-color);
+    background-color: var(--main-color);
     height: 57px;
     margin: -1px -2px;
     padding: 21px;
     border-radius: 12px 12px 0px 0px;
- }
- .enter-wallet-group-popup {
-    text-align: center;
-    margin-top: 40px; 
 }
- .enter-wallet-group-popup .Done-wallet-popup{
+
+.enter-wallet-group-popup {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.enter-wallet-group-popup .Done-wallet-popup {
     width: 25%;
     position: absolute;
     left: 2px;
@@ -1053,20 +1126,21 @@ color: #ffffff;
     font-size: small;
     font-weight: 600;
     cursor: pointer;
- }
- .enter-wallet-group-popup input{
-    
-        width: 64%;
-        border-radius: 5px;
-        outline: none;
-        box-shadow: none;
-        border: #fdfaf9;
-        margin: -1px 62px;
-        background-color: #bdbdbd91;
 }
 
-   
-.close-btn-wallet{
+.enter-wallet-group-popup input {
+
+    width: 64%;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: none;
+    border: #fdfaf9;
+    margin: -1px 62px;
+    background-color: #bdbdbd91;
+}
+
+
+.close-btn-wallet {
     position: absolute;
     top: -15%;
     height: 40px;
@@ -1080,9 +1154,10 @@ color: #ffffff;
     font-style: normal;
     cursor: pointer;
 }
+
 /* end popup wallet */
 /* start my ticket1 */
-.myticket-contener{
+.myticket-contener {
     width: 411px;
     height: 73%;
     margin: 40px auto;
@@ -1090,11 +1165,11 @@ color: #ffffff;
     border-radius: 10px;
     top: 53%;
     left: 44%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     border-radius: 10px;
-    box-shadow: 0 0 1px 1px  rgb(184, 109, 82);
+    box-shadow: 0 0 1px 1px rgb(184, 109, 82);
     display: none;
-    
+
 }
 
 
@@ -1106,28 +1181,29 @@ color: #ffffff;
     border-radius: 10px;
     top: 14%;
     left: 49%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     border-radius: 10px;
-    box-shadow:0 0 1px 1px rgb(211, 203, 200);
-    
+    box-shadow: 0 0 1px 1px rgb(211, 203, 200);
+
 
 }
-.contant-ticket{
+
+.contant-ticket {
     position: absolute;
     top: 41%;
     left: 51%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 73%;
     height: 115px;
     background-color: var(--main-color);
     border-radius: 10px;
-    box-shadow:0 0 1px 1px rgb(252, 172, 142);
-    
+    box-shadow: 0 0 1px 1px rgb(252, 172, 142);
+
 }
 
 
 
-.contant-ticket::after{
+.contant-ticket::after {
     content: '';
     background-color: var(--main-backgrond);
     position: absolute;
@@ -1137,7 +1213,8 @@ color: #ffffff;
     height: 29px;
     border-radius: 20px;
 }
-.contant-ticket::before{
+
+.contant-ticket::before {
     content: '';
     background-color: var(--main-backgrond);
     position: absolute;
@@ -1148,21 +1225,21 @@ color: #ffffff;
     border-radius: 20px;
 }
 
-.time-date-ticket{
+.time-date-ticket {
     display: flex;
     justify-content: space-between;
-     margin: 15px 33px;
-     color: black;
-     font-weight: 500;
- }
+    margin: 15px 33px;
+    color: black;
+    font-weight: 500;
+}
 
-.information-ticket label{
- 
+.information-ticket label {
+
     position: absolute;
     left: 16%;
     top: 61%;
-   background-color:var(--main-backgrond);
-   color: var(--main-color);
+    background-color: var(--main-backgrond);
+    color: var(--main-color);
     width: 41px;
     height: 31px;
     text-align: center;
@@ -1171,14 +1248,15 @@ color: #ffffff;
     border-radius: 10px;
 }
 
-.information-Button{
+.information-Button {
     position: absolute;
     left: 50%;
     display: flex;
     flex-direction: column;
     margin: -49px 41px
 }
-.information-Button .button-1{
+
+.information-Button .button-1 {
     width: 76px;
     height: 29px;
     color: black;
@@ -1191,7 +1269,8 @@ color: #ffffff;
     border-radius: 5px;
 
 }
-.information-Button label{
+
+.information-Button label {
     height: 24px;
     color: black;
     font-weight: 500;
@@ -1200,20 +1279,23 @@ color: #ffffff;
     font-weight: 500;
     margin: 8px 8px;
 }
-.icon-my-ticket{
+
+.icon-my-ticket {
     margin-top: 60px;
     display: flex;
     justify-content: space-around;
 }
-.icon-my-ticket a{
+
+.icon-my-ticket a {
     width: 18%;
     height: 27px;
     background-color: var(--main-backgrond);
     text-align: center;
     color: black;
     border-radius: 5px;
-    box-shadow: 5px 5px 5px  rgb(217, 205, 200);
+    box-shadow: 5px 5px 5px rgb(217, 205, 200);
 }
+
 /* start myticket 2 */
 .myticket-contant-two {
     width: 366px;
@@ -1223,13 +1305,14 @@ color: #ffffff;
     border-radius: 10px;
     top: 61%;
     left: 49%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     border-radius: 10px;
     box-shadow: 1px 1px 1px 1px rgb(217, 205, 200);
-    
+
 
 }
-.contant-ticket-metro{
+
+.contant-ticket-metro {
     width: 330px;
     height: 155px;
     margin: 40px auto;
@@ -1237,14 +1320,14 @@ color: #ffffff;
     border-radius: 10px;
     top: 31%;
     left: 51%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     border-radius: 10px;
     box-shadow: 0 0 1px 1px rgb(252, 172, 142);
-    background-color:var(--main-color);
+    background-color: var(--main-color);
 }
 
 
-.contant-ticket-metro::after{
+.contant-ticket-metro::after {
     content: '';
     background-color: var(--main-backgrond);
     position: absolute;
@@ -1254,9 +1337,10 @@ color: #ffffff;
     height: 29px;
     border-radius: 20px;
 }
-.contant-ticket-metro::before{
+
+.contant-ticket-metro::before {
     content: '';
-    background-color:var(--main-backgrond);
+    background-color: var(--main-backgrond);
     position: absolute;
     bottom: 89%;
     left: 178px;
@@ -1264,19 +1348,20 @@ color: #ffffff;
     height: 29px;
     border-radius: 20px;
 }
-.time-date-ticket-metro{
+
+.time-date-ticket-metro {
     display: flex;
     justify-content: space-around;
     margin: 9px -10%;
     color: black;
-  
+
     font-weight: 500;
 
 }
 
 
 
-.icfst{
+.icfst {
     margin-top: 12px;
     display: flex;
     flex-wrap: wrap;
@@ -1284,6 +1369,7 @@ color: #ffffff;
     flex-direction: column;
     margin-left: 16px;
 }
+
 .icfst a {
     width: 18%;
     height: 27px;
@@ -1291,36 +1377,42 @@ color: #ffffff;
     color: var(--main-color);
     background-color: var(--main-backgrond);
     border-radius: 5px;
-    box-shadow: 1px 1px 1px  rgb(217, 205, 200);
+    box-shadow: 1px 1px 1px rgb(217, 205, 200);
 }
-.information-ticket-metro label{
-   position: absolute; 
-  
+
+.information-ticket-metro label {
+    position: absolute;
+
 }
-.top-title-2{
+
+.top-title-2 {
     top: 72px;
 }
-.top-title0{
+
+.top-title0 {
     top: 70%;
 }
-.information-Button-metro{
-        left: 59%;
-        display: flex;
-        align-items: flex-end;
-        flex-direction: column;
-        margin: -91px 35px;
+
+.information-Button-metro {
+    left: 59%;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    margin: -91px 35px;
 }
-.information-ticket-metro-1{
+
+.information-ticket-metro-1 {
     margin: -86px 87px;
     display: flex;
     flex-direction: column;
-     flex-wrap: wrap; 
-     font-weight: 500;
-     color: black;
-  
-    
+    flex-wrap: wrap;
+    font-weight: 500;
+    color: black;
+
+
 }
-.information-Button-metro .button-2{
+
+.information-Button-metro .button-2 {
     width: 76px;
     height: 29px;
     outline: none;
@@ -1330,7 +1422,8 @@ color: #ffffff;
     font-weight: bold;
     border-radius: 5px;
 }
-.information-Button-metro .price-2{
+
+.information-Button-metro .price-2 {
     height: 24px;
     color: black;
     outline: none;
@@ -1338,26 +1431,29 @@ color: #ffffff;
     font-weight: 500;
     margin: 8px 10px;
 }
-.icon-my-ticket-two{
+
+.icon-my-ticket-two {
     margin-top: 47%;
     display: flex;
     justify-content: space-around;
 }
-.icon-my-ticket-two a{
+
+.icon-my-ticket-two a {
     width: 18%;
     height: 27px;
-   color: black;
+    color: black;
     text-align: center;
     border-radius: 5px;
-    box-shadow: 5px 5px 5px  rgb(217, 205, 200);
+    box-shadow: 5px 5px 5px rgb(217, 205, 200);
 }
+
 /* end ticket-2 */
 /* start qr-2 */
-.Qr-popup{
+.Qr-popup {
     position: absolute;
     top: 50%;
     left: 43%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 18%;
     height: 230px;
     background-color: var(--main-color);
@@ -1365,20 +1461,22 @@ color: #ffffff;
     display: none;
 
 }
-.overlay-2{
+
+.overlay-2 {
     position: absolute;
     top: 50%;
     left: 51%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 86%;
     height: 24vh;
     border-radius: 10px;
     border: 1px solid var(--main-backgrond);
-    box-shadow: 5px 5px 5px  5px var(--main-color);
+    box-shadow: 5px 5px 5px 5px var(--main-color);
     background-color: rgb(97, 86, 86);
 }
-.close-qr{
-position: absolute;
+
+.close-qr {
+    position: absolute;
     top: -15%;
     height: 40px;
     right: -48px;
@@ -1391,17 +1489,18 @@ position: absolute;
     font-style: normal;
     cursor: pointer;
 }
+
 /* end-qr-2 */
 /* end my ticket */
 /*  */
 /*  Start Credit Card */
-.credit-cerd-parent{
+.credit-cerd-parent {
     position: absolute;
     top: 56%;
     left: 45%;
     transform: translate(-50%, -50%);
     width: 33%;
-    background-color:var(--main-backgrond);
+    background-color: var(--main-backgrond);
     border-radius: 10px;
     box-shadow: 0 0 1px 1px rgb(184, 109, 82);
     height: 64vh;
@@ -1409,57 +1508,67 @@ position: absolute;
 }
 
 
-.form-add-new-card  label,input {
+.form-add-new-card label,
+input {
     display: block;
     margin: 6px 1px;
     font-weight: bold;
     color: rgb(254, 134, 104);
 }
-.card-new-row .cvv-input{
+
+.card-new-row .cvv-input {
     width: 85%;
 }
- .input444::placeholder {
+
+.input444::placeholder {
     font-weight: bold;
     color: rgb(89, 82, 82);
 }
+
 .input44::placeholder {
     text-align: center;
     color: var(--main-color);
 }
+
 .cvv-input::placeholder {
     text-align: center;
     color: var(--main-color);
 }
-.input40::placeholder{
+
+.input40::placeholder {
     color: black;
-} 
+}
 
-  
 
- 
-.card-add-new{
-   
+
+
+.card-add-new {
+
     position: absolute;
     top: 70%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 90%;
     border-radius: 10px;
-    padding: 21px 5px ;
+    padding: 21px 5px;
     background-color: var(--main-backgrond);
     box-shadow: 0 0 1px 1px rgb(184, 109, 82);
-  
-    
+
+
 }
-.card-new-row{
+
+.card-new-row {
     display: flex;
-  
+
 }
-.card-new-row label, input {
+
+.card-new-row label,
+input {
     border-radius: 10px;
     outline-color: var(--main-color);
     border-color: var(--main-color);
 }
+
 .card-new-row label {
     border-radius: 10px;
     outline-color: var(--main-color);
@@ -1468,15 +1577,18 @@ position: absolute;
     font-weight: bolder;
     font-size: medium;
 }
-.card-new-row input{
+
+.card-new-row input {
     border-radius: 10px;
 }
-.btn-group-card{
+
+.btn-group-card {
     margin: 3% 23%;
     text-align: center;
     display: flex;
 }
-.btn-group-card .Done-button{
+
+.btn-group-card .Done-button {
     width: 14%;
     position: absolute;
     margin-top: 7px;
@@ -1490,7 +1602,8 @@ position: absolute;
     font-weight: 600;
     cursor: pointer;
 }
-.btn-group-card .Enter-PIN-Code{
+
+.btn-group-card .Enter-PIN-Code {
     width: 28%;
     position: absolute;
     margin-top: 7px;
@@ -1503,24 +1616,27 @@ position: absolute;
     font-weight: 600;
     cursor: pointer;
 }
+
 .add-button {
     width: 18%;
     position: absolute;
     margin-top: 0px;
     border-radius: 8px;
     padding: -5px;
-    background-color:  var(--main-color);
+    background-color: var(--main-color);
     color: var(--main-backgrond);
     border: 1px solid rgb(251, 247, 247);
     font-size: small;
     font-weight: 600;
     cursor: pointer;
 }
+
 /* visa */
-.credit-cerd-parent{
+.credit-cerd-parent {
     display: none;
 }
-.edit_visa{
+
+.edit_visa {
     display: flex;
     justify-content: space-between;
     width: 82%;
@@ -1531,11 +1647,11 @@ position: absolute;
     top: 13%;
     border-radius: 5px;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
 
 
-.prosly{
+.prosly {
     width: 67%;
     height: 74px;
     background-color: #FFFFFF;
@@ -1545,26 +1661,29 @@ position: absolute;
 }
 
 
-.i207{
+.i207 {
     font-size: medium;
     padding: 0% 0% 0% 18%;
 }
-.i208{
+
+.i208 {
     font-size: medium;
     padding: 0% 0% 0% 18%;
 }
-.i209{
- font-size: xx-large;
-top: 3%;
-right: 35%;
-position: absolute;
+
+.i209 {
+    font-size: xx-large;
+    top: 3%;
+    right: 35%;
+    position: absolute;
 }
-#icone90{
+
+#icone90 {
     font-size: 26px;
     margin: 32px 5px;
 }
 
-.button_del_visa{
+.button_del_visa {
     position: absolute;
     right: 8%;
     top: 25%;
@@ -1578,11 +1697,3 @@ position: absolute;
 
 /* end visa */
 /*  End Credit Card */
-
-
-
-
-
-
-
-

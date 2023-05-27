@@ -47,10 +47,11 @@
         
         @auth
 
-        <a href="{{route('logout')}}" type="button" class="btn btn-primary btn-light me-5 bg-white text-dark fw-bolder" id="signlogin">
+        <!-- <a href="{{route('logout')}}" type="button" class="btn btn-primary btn-light me-5 bg-white text-dark fw-bolder" id="signlogin">
           logout
-          <a href="{{route('profile.edit')}}" class="user_name">{{auth()->user()->first_Name}}</a>
-        </a>
+        </a> -->
+        <a href="{{route('profile.edit')}}" class="user_name">{{auth()->user()->first_Name}}</a>
+
         @endauth
 
       </div>

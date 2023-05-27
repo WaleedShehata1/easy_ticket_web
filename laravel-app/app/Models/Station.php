@@ -25,7 +25,7 @@ class Station extends Model
     public function Metros(){
         return $this -> belongsToMany(
         related:'App\Models\Metro',
-        table:'drivers_and_stations',
+        table:'metros_and_stations',
         foreignPivotKey:'station_id',
         relatedPivotKey:'metro_id');
     }

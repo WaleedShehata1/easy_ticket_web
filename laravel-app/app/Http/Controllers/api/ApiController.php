@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Driver;
+use App\Models\Ticket;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\EmailverificationNotification;
@@ -181,12 +182,27 @@ class ApiController extends Controller
    public function logout_driver(Request $request) {
     auth()->user()->tokens()->delete();
 
+
     return response( [
         'message' => 'succeeded',
         'status'=> true
     ],201);
 }
+
+    public function tickets(){
+
+        $ticket=Ticket::all();
+
+        $metro=Metro_line::find(2);
+        // return response($lineandstatione -> stations,200);
+        // return $lineandstatione;
+        $data['ticket']=$ticket;
+        return response($data,201);
+    }
+
+
 }
+
 
 
 

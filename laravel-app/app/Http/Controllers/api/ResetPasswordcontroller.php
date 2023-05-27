@@ -42,7 +42,7 @@ class ResetPasswordcontroller extends Controller
         ]);
 
         if ( $input->fails()){
-            return response(['message' => 'the national_ID is invalid','status'=>false],201);
+            return response(['data'=>null,'message' => 'the national_ID is invalid','status'=>false],201);
         }
 
         
@@ -61,7 +61,8 @@ class ResetPasswordcontroller extends Controller
             if (!$user || !Hash::check($request->password, $user->password)) {
                 return response([
                     'message' => 'the password is invalid',
-                    'status'=> false
+                    'status'=> false,
+                    'data'=>null
                 ], 201);
             }
 
