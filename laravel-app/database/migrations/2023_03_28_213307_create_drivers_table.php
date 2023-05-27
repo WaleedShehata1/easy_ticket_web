@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('drivers', function (Blueprint $table) {
             $table->id();
+            $table->string('id_driver');
             $table->integer('national ID');
             $table->double('salary');
             $table->string('first_name',30);

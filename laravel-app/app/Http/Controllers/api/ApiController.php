@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Driver;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\EmailverificationNotification;
@@ -153,5 +154,39 @@ class ApiController extends Controller
                                     
             }
     }
+    /////////////////////////////////  DRIVER//////////////////////////////
+    function login_driver(Request $request)
+    {
+        $driver= Driver::where('id_driver', $request->id_driver)->first();
+        //return $driver->password;
+        if (! $driver || !Hash::check($request->password,  $driver->password)) {
+                return response([
+                    'data' => null,
+                    'message' => 'the id or password is invalid',
+                    'status'=> false
+                ], 201);
+            }
+        
+            $token = $driver->createToken('post:driver')->plainTextToken;
+        
+            $response = [
+                'data' => $driver,
+                'token' => $token,
+                'message' => 'succeeded',
+                'status'=> true
+            ];
+        
+            return response($response, 201);
+   }
+   public function logout_driver(Request $request) {
+    auth()->user()->tokens()->delete();
 
+    return response( [
+        'message' => 'succeeded',
+        'status'=> true
+    ],201);
 }
+}
+
+
+
