@@ -111,7 +111,7 @@
           </div>
           </form> 
         </div>
-        <a href="/index.html" class="close-btn" id="close-btn" target="_blank">&times;</a> 
+        <!-- <a href="/index.html" class="close-btn" id="close-btn" target="_blank">&times;</a>  -->
   
 </div>
 

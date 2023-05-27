@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Metro_timing extends Model
 {
     use HasFactory;
-    public function metro_line(){
-        return $this-> belongsTo(related:'App\Models\Metro_line',foreignKey:'metro_line_id');
+    public function metro(){
+        return $this-> belongsTo(related:'App\Models\Metro',foreignKey:'metro_id');
     }
 }

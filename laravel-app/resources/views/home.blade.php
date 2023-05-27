@@ -39,12 +39,12 @@
               <option value="2">Two</option>
               <option value="3">Three</option>
             </select>
-            <select class="input-field ">
+            <!-- <select class="input-field ">
               <option selected>Loction</option>
               <option value="1">One</option>
               <option value="2">Two</option>
               <option value="3">Three</option>
-            </select>
+            </select> -->
             <select class="input-field ">
               <option selected>How Many Ticktes</option>
               <option value="1">One</option>
@@ -61,12 +61,12 @@
             <option value="2">Two</option>
             <option value="3">Three</option>
           </select>
-          <select class="input-field ">
+          <!-- <select class="input-field ">
             <option selected>Fainal station</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
-          </select>
+          </select> -->
           <select class="input-field ">
             <option selected>How Many Ticktes</option>
             <option value="1">One</option>

@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0px;
     box-sizing: border-box;
+    text-decoration: none;
 
 
 }
@@ -34,7 +35,7 @@ body {
     background-position: center center;
 }
 
-.user_name{
+.user_name {
     font-weight: bold;
     text-transform: uppercase;
     padding-right: 15px;
@@ -43,11 +44,13 @@ body {
 }
 
 /* gender */
-.form-select{
-    height: 23px;
-    width: 176px;
-    border-radius: 8px;
-    outline: none;
+.form-select {
+    border-color: azure;
+    width: 70%;
+    margin-top: 5px;
+    height: 34px;
+    padding: 5px;
+    border-radius: 9px;
 }
 
 
@@ -135,7 +138,7 @@ body {
     position: relative;
     min-height: 620px;
     max-height: 730px;
-    
+
 }
 
 .tab-form .tab-body>form {

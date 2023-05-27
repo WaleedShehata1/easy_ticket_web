@@ -16,7 +16,7 @@
      <div class="container-fluid" id="blur">
     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top "> 
       <div class="container-fluid">
-        <a class="navbar-brand ms-2 " href="#"><img class ="logo-nav" src="/image/logo.jpeg" alt=""></a>
+        <a class="navbar-brand ms-2 " href="#"><img class ="logo-nav" src="image/jam_ticket-f.p" alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -63,9 +63,9 @@
      <div class="topnav" >
       <a  href="#myticketcontener" id="my-ticket-btn">My Ticket</a>
       <a href="#Notifications" id="Notifications-btn">Notification</a>
-      <a href="#contact" id="credit-btn">Credit Card</a>
+      <!-- <a href="#contact" id="credit-btn">Credit Card</a> -->
       <a href="#wallet" id="wallet-btn">Wallet</a>
-      <a  class="active"  href="#Edit-account-page" id="EditAccountBtn">Edit account</a>
+      <a  class=""  href="#Edit-account-page" id="EditAccountBtn">Edit account</a>
     </div> 
         <div class="Edit-account-page" id="Edit-account-page" method="patch" action="{{route('profile.update')}}">
             <form class="Edit-account-form ">
@@ -198,19 +198,22 @@
   </div>
   <!-- start wallet -->
   <div class="wallet" id="wallet">
-    <div class="label_1">
+  <div class="label_1">
         <p class="p_0">Fund</p>
         <p class="p_9">E.G 70</p>
     </div>
+    <!-- /////////// -->
+    <!-- <div class="label_2">
+        <h5 class="h_990">تفاصيل الشحن</h5>
+        <form action="">
+            <label class="lab" for="fname">Enter amount</label>
+            <input class="inp" type="text" id="fname" name="fname" value="">
+            <button class="but" type="button" value="Done" id="Done">Done</button>
+        </form>
+    </div> -->
     <div class="label_2">
         <h5 class="h_990">تفاصيل الشحن</h5>
         <form action="">
-            <label class="la" for="">Chosse Payment Method</label>
-            <select id="Payment_Method" name="">
-                <option value="volvo">adfgfdsgdsfhdfghxsdfgzd</option>
-                <option value="volvo">adfgfdsgdsfhdfghxsdfgzd</option>
-                <option value="volvo">adfgfdsgdsfhdfghxsdfgzd</option>
-            </select>
             <label class="lab" for="fname">Enter amount</label>
             <input class="inp" type="text" id="fname" name="fname" value="">
             <button class="but" type="button" value="Done" id="Done">Done</button>
@@ -307,10 +310,11 @@
 <div class="Log-out-form " id="Log-out-popup">
   <div class="Log-out-body">
     <form  method="">
+
       <h2 class="title-Log-out">Do you want to <br> log out?</h2>
     
   <div class="button-save-password">
-    <button id="Log-out-yas" type="submit" class="Log-out-yas" name="log-out-say-yas">Yas</button>
+    <a style="text-align: center; text-decoration:none;" id="Log-out-yas" href="{{route('logout')}}" type="submit" class="Log-out-yas" name="log-out-say-yas">Yas</a>
     <button id="Log-out-no" type="submit" class="Log-out-no" name="log-out-say-no">No</button>
   </div>
   </form>
@@ -387,7 +391,7 @@
   
 <!-- end my ticket -->
 <!-- start credit cerd -->
-<div class="credit-cerd-parent" id="credit-cerd-parent">
+<!-- <div class="credit-cerd-parent" id="credit-cerd-parent">
 
     <div class="edit_visa">
    <div class="prosly">
@@ -431,9 +435,9 @@
         <div class="btn-group-card">
           <button type="submit" class="Done-button" > Done</button>
           <button type="button" class="Enter-PIN-Code" id="Enter-PIN-Code">Enter PIN Code</button>
-        </div>
+        </div> -->
       
-      </div>
+      <!-- </div> -->
     </form>
   
 
