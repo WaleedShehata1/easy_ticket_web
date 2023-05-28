@@ -206,8 +206,53 @@ class ApiController extends Controller
     }
 
 
+    public function charge(Request $request)
+    {
+        $request->validate([
+            'visa_number' =>'required | unique',
+            'expire' =>'required',
+            'The_owner_of_the_visa' =>'required',
+            'Visa_balance' =>'required',
+            'cvv' =>'required',
+        ]);
+        $wallet = visa::where('visa_number', $request->visa_number)->first();
+        $user= User::where('national_ID', $request->national_ID)->first();
+        if($wallet){
+           // $wallet->number -= $request->Visa_balance;
+            $response = [
+                'data' => $user,
+                'message' => 'succeeded',
+                'status'=> true
+            ];
+        }
+    }
+    ///////////////////////////////// Metro //////////////////////////////
+
+    public function Metro_lineAndStatione(){
+
+        $first_line=Metro_line::with('stations')->find(1);
+        $second_line=Metro_line::with('stations')->find(2);
+
+        $data['first_line']=$first_line;
+        $data['second_line']=$second_line;
+        
+        return response($data,201);
+    }
+
+
+    public function metroAndTiming(){
+        
+        $metros_count=metro::count('id');
+
+        for($i=1;$i<=$metros_count;$i++){
+
+            $metros["metro{$i}"]=metro::with('metro_timing')->find($i);
+
+        }
+        
+        return response($metros,201);
+    }
+
+
+
 }
-
-
-
-
