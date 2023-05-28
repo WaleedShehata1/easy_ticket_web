@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Driver;
 use App\Models\Ticket;
+use App\Models\Metro_line;
+use App\Models\Metro;
+use App\Models\Metro_timing;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\EmailverificationNotification;
@@ -155,7 +158,7 @@ class ApiController extends Controller
                                     
             }
     }
-    /////////////////////////////////  DRIVER//////////////////////////////
+    ///////////////////////////////// DRIVER //////////////////////////////
     function login_driver(Request $request)
     {
         $driver= Driver::where('id_driver', $request->id_driver)->first();
@@ -189,6 +192,8 @@ class ApiController extends Controller
     ],201);
 }
 
+
+    ///////////////////////////////// tickets //////////////////////////////
     public function tickets(){
 
         $ticket=Ticket::all();
@@ -200,24 +205,9 @@ class ApiController extends Controller
         return response($data,201);
     }
 
-    public function charge(Request $request)
-    {
-        $request->validate([
-            'visa_number' =>'required | unique',
-            'expire' =>'required',
-            'The_owner_of_the_visa' =>'required',
-            'Visa_balance' =>'required',
-            'cvv' =>'required',
-        ]);
-        $wallet = visa::where('visa_number', $request->visa_number)->first();
-        $user= User::where('national_ID', $request->national_ID)->first();
-        if($wallet){
-           // $wallet->number -= $request->Visa_balance;
-            $response = [
-                'data' => $user,
-                'message' => 'succeeded',
-                'status'=> true
-            ];
+
 }
-}
-}
+
+
+
+

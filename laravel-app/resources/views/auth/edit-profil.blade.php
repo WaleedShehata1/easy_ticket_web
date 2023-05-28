@@ -16,14 +16,16 @@
      <div class="container-fluid" id="blur">
     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top "> 
       <div class="container-fluid">
-        <a class="navbar-brand ms-2 " href="#"><img class ="logo-nav" src="image/jam_ticket-f.p" alt=""></a>
+      <a class="navbar-brand ms-2 " href="#"><img class ="logo-nav" src="image/jam_ticket-f.png" alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto ">
             <li class="nav-item  mb me-5 ">
+            @auth
               <a class="nav-link active text-white fw-bolder" aria-current="page" id="Log-out-btn" href="#">Log out</a>
+            @endauth
               </li>
             <li class="nav-item  mb me-5 ">
             <a class="nav-link active text-white fw-bolder" aria-current="page" href="{{url('home')}}">Home</a>
@@ -46,9 +48,6 @@
 
         
         @auth
-
-        <a href="{{route('logout')}}" type="button" class="btn btn-primary btn-light me-5 bg-white text-dark fw-bolder" id="signlogin">
-          logout
           <a href="{{route('profile.edit')}}" class="user_name">{{auth()->user()->first_Name}}</a>
         </a>
         @endauth
