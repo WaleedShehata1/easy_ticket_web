@@ -53,6 +53,5 @@ require __DIR__.'/auth.php';
 
 
 
-Route::get('Metro_lineAndStatione', [Homecontroller::class, 'Metro_lineAndStatione']);
-Route::get('metroAndTiming', [Homecontroller::class, 'metroAndTiming']);
+
 

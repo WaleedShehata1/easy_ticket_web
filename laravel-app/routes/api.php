@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 /*
 |--------------------------------------------------------------------------
-| login and register
+| login and register for user
 |--------------------------------------------------------------------------
 */
 Route::post("login",[ApiController::class,'login']);
@@ -33,14 +33,14 @@ Route::post("register",[ApiController::class,'register']);
 
 /*
 |--------------------------------------------------------------------------
-| emailverification
+| emailverification for user
 |--------------------------------------------------------------------------
 */
 Route::post("emailverification",[EmailVerificationcontroller::class,'email_verification']);
 
 /*
 |--------------------------------------------------------------------------
-| password 
+| password for user
 |--------------------------------------------------------------------------
 */
 Route::post("password/forget-password",[forgetpasswordcontroller::class,'forgetpassword']);
@@ -48,7 +48,11 @@ Route::post("password/reset",[ResetPasswordcontroller::class,'passwordRest']);
 Route::post("password/resetpassword",[ResetPasswordcontroller::class,'passwordRest2']);
 Route::post("password/updata",[ResetPasswordcontroller::class,'passwordupdata']);
 
-
+/*
+|--------------------------------------------------------------------------
+| ????????????? 
+|--------------------------------------------------------------------------
+*/
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/updatae/{id}', [ApiController::class, 'update']);
@@ -58,6 +62,15 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/charge-wallet', [ApiController::class, 'charge']);
 });
 
+
+/*
+|--------------------------------------------------------------------------
+| Metro
+|--------------------------------------------------------------------------
+*/
+
+Route::get('Metro_lineAndStatione', [ApiController::class, 'Metro_lineAndStatione']);
+Route::get('metroAndTiming', [ApiController::class, 'metroAndTiming']);
 
 
 
