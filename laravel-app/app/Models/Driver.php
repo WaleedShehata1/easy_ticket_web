@@ -4,10 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 
 class Driver extends Model
 {
-    use HasFactory;
+    use HasFactory , HasApiTokens;
+    protected $fillable = [
+        'id',
+        'id_driver',
+        'national ID',
+        'salary',
+        'first_name',
+        'last_name',
+        'password',
+        'phone',
+        'date_of_birth',
+        'gender',
+    ];
     public function Buss(){
         return $this -> belongsToMany(related:'App\Models\Bus',
         table:'drivers_and_buss',

@@ -28,6 +28,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 |--------------------------------------------------------------------------
 */
 Route::post("login",[ApiController::class,'login']);
+Route::post("driver",[ApiController::class,'login_driver']);
 Route::post("register",[ApiController::class,'register']);
 
 /*
@@ -53,6 +54,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/updatae/{id}', [ApiController::class, 'update']);
     Route::get('/show/{id}', [ApiController::class, 'show']);
     Route::post('/logout', [ApiController::class, 'logout']);
+    Route::post('/logoutdriver', [ApiController::class, 'logout_driver']);
    
 });
 
