@@ -55,7 +55,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/show/{id}', [ApiController::class, 'show']);
     Route::post('/logout', [ApiController::class, 'logout']);
     Route::post('/logoutdriver', [ApiController::class, 'logout_driver']);
-   
+    Route::post('/charge-wallet', [ApiController::class, 'charge']);
 });
 
 

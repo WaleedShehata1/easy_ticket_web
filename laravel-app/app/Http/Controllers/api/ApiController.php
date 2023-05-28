@@ -200,9 +200,24 @@ class ApiController extends Controller
         return response($data,201);
     }
 
-
+    public function charge(Request $request)
+    {
+        $request->validate([
+            'visa_number' =>'required | unique',
+            'expire' =>'required',
+            'The_owner_of_the_visa' =>'required',
+            'Visa_balance' =>'required',
+            'cvv' =>'required',
+        ]);
+        $wallet = visa::where('visa_number', $request->visa_number)->first();
+        $user= User::where('national_ID', $request->national_ID)->first();
+        if($wallet){
+           // $wallet->number -= $request->Visa_balance;
+            $response = [
+                'data' => $user,
+                'message' => 'succeeded',
+                'status'=> true
+            ];
 }
-
-
-
-
+}
+}
