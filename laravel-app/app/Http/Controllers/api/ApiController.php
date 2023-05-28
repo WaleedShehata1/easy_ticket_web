@@ -10,6 +10,7 @@ use App\Models\Ticket;
 use App\Models\Metro_line;
 use App\Models\Metro;
 use App\Models\Metro_timing;
+use App\Models\Visa;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\EmailverificationNotification;
@@ -205,26 +206,49 @@ class ApiController extends Controller
         return response($data,201);
     }
 
+    ///////////////////////////////// charge wallet //////////////////////////////
 
     public function charge(Request $request)
     {
-        $request->validate([
-            'visa_number' =>'required | unique',
-            'expire' =>'required',
-            'The_owner_of_the_visa' =>'required',
-            'Visa_balance' =>'required',
-            'cvv' =>'required',
+
+        $wallet = Validator::make($request->all(), [
+            'visa_number' => ['required','integer','exists:visas,visa_number'],
         ]);
-        $wallet = visa::where('visa_number', $request->visa_number)->first();
-        $user= User::where('national_ID', $request->national_ID)->first();
-        if($wallet){
-           // $wallet->number -= $request->Visa_balance;
-            $response = [
-                'data' => $user,
-                'message' => 'succeeded',
-                'status'=> true
-            ];
+
+        if ( $wallet->fails()){
+            return response(['message'=> 'the visa is invalid','status'=> false,'wallet' => null,],201);
         }
+
+        $visa = visa::where('visa_number', $request->visa_number)->first();
+        if($visa->expire !== $request->expire){
+            return response(['message'=> 'the visa is invalid','status'=> false,'wallet' => null,],201);
+        }
+
+        if($visa->The_owner_of_the_visa !== $request->The_owner_of_the_visa){
+            return response(['message'=> 'the visa is invalid','status'=> false,'wallet' => null,],201);
+        }
+
+        if($visa->cvv != $request->cvv){
+            return response(['message'=> 'the visa is invalid','status'=> false,'wallet' => null,],201);
+        }
+
+        if ($request->cost > $visa->Visa_balance){
+            return response(['message'=> 'Your balance is not enough','status'=> false,'wallet' => null,],201);
+        }
+
+        $Visa_balance=$visa->Visa_balance - $request->cost;
+        $visa->update(['Visa_balance' =>$Visa_balance]);
+
+        $national_ID = Validator::make($request->all(), [
+            'national_ID' => ['required','integer','exists:passengers,national_ID'],
+        ]);
+        if ($national_ID->fails()){
+            return response(['message'=> 'the national_ID not found','status'=> false,'wallet' => null,],201);
+        }
+        $user= User::where('national_ID', $request->national_ID)->first();
+        $user->update(['wallet' => $user->wallet + $request->cost ]);
+        return response(['message'=> 'succeeded','status'=> true,'wallet' => $user->wallet,],201);
+
     }
     ///////////////////////////////// Metro //////////////////////////////
 
