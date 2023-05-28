@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Driver;
 use App\Models\Ticket;
+use App\Models\Metro_line;
+use App\Models\Metro;
+use App\Models\Metro_timing;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\EmailverificationNotification;
@@ -155,7 +158,7 @@ class ApiController extends Controller
                                     
             }
     }
-    /////////////////////////////////  DRIVER//////////////////////////////
+    ///////////////////////////////// DRIVER //////////////////////////////
     function login_driver(Request $request)
     {
         $driver= Driver::where('id_driver', $request->id_driver)->first();
@@ -189,6 +192,8 @@ class ApiController extends Controller
     ],201);
 }
 
+
+    ///////////////////////////////// tickets //////////////////////////////
     public function tickets(){
 
         $ticket=Ticket::all();
@@ -198,6 +203,33 @@ class ApiController extends Controller
         // return $lineandstatione;
         $data['ticket']=$ticket;
         return response($data,201);
+    }
+
+    ///////////////////////////////// Metro //////////////////////////////
+
+    public function Metro_lineAndStatione(){
+
+        $first_line=Metro_line::with('stations')->find(1);
+        $second_line=Metro_line::with('stations')->find(2);
+
+        $data['first_line']=$first_line;
+        $data['second_line']=$second_line;
+        
+        return response($data,201);
+    }
+
+
+    public function metroAndTiming(){
+        
+        $metros_count=metro::count('id');
+
+        for($i=1;$i<=$metros_count;$i++){
+
+            $metros["metro{$i}"]=metro::with('metro_timing')->find($i);
+
+        }
+        
+        return response($metros,201);
     }
 
 
