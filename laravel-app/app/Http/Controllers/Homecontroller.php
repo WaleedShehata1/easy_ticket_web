@@ -36,34 +36,27 @@ class Homecontroller extends Controller
     //     ], 201);
     // }
 
-    public function metrotiming(){
+    public function Metro_lineAndStatione(){
 
         $first_line=Metro_line::with('stations')->find(1);
         $second_line=Metro_line::with('stations')->find(2);
-        $first_line_and_metros=Metro_line::find(1);
-        $second_line_and_metros=Metro_line::find(2);
-        $first_metros=metro::find(1);
-        $second_metros=metro::find(2);
+
         $data['first_line']=$first_line;
-        // $data['first_line']['metro']=$first_line_and_metros->metros;
         $data['second_line']=$second_line;
-        // $data['second_line']['metro']=$second_line_and_metros->metros;
-        
         
         return response($data,201);
     }
 
-    public function metro(){
 
-        $first_metros=metro::find(1);
-        $second_metros=metro::find(2);
-        $data['first_line']=$first_line;
-        // $data['first_line']['metro']=$first_line_and_metros->metros;
-        $data['second_line']=$second_line;
-        // $data['second_line']['metro']=$second_line_and_metros->metros;
+    public function metroAndTiming(){
+        
+        $metros_count=metro::count('id');
+        for($i=1;$i<=$metros_count;$i++){
+            $metros["metro{$i}"]=metro::with('metro_timing')->find($i);
+        }
         
         
-        return response($data,201);
+        return response($metros,201);
     }
 
 
