@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Homecontroller;
 use App\Http\Controllers\PapPalController;
+use App\Http\Controllers\paypalwalletcontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,18 @@ Route::get('payment/success', [PapPalController::class, 'success'])->name('payme
 
 // Route::get('/home',[Homecontroller::class, 'showhome'])->name('home')->middleware(['auth', 'verified']);
 
+
+/*
+|--------------------------------------------------------------------------
+| payment paypal wallet
+|--------------------------------------------------------------------------
+*/
+// Route::get('go-payment', [paypalwalletcontroller::class, 'goPayment'])->name('payment.go');
+Route::get('paymentWallet',[paypalwalletcontroller::class, 'payment'])->name('paymentWallet');
+Route::get('cancelWallet',[paypalwalletcontroller::class, 'cancel'])->name('paymentWallet.cancel');
+Route::get('payment/successWallet', [paypalwalletcontroller::class, 'success'])->name('paymentWallet.success');
+
+
 /*
 |--------------------------------------------------------------------------
 | edit profile
@@ -45,7 +58,7 @@ Route::get('payment/success', [PapPalController::class, 'success'])->name('payme
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profileUpdate', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 

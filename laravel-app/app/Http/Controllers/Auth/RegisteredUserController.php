@@ -33,15 +33,14 @@ class RegisteredUserController extends Controller
         $request->validate([
             'first_Name' => ['required', 'string', 'max:10'],
             'last_Name' => ['required', 'string', 'max:10'],
-            'national_ID' => ['required', 'integer','unique:passengers,national_ID'],
+            'national_ID' => ['required', 'integer','digits_between:14,14','unique:passengers,national_ID'],
             'email' => ['required', 'string', 'email', 'max:255','unique:passengers,email'],
             'gender' => ['required', 'string', 'max:10'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'health_status' => ['required', 'string', 'max:30'],
             'date_of_birth' => ['required', 'string', 'max:30'],
-            'phone' => ['required', 'integer'],
+            'phone' => ['required', 'integer','digits_between:11,11'],
             'profession' => ['required', 'string'],
-
         ],[
             
         ]);

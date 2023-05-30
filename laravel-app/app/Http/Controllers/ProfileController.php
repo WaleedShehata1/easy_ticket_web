@@ -8,15 +8,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\support\facades\Validator;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
     /**
      * Display the user's profile form.
      */
-    public function edit(Request $request): View
+    public function edit()
     {
-        return view('auth.edit-profil');
+        $user= User::find(auth()->user()->id);
+        return view('auth.edit-profil',['user'=>$user]);
     }
 
     /**
@@ -24,28 +27,27 @@ class ProfileController extends Controller
      */
     public function update(Request $request)
     {
+        $id=$request->id;
         $validated=validator::make($request->all(),
         [
-            'national_ID' => ['required','string'],
+            'profession' => ['required','string'],
             'email' => ['required', 'string', 'email', 'max:255','unique:passengers,email'],
             'health_status' => ['required', 'string', 'max:30'],
-            'phone' => ['required', 'integer'],
+            'phone' => ['required', 'integer','unique:passengers,phone'],
         ],[
-            'name.required'=>'اكب الاسم ياذكى',
-            'adrres.required'=>'اكتب الاميل ياعم الحج',
-            'desc.required'=>'وكمان ناسى تكتب دا',
+
         ]);
 
         if($validated->fails()){
             return redirect()->back()->withErrors($validated)->withInput($request->all);
         }
-        Test::findorfail($id)->update([
-            'name'=>$request->name,
-            'adrres'=>$request->adrres,
-            'desc'=>$request->desc
+        User::findorfail($id)->update([
+            'profession'=>$request->profession,
+            'email'=>$request->email,
+            'health_status'=>$request->health_status,
+            'phone'=>$request->phone
+            
         ]);
-        return redirect(url('test'));
-
 
         // $request->user()->fill($request->validated());
 
@@ -55,7 +57,9 @@ class ProfileController extends Controller
 
         // $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        // return redirect(url('/profile'))->with('status', 'profile-updated');
+        return redirect(url('/profile'));
+
     }
 
     /**

@@ -66,29 +66,35 @@
       <a href="#wallet" id="wallet-btn">Wallet</a>
       <a  class=""  href="#Edit-account-page" id="EditAccountBtn">Edit account</a>
     </div> 
-        <div class="Edit-account-page" id="Edit-account-page" method="patch" action="{{route('profile.update')}}">
-            <form class="Edit-account-form ">
+        <div class="Edit-account-page" id="Edit-account-page">
+        <form class="Edit-account-form" method="post" action="{{url('/profileUpdate')}}">
+              @csrf
+
               <div class="Edit-account-input2 ">
-
               <input type="hidden" name="id" id="profession" class="input444" value='{{auth()->user()->id}}' >
-
                 <p type="text" name="First_Name" id="First_Name"  >{{auth()->user()->first_Name}}</p>
               </div>
+
               <div class="Edit-account-input2">
                 <p type="text" name="Last_Name" id="Last_Name" required placeholder="Last Name">{{auth()->user()->last_Name}} </p>
               </div>
+
               <div class="Edit-account-input ">
                   <p type="text" name="National_ID" id="National_ID">{{auth()->user()->national_ID}}</p>
               </div>
+
               <div class="Edit-account-input2">
                   <p type="text" name="date_birth" id="date_birth" >{{auth()->user()->date_of_birth}}</p>
               </div>
+
               <div class="Edit-account-input2 ">
                   <input type="text" name="profession" id="profession" required placeholder="{{auth()->user()->profession}}" class="input444" >
+                  @error('profession')<p style="width: auto; color: red;"><b>{{$message}}</b>@enderror
               </div>
 
               <div class="Edit-account-input2 ">
-                  <input type="text" name="Health_status" id="Health_status" class="National_IDx  input444" required placeholder="{{auth()->user()->health_status}}" >
+                  <input type="text" name="health_status" id="Health_status" class="National_IDx  input444" required placeholder="{{auth()->user()->health_status}}" >
+                  @error('health_status')<p style="width: auto; color: red;"><b>{{$message}}</b>@enderror
               </div>
               
               <div class="Edit-account-input2 ">
@@ -96,12 +102,15 @@
               </div>
 
               <div class="Edit-account-input">
-              
                 <input type="phone" name="phone" id="phone" required placeholder="{{auth()->user()->phone}}" class="input444" >
+                @error('phone')<p style="width: auto; color: red;"><b>{{$message}}</b>@enderror
               </div>
+
               <div class="Edit-account-input">
-                  <input type="email" name="Email" id="Email" required  placeholder="{{auth()->user()->email}}" class="input444">
+                  <input type="email" name="email" id="Email" required  placeholder="{{auth()->user()->email}}" class="input444">
+                  @error('email')<p style="width: auto; color: red;"><b>{{$message}}</b>@enderror
               </div>
+
               <div class="Edit-account-input">
                 <button type="button" class="edit-Change-Password " id="edit-Change-Password">Change Password</button>
                 <button type="submit" class="edit-Save-Change " id="edit-Save-Change">Save Change</button>
@@ -171,24 +180,34 @@
   <!-- end Notification -->  
   <div class="change-password-form " id="popup-change-password">
       <div class="change-password-body">
-        <form  method="">
-          <h2 class="title-change">Change Password</h2>
-       <div class="input-Change-password">
-        
+
+        <form  method="post" action="{{url('/change-password')}}">
+      <h2 class="title-change">Change Password</h2>
+        @csrf
+        <div class="input-Change-password">
+        <input type="hidden" name="id" id="Old-password" value='{{auth()->user()->id}}'>
+        </div>
+
+        <div class="input-Change-password">
         <label for="Old-password">Old password</label>
-        <input type="password" name="Old-password" id="Old-password">
-       </div>
-       <div class="input-Change-password">
+        <input type="password" name="Old_password" id="Old-password">
+        </div>
+
+        <div class="input-Change-password">
         <label for="New-password">New password</label>
-        <input type="password" name="New-password" id="New-password">
-       </div>
-       <div class="input-Change-password">
+        <input type="password" name="New_password" id="New-password">
+        </div>
+
+        <div class="input-Change-password">
         <label for="Confirm-Password">Confirm Password</label>
-        <input type="password" name="Confirm-Password" id="Confirm-Password">
-       </div>
-        <button id="save-btn" type="button" class="save" name="save-password">Save</button> 
+        <input type="password" name="password_confirmation" id="Confirm-Password">
+        </div>
+      
+        <!-- <button type="submit" class="save">Save</button> -->
+        <button type="submit" id="save-btn" type="button" class="save" name="save-password">Save</button> 
+
         <div class="remember-user">
-          <a href="#" id="forgot-password-user" class="text">Forgot your password</a>
+          <a href="#" id="forgot-password-user" class="text"></a>
         </div>
       </form>
       </div>
@@ -199,23 +218,18 @@
   <div class="wallet" id="wallet">
   <div class="label_1">
         <p class="p_0">Fund</p>
-        <p class="p_9">E.G 70</p>
+        <p class="p_9">E.G {{auth()->user()->wallet}}</p>
     </div>
-    <!-- /////////// -->
-    <!-- <div class="label_2">
-        <h5 class="h_990">تفاصيل الشحن</h5>
-        <form action="">
-            <label class="lab" for="fname">Enter amount</label>
-            <input class="inp" type="text" id="fname" name="fname" value="">
-            <button class="but" type="button" value="Done" id="Done">Done</button>
-        </form>
-    </div> -->
     <div class="label_2">
         <h5 class="h_990">تفاصيل الشحن</h5>
-        <form action="">
+        <form method="get" action="{{route('paymentWallet')}}">
             <label class="lab" for="fname">Enter amount</label>
-            <input class="inp" type="text" id="fname" name="fname" value="">
-            <button class="but" type="button" value="Done" id="Done">Done</button>
+            <input class="inp" type="text" id="fname" name="AmountWallet" >
+            @if (isset($error))
+              <p>$error</p>
+            @endif
+            <input class="inp" type="hidden" id="fname" name="id" value="{{auth()->user()->id}}" >
+            <button type="submit" class="but" type="button" value="Done" id="Done">Done</button>
         </form>
     </div>
 </div>
@@ -324,16 +338,17 @@
 <!--my ticket-->
 
   <div class="myticket-contener"  id="myticket-contener">
+    
     <div class="myticket-contant">
       <div class="contant-ticket" id="blur4">
         <form action="" method="get">
-         <div class="time-date-ticket">
+        <div class="time-date-ticket">
           <p>number<br> of stations</p>
           <label for="">Ticket 2</label>
-         </div>
-         
-         <div class="information-ticket"> 
-         <label for="">7</label>
+        </div>
+        
+        <div class="information-ticket"> 
+        <label for="">7</label>
         </div>
       
         <div class="information-Button">
@@ -347,6 +362,7 @@
           <a  id="icon-Qr"><i class="fa-solid fa-qrcode" ></i></a>
         </div>
       </div>
+
     </div>
     <!-- tow  -->
    <div class="myticket-contant-two">
