@@ -119,11 +119,30 @@
         </div>  
   </div>
    <!-- start Notification -->
+
    <div class="Notification" id="Notifications">
     <form action="" method="" class="form-Notification">
-      <input for="" placeholder="27/2" class="input40"></input>
-      <input for="" placeholder="7:30pm" class="input40"></input>
-     <label for="">باقي 15 دقيقة علي وصول باص رقم 200 الي المحطة المختاره (محطة العتبة) برجاء الانتظار في المحطه </label>
+      <input for="" placeholder="" class="input40"></input>
+    @forelse ($user->notifications as $notification)
+    <input for="" placeholder="{{$notification->created_at}}" class="input40"></input>
+    <label for="">
+    {{$notification->data['notification']}}
+    </label>
+    @empty
+    <input for="" placeholder="" class="input40"></input>
+    <label for="">
+    no notification here
+    </label>
+    @endforelse
+
+
+     <button id="edit-ticket" type="button" class="edit-ticket" name="edit-ticket">هل تريد تعديل التذكره</button> 
+     </form>
+      </div>
+   
+
+
+     </label>
      <button id="edit-ticket" type="button" class="edit-ticket" name="edit-ticket">هل تريد تعديل التذكره</button> 
      </form>
       </div>

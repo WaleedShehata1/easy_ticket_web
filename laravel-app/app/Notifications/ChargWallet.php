@@ -16,9 +16,9 @@ class ChargWallet extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($notification)
     {
-        //
+        $this->notification=$notification;
     }
 
     /**
@@ -29,7 +29,7 @@ class ChargWallet extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -55,7 +55,7 @@ class ChargWallet extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'notification'=>$this->notification
         ];
     }
 }

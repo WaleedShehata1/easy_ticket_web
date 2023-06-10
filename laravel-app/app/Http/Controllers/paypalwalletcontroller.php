@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Srmklive\PayPal\Services\ExpressCheckout;
+use App\Notifications\ChargWallet;
+use Illuminate\Support\Facades\Notification;
+
 class paypalwalletcontroller extends Controller
 {
     public $AmountWallet;
@@ -60,6 +63,9 @@ class paypalwalletcontroller extends Controller
 
             $user=User::where('id', auth()->user()->id)->first();
             $user->update(['wallet' => $user->wallet + $response['AMT']]);
+            $notification="hellow: {$user->first_Name}
+            you have charged the wallet {$response['AMT']}";
+            Notification::send($user, new ChargWallet($notification));
             return redirect(url('/profile'));
         }
 
