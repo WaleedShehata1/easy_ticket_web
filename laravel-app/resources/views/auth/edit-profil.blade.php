@@ -130,7 +130,7 @@
     </label>
     @empty
     <input for="" placeholder="" class="input40"></input>
-    <label for="">
+    <label style="padding: 23px 167px;" for="">
     no notification here
     </label>
     @endforelse
@@ -377,19 +377,20 @@
         </form>
         <div class="icon-my-ticket">
           <a href=""><i class="fa-solid fa-trash-can"></i></a>
-          <a id="edit-time-ticket0"><i class="fa-solid fa-pencil"></i></a>
-          <a  id="icon-Qr"><i class="fa-solid fa-qrcode" ></i></a>
+          <a id="edit-time-ticket0"></a>
+          <a  id="icon-Qr"> <i class="fa-solid fa-qrcode" ></i></a>
         </div>
       </div>
 
-    </div>
+      @forelse ($userQR as $userQRs)
+      </div>
     <!-- tow  -->
    <div class="myticket-contant-two">
     <div class="contant-ticket-metro" >
       <form action="" method="get">
        <div class="time-date-ticket-metro">
         <label for="" >Bus 12</label>
-        <label for="">9:00 AM</label>
+        <label for=""></label>
        </div>
        <div class="icfst">
         <a href="http://"><i class="fa-solid fa-location-arrow "></i></a>
@@ -397,10 +398,10 @@
       </div>
        
        <div class="information-ticket-metro-1"> 
-        <label for="">2415 Street</label>
-        <label for="" class="top-title-2">15-Dec-2022</label>
-        <label for="">2415 Street</label>
-        <label for="" class="top-title0">15-Dec-2022</label>
+        <label for=""class="station" >2415 Street</label>
+       
+        <label for=""class="station2" >2415 Street</label>
+        <label for="" class="top-title0" style="color:#fe8668" >15-Dec-2022</label>
       </div>
       <div class="information-Button-metro">
         <button class="button-2">Bus</button>
@@ -408,7 +409,7 @@
       </div>
       <div class="icon-my-ticket-two">
         <a href="http://"><i class="fa-solid fa-trash-can"></i></a>
-        <a id="edit-time-ticket"><i class="fa-solid fa-pencil"></i></a>
+        <a id="edit-time-ticket"></a>
         <a id="icon-Qr2"><i class="fa-solid fa-qrcode"></i></a>
       </div>
       </form>
@@ -419,9 +420,15 @@
    
     </div>
     <div class="Qr-popup" id="Qr-popup">
-      <div class="overlay-2"></div>
+    {!!DNS2D::getBarcodeHTML($userQRs, 'QRCODE',4,3.8)!!}
+      <!-- <div class="overlay-2"></div> -->
       <div class="close-qr" id="close-qr">&times;</div> 
     </div>
+    @empty
+">
+    no notification here
+
+    @endforelse
   
 <!-- end my ticket -->
 <!-- start credit cerd -->

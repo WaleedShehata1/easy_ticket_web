@@ -1,0 +1,714 @@
+*{
+    padding: 0;
+    margin: 0px;
+    box-sizing: border-box;
+    
+
+}
+:root {
+--main-color: #fe8668;
+--main-backgrond:#ffffff;
+}
+
+.user_name {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-right: 42px;
+    color: white;
+    margin-right: 121px;
+    text-decoration: none;
+}
+
+
+*{
+
+    padding: 0;
+    margin: 0px;
+    box-sizing: border-box;
+    
+
+}
+:root {
+--main-color: #fe8668;
+--main-backgrond:#ffffff;
+}
+
+
+body{
+    
+    font-family: 'segoe ui light';
+}
+
+
+
+
+
+.logo-nav{
+    transform: rotate(5deg);
+    margin-left: 400%;
+    width: 50px;
+    }
+    .navbar{
+        background-color:var(--main-color);
+        border-radius: 0px 0px 30px 30px ;
+        height: 57px;
+    }
+
+    .nav-link:hover{
+        background-color:#b6472e;
+        transition: all 0.2s ease-in-out;
+        border-radius: 10px;
+        box-shadow: 1px 1px 3px rgb(204, 193, 193);
+    }  
+
+
+
+
+.contener-payment{
+    position: absolute;
+    top: 46%;
+    left: 55%;
+    transform: translate(-50%,-50%);
+    width: 38%;
+    height: 71vh;
+    background-color: var(--main-backgrond);
+    border-radius: 15px;
+    box-shadow: 3px 3px 3px 3px #d9cdc8;
+}
+.paymethod-bold{
+    text-align: center;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+
+    background-color: var(--main-color);
+    font-size: 24px;
+    font-weight: 700;
+    padding: 9px 5px;
+    color: var(--main-backgrond);
+}
+
+.add-btn1 {
+    width: 14%;
+    position: absolute;
+    margin-top: 7px;
+    margin-left: 78%;
+    border-radius: 18px;
+    padding: 2px;
+    background-color: var(--main-color);
+    color: var(--main-backgrond);
+    border: 1px solid rgb(251, 247, 247);
+    font-size: small;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration:underline;
+    box-shadow: 2px 2px 2px 2px rgb(217, 210, 206);
+
+}
+
+.form-add-new-card  label,input {
+    display: inline-block;
+    margin: 0px 22px;
+    font-weight: bold;
+    color: #fe8668;
+}
+::placeholder {
+    color: var(--main-color);
+    opacity: 1;
+    text-align: center;
+  }
+  
+
+ 
+.card-add-new{
+   
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 64%;
+    border-radius: 10px;
+    padding: 21px 5px ;
+    box-shadow: 2px 2px 2px 2px #fe866838;
+    display: none;
+    
+}
+.card-new-row{
+    display: flex;
+  
+}
+.card-new-row label, input {
+    transform: translate(-12%, 23%);
+    border-radius: 10px;
+    outline-color: var(--main-color);
+    border-color: var(--main-color);
+}
+.card-new-row label, label {
+    border-radius: 10px;
+    outline-color: var(--main-color);
+    border-color: var(--main-color);
+    color: black;
+    font-weight: bolder;
+    font-size: medium;
+}
+.card-new-row input{
+    border-radius: 10px;
+}
+.btn-group-card{
+    margin: 3% 23%;
+    text-align: center;
+    display: flex;
+}
+.btn-group-card .Done-button{
+    width: 14%;
+    position: absolute;
+    margin-top: 7px;
+    margin-left: 37%;
+    border-radius: 8px;
+    padding: 2px;
+    background-color: var(--main-backgrond);
+    color: black;
+    border: 1px solid rgb(17, 17, 17);
+    font-size: small;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-group-card .Enter-PIN-Code{
+    width: 28%;
+    position: absolute;
+    margin-top: 7px;
+    border-radius: 8px;
+    padding: 2px;
+    background-color: var(--main-backgrond);
+    color: var(--main-color);
+    border: 1px solid var(--main-color);
+    font-size: small;
+    font-weight: 600;
+    cursor: pointer;
+}
+.add-button {
+    width: 18%;
+    position: absolute;
+    margin-top: 0px;
+    border-radius: 8px;
+    padding: -5px;
+    background-color:  var(--main-color);
+    color: var(--main-backgrond);
+    border: 1px solid rgb(251, 247, 247);
+    font-size: small;
+    font-weight: 600;
+    cursor: pointer;
+
+}
+
+  
+  .wallet-title{
+    position: absolute;
+    top: 12%;
+    left: 51%;
+    margin: 4px 42px;
+    text-decoration: underline;
+    font-size: 36px;
+    font-weight: 900;
+    
+}
+.visa-title{
+    position: absolute;
+    top: 12%;
+    margin: 4px 42px;
+    text-decoration: underline;
+    font-size: 36px;
+    font-weight: 900;
+}
+
+  .wallet-title:before{
+    content: "";
+    display: block;
+    width: 830%;
+    height: 1px;
+    left: -410px;
+    bottom: -300px;
+    position: absolute;
+    border: 1px dotted black;
+    
+  }
+  .wallet-group{
+    position: absolute;
+    top: 30%;
+    left: 77%;
+    transform: translate(-50%, -50%);
+    width: 29%;
+    background-color: var(--main-color);
+    height: 104px;
+    border-radius: 10px;
+    padding: 38px 16px;
+    box-shadow: 2px 2px 2px 2px rgb(227, 224, 224);
+    display: flex;
+   
+  }
+  .visa-group{
+    position: absolute;
+    top: 30%;
+    left: 24%;
+    transform: translate(-50%, -50%);
+    width: 29%;
+    background-color: var(--main-color);
+    height: 104px;
+    border-radius: 10px;
+    padding: 38px 16px;
+    box-shadow: 2px 2px 2px 2px rgb(227, 224, 224);
+    display: flex;
+  }
+  .title-input-wallet{
+    color: var(--main-backgrond);
+    font-size: 26px;
+    align-content: center;
+    align-items: center;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  .title-input-visa{
+    color: var(--main-backgrond);
+    font-size: 26px;
+    align-content: center;
+    align-items: center;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  .Total-amount {
+    position: absolute;
+    top: 97%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    background-color: var(--main-color);
+    text-align: center;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    font-size: 32px;
+    font-weight: 800;
+    padding: 8px 3px;
+    color: var(--main-backgrond);
+    cursor: pointer;
+  }
+ 
+
+
+/* start popup  */
+.Enter-code-wallet-popup{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) ;
+    width: 95%;
+    max-width: 353px;
+    background-color: var(--main-backgrond);
+    border-radius: 10px;
+    min-height: 200px;
+    box-shadow: 1px 7px 4px 0px #d0c7c785;
+    display: none;
+   
+ }
+  .Enter-code-wallet-popup .title-wallet-popup{
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2px -15px;
+    background-color: var(--main-color);
+    padding: 11px;
+    color: var(--main-backgrond);
+ }
+ .wallet-group-popup .send-code{
+    width: 25%;
+    position: absolute;
+    left: 2px;
+    margin-top: 38px;
+    margin-left: 37%;
+    border-radius: 18px;
+    padding: 8px;
+    background-color: var(--main-color);
+    color: var(--main-backgrond);
+    border: 1px solid rgb(251, 247, 247);
+    font-size: small;
+    font-weight: 600;
+    cursor: pointer;
+ }
+ .wallet-group-popup input{
+    
+        width: 64%;
+        border-radius: 5px;
+        outline: none;
+        box-shadow: none;
+        border: #fdfaf9;
+        margin: 9px 64px;
+        background-color: #ffffff;
+        box-shadow: 2px 2px 2px 2px #fe866830;
+
+}
+.close-btn-ten{
+    position: absolute;
+    top: -15%;
+    height: 40px;
+    right: -48px;
+    background-color: var(--main-color);
+    width: 40px;
+    text-align: center;
+    font-size: x-large;
+    font-weight: 900;
+    border-radius: 31px;
+    font-style: normal;
+    cursor: pointer;
+}
+.contener-payment#blur2.activee{
+    filter:blur(30px);
+    pointer-events: none;
+    user-select: none;
+}
+.container-fluid#blur.activee{
+    filter:blur(30px);
+    pointer-events: none;
+    user-select: none;
+}
+.qr-code#blur3.activee{
+    filter:blur(30px);
+    pointer-events: none;
+    user-select: none;
+}
+.contant-ticket#blur4.activee{
+    filter:blur(30px);
+    pointer-events: none;
+    /* user-select: none; */
+}
+
+/* qr-code */
+.qr-code{
+    position: absolute;
+    top: 28%;
+    left: 75%;
+    transform: translate(-50%,-50%);
+    width: 18%;
+    height: 26vh;
+    background-color: var(--main-color);
+    border-radius: 10px;
+
+}
+.overlay{
+    position: absolute;
+    top: 50%;
+    left: 51%;
+    transform: translate(-50%,-50%);
+    width: 89%;
+    height: 24vh;
+    border-radius: 10px;
+    border: 1px solid var(--main-backgrond);
+    box-shadow: 5px 5px 5px  5px var(--main-color);
+    background-color: rgb(97, 86, 86);
+}
+/* start ticket */
+
+
+  .contant-ticket00{
+    width: 385px;
+    height: 221px;
+    margin: 40px -150px;
+    position: absolute;
+    top: 56%;
+    left: 62%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 5px rgb(217, 205, 200);
+
+}
+
+.contant-ticket00::after{
+    content: '';
+    background-color: #d9cdc8;
+    position: absolute;
+    top: 89%;
+    left: 181px;
+    width: 47px;
+    height: 26px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.contant-ticket00::before{
+    content: '';
+    background-color: #d9cdc8;
+    position: absolute;
+    bottom: 89%;
+    left: 181px;
+    width: 47px;
+    height: 26px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+.time-date-ticket00{
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 10px;
+    color: #3e548d;
+
+}
+.icon-00{
+    font-size: 30px;
+    width: 51px;
+    height: -1vh;
+    margin: 3px 8px;
+    padding: 23px 14px;
+    text-align: center;
+    background-color: #e98b73;
+    color: #f7f7f8;
+    border-radius: 10px;
+
+}
+
+
+.icon-loction00{
+    display: flex;
+    flex-direction: column;
+}
+.information-ticket00 label{
+   position: absolute; 
+  
+}
+.top-title00{
+    top: 72px;
+}
+.top-title200{
+    top: 70%;
+}
+.information-Button00{
+position: absolute;
+    left: 59%;
+    display: flex;
+    flex-direction: column;
+    margin: -138px 29px;
+  
+}
+.information-Button00 .button-00{
+    width: 130px;
+    height: 5vh;
+    color: #3e548d; 
+    margin-left: -21px;
+    background-color: var(--main-color);
+    outline: none;
+    border: none;
+    color: var(--main-backgrond);
+    font-weight: bold;
+}
+.information-Button00 .price-00{
+    margin-top: 20px;
+    margin-left: 14px;
+    color:  #3e548d
+
+}
+.btn-pay{
+    position: absolute;
+    top: 109%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    height: 55px;
+    border-radius: 10px;
+    font-size: 30px;
+    font-weight: 900;
+    color: var(--main-backgrond);
+    box-shadow: 0px 2px 2px 2px #dcd0cc;
+    background-color: var(--main-color);
+    outline: none;
+    border: none;
+}
+/*  */
+.wrapper{
+    height: 36px;
+    display: flex;
+    align-items: center;
+    margin: 44px 4px;
+    justify-content: center;
+    background: var(--main-backgrond);
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+  
+  .wrapper span{
+    width: 35%;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 900;
+    cursor: pointer;
+    user-select: none;
+  }
+  .minus{
+    transform: translate(-4%, -8%);
+
+  }
+  .plus{
+    transform: translate(-4%, -8%);
+  }
+  .wrapper span.num{
+    font-size: 24px;
+    border-right: 1px solid rgba(0,0,0,0.2);
+    border-left: 1px solid rgba(0,0,0,0.2);
+    color: white;
+    pointer-events: none;
+    background-color: var(--main-color);
+   
+  }
+
+  .Enter-password-wallet-popup{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) ;
+    width: 95%;
+    max-width: 353px;
+    background-color: var(--main-backgrond);
+    border-radius: 10px;
+    min-height: 200px;
+    box-shadow: 1px 7px 4px 0px #d0c7c785;
+    display: none;
+   
+   
+ }
+  .Enter-password-wallet-popup .title-password-wallet-popup{
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2px -15px;
+    background-color: var(--main-color);
+    padding: 11px;
+    color: var(--main-backgrond);
+ }
+ .wallet-group-popup {
+    text-align: center;
+    margin-top: 40px; 
+}
+ .wallet-group-popup .send-code{
+    width: 25%;
+    position: absolute;
+    left: 2px;
+    margin-top: 38px;
+    margin-left: 37%;
+    border-radius: 18px;
+    padding: 8px;
+    background-color: var(--main-color);
+    color: var(--main-backgrond);
+    border: 1px solid rgb(251, 247, 247);
+    font-size: small;
+    font-weight: 600;
+    cursor: pointer;
+ }
+ .wallet-group-popup input{
+    
+        width: 64%;
+        border-radius: 5px;
+        outline: none;
+        box-shadow: none;
+        border: #fdfaf9;
+        margin: 9px 64px;
+        background-color: #ffffff;
+        box-shadow: 2px 2px 2px 2px #fe866830;
+
+}
+.close-btn-11{
+    position: absolute;
+    top: -15%;
+    height: 40px;
+    right: -48px;
+    background-color: var(--main-color);
+    width: 40px;
+    text-align: center;
+    font-size: x-large;
+    font-weight: 900;
+    border-radius: 31px;
+    font-style: normal;
+    cursor: pointer;
+}
+/* log out */
+/* popup login */
+.Log-out-form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) ;
+    width: 95%;
+    max-width: 440px;
+    background-color: var(--main-color);
+    border-radius: 10px;
+    display: none;  
+
+}
+.Log-out-body{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    padding-bottom: 15px;
+    justify-content: space-between;
+
+}
+.Log-out-form .Log-out-body{
+    position: relative;
+    min-height: 203px;
+    width: 100%;
+    padding: 38px 58px;
+    width: 100%;
+    overflow: hidden;
+}
+.Log-out-yas{
+    width: 25%;
+    left: -22%;
+    position: absolute;
+    margin-top: 14%;
+    margin-left: 37%;
+    border-radius: 18px;
+    padding: 8px;
+    background-color: var(--main-backgrond);
+    color: var(--main-color);
+    border: 1px solid rgb(251, 247, 247);
+    font-size: small;
+    font-weight: 600;
+    cursor: pointer;
+}
+.Log-out-no{
+width: 25%;
+left: 27%;
+position: absolute;
+margin-top: 14%;
+margin-left: 37%;
+border-radius: 18px;
+padding: 8px;
+background-color: var(--main-backgrond);
+color: var(--main-color);
+border: 1px solid rgb(251, 247, 247);
+font-size: small;
+font-weight: 600;
+cursor: pointer;
+}
+.title-Log-out{
+    font-size: 23px;
+    color: white;
+    text-align: center;
+    left: 33%;
+    top: 26px;
+    position: absolute;
+}
+.close-btn-logout{
+    position: absolute;
+    top: -6px;
+    height: 40px;
+    right: -55px;
+    background-color: var(--main-color);
+    width: 40px;
+    text-align: center;
+    font-size: x-large;
+    font-weight: 900;
+    border-radius: 31px;
+    font-style:normal;
+    cursor: pointer;
+}
+/* log out */
+
+
+
+
+
+

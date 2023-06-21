@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     
-    <link rel="stylesheet" href="{{asset('css/styl.css')}}">
-    <link rel="stylesheet" href="{{asset('css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{asset('css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/payment/payment.css')}}" >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    
 
 </head>
 <body >
@@ -24,7 +25,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto ">
-         
+        
           <li class="nav-item  mb me-5 ">
           <a class="nav-link active text-white fw-bolder" aria-current="page" href="{{url('home')}}">Home</a>
           </li>
@@ -49,66 +50,61 @@
 
         <!-- <a href="{{route('logout')}}" type="button" class="btn btn-primary btn-light me-5 bg-white text-dark fw-bolder" id="signlogin"> -->
           <!-- logout -->
-          <a href="" class="user_name">{{auth()->user()->first_Name}}</a>
+          <a href="{{route('profile.edit')}}" class="user_name">{{auth()->user()->first_Name}}</a>
         </a>
         @endauth
       </div>
       
     </div>
   </nav>
-</div> 
+</div>    
+</section>  
 
-
-</head>
-<body>
 <div class="contener-payment" id="blur2">
   <h4 class="paymethod-bold">Payment method</h4>
-  <input type="text"><br>
-  <input type="text">
-  <button class="add-btn1" id="add-btn1">+Add new</button> 
-
-   <form action="" method="">
-      <div class="card-add-new" id="card-add-new">
-        <div class="card-new-row">
-          <div>
-            <label for="Card-Number" >Card Number</label>
-            <input type="text" name="Card-Number" id="Card-Number"  placeholder="5678 - 5678 - 8765 - 8765">
-          </div>
-          <div>
-            <label for="CVV" >CVV</label>
-            <input type="password" name="CVV" id="CVV" placeholder="***" >
-          </div></div>
-     <div class="card-new-row">
-      <div>
-        <label for="Card-Holder" >Card Holder's Name</label>
-        <input type="text" name="Card-Holder" id="Card-Holder"  placeholder="Jackie chan" >
-      </div>
-      <div>
-        <label for="Expiry-Date" >Expiry Date</label>
-        <input type="date"  name="Expiry-Date" id="Expiry-Date" class="Expiry-Date"  >
-      </div></div>
-
-      <div class="form_input">
-        <button type="submit" class="add-button ">Add</button>
-      </div>
-      <div class="btn-group-card">
-        <button type="submit" class="Done-button" > Done</button>
-        <button type="button" class="Enter-PIN-Code" id="Enter-PIN-Code">Enter PIN Code</button>
-      </div>
-      <!-- wallet -->
+  
+  <form method="post" action="
+  @if (isset($TicketsBus))
+  {{route('paymentTicketsBus')}}
+  @else
+  {{route('paymentTicketsMetro')}}
+  @endif 
+  ">
+    @csrf
+  <input type="hidden" name="ticket_id" value=
+  "@if (isset($TicketsBus))
+  {{$TicketsBus->id}}
+  @else
+    {{$TicketsMetro->id}}
+  @endif" 
+  required>
+  <input type="hidden" name="user_id" value="{{auth()->user()->id}}" required>
+  <input type="hidden" name="totalPrice" value="{{$totalPrice}}" required>
+    <div class="visa">
+      <h5 class="visa-title">paypal</h5>
+    <div  class="visa-group" >
+      <input type="radio"  name="chosse_way"  id="visa" value="credit_card" required>
+      <label for="visa" class="title-input-visa"  id="redio-visa" name="pay-visa">credit card</label>
     </div>
+    </div>
+
+    <!-- wallet -->
+
   <div class="wallet">
     <h5 class="wallet-title">wallet</h5>
   <div  class="wallet-group" >
-    <input type="checkbox" name="redio-wallet"  id="redio-wallet" >
-    <label for="redio-wallet" class="title-input-wallet"  id="redio-wallett" name="pay-wallet">wallet</label>
+    <input type="radio" name="chosse_way"  id="wallet" value="wallet" required >
+    <label for="wallet" class="title-input-wallet"  id="redio-wallett" name="pay-wallet">wallet</label>
   </div>
   </div>
+
   <!-- total -->
-  <label class="Total-amount">Total amount:10 EL</label>
+
+  <label class="Total-amount">Total amount: {{$totalPrice}} EL </label>
   <button type="submit" class="btn-pay">Pay Ticket</button>
   </form>
 </div>
+
 <!-- end total -->
 
 <div class="Enter-code-wallet-popup" id="Enter-code-wallet-popup">
@@ -133,40 +129,46 @@
 <div class="close-btn-11" id="close-btn-11">&times;</div> 
 </div>
 
-<div class="qr-code" id="blur3">
-  <div class="overlay"></div>
-</div>
+
 
 
  <div class="contant-ticket00" id="blur4">
   <form action="" method="">
    <div class="time-date-ticket00">
-    <label for="" >Bus 12</label>
+    <label for="" >
+    @if (isset($TicketsBus))
+      {{$TicketsBus->bus_number}}
+    @else
+      {{$TicketsMetro->type}}
+    @endif
+    </label>
+
     <label for="">9:00 AM</label>
    </div>
    <div class="icon-loction00">
    <div class="information-ticket00"> 
-    <a href="http://"><i class="fa-solid fa-location-arrow icon-00" id="icon"></i></a>
+    <a href="http://"><i class="fa-solid fa-location-arrow icon-00"></i></a>
     <label for="">2415 Street</label>
     <label for="" class="top-title00">15-Dec-2022</label>
   </div>
   <div class="information-ticket00"> 
-    <a href="http://"><i class="fa-solid fa-location-dot icon-00" id="icon"></i></a>
+    <a href="http://"><i class="fa-solid fa-location-dot icon-00"></i></a>
     <label for="">2415 Street</label>
     <label for="" class="top-title200">15-Dec-2022</label>
   </div>
 </div>
   <div class="information-Button00">
     <button class="button-00">Buy Ticket</button>
-    <label   class=" price-00" for="">price:  10</label>
+    <label class=" price-00" for="">price:
+    @if (isset($TicketsBus))
+      {{$TicketsBus->Ticket_price}}
+    @else
+      {{$TicketsMetro->ticket_price}}
+    @endif
+  </label>
   </div>
 
   <!--  -->
-  <div class="wrapper">
-    <span class="minus">-</span>
-    <span class="num">01</span>
-    <span class="plus">+</span>
-  </div>
 
   </form>
  </div>

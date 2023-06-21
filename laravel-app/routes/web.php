@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Homecontroller;
 use App\Http\Controllers\PapPalController;
 use App\Http\Controllers\paypalwalletcontroller;
+use App\Http\Controllers\PaymentPaypalTickets;
+use App\Models\Ticket;
+use App\Models\Bus;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,12 +25,14 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-    return view('home');
+    $TicketsMetro= Ticket::where('type','=','LRT')->orwhere('type','=','Metro')->get();
+    $TicketsBus= Bus::all();
+    return view('home',['TicketsMetro'=>$TicketsMetro,'TicketsBus'=>$TicketsBus]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 /*
 |--------------------------------------------------------------------------
-| payment paypal
+| payment paypal 
 |--------------------------------------------------------------------------
 */
 
@@ -35,6 +40,22 @@ Route::get('go-payment', [PapPalController::class, 'goPayment'])->name('payment.
 Route::get('payment',[PapPalController::class, 'payment'])->name('payment');
 Route::get('cancel',[PapPalController::class, 'cancel'])->name('payment.cancel');
 Route::get('payment/success', [PapPalController::class, 'success'])->name('payment.success');
+
+/*
+|--------------------------------------------------------------------------
+| payment paypal tickets
+|--------------------------------------------------------------------------
+*/
+
+Route::get('test', [Homecontroller::class, 'test'])->name('');
+
+
+Route::post('cheakTicketsBus', [PaymentPaypalTickets::class, 'cheakTicketsBus'])->name('cheakTicketsBus');
+Route::post('cheakTicketsMetro', [PaymentPaypalTickets::class, 'cheakTicketsMetro'])->name('cheakTicketsMetro');
+Route::post('paymentTicketsBus',[PaymentPaypalTickets::class, 'paymentTicketsBus'])->name('paymentTicketsBus');
+Route::post('paymentTicketsMetro',[PaymentPaypalTickets::class, 'paymentTicketsMetro'])->name('paymentTicketsMetro');
+Route::get('paymentpaymentTicketsBus',[PaymentPaypalTickets::class, 'paymentpaymentTicketsBus'])->name('paymentpaymentTicketsBus');
+Route::get('successpaymentTicketsBus', [PaymentPaypalTickets::class, 'successpaymentTicketsBus'])->name('successpaymentTicketsBus');
 
 // Route::get('/home',[Homecontroller::class, 'showhome'])->name('home')->middleware(['auth', 'verified']);
 

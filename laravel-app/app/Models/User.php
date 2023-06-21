@@ -19,7 +19,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<int, string>
      */
         protected $table='passengers';
-      protected $fillable = [
+    protected $fillable = [
         'national_ID',
         'first_Name',
         'last_Name',
@@ -79,5 +79,14 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function getJWTCustomClaims() {
         return [];
-    }  
+    } 
+
+    public function Transaction (){
+        return $this->hasMany(
+            related:'App\Models\Transaction',
+            foreignKey:'user_id',
+            localKey:'id'
+        );
+    }
+
 }

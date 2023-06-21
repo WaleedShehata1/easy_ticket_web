@@ -7,6 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
+
+    protected $fillable = [
+        'Date_of_entry',
+        'time_of_Entry',
+        'time_of_out',
+        'Entry_station',
+        'Exit_station',
+        'tickets_status',
+        'value_price',
+        'date_of_use',
+        'user_id',
+        'ticket_id',
+        'bus_id',
+    ];
+
+
     use HasFactory;
     public function Payment_transaction (){
         return $this->hasMany(
@@ -19,6 +35,14 @@ class Transaction extends Model
         return $this->belongsTo(
             related:'App\Models\Passenger',
             foreignKey:'passenger_id',
+            localKey:'id'
+        );
+    }
+
+    public function tickets (){
+        return $this->belongsTo(
+            related:'App\Models\ticket',
+            foreignKey:'ticket_id',
             localKey:'id'
         );
     }

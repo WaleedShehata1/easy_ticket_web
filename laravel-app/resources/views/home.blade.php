@@ -8,7 +8,7 @@
 <div id='login-form'class='login-page' >
     <div class="main " >
       <div class="title-mine">
-        <h1>Make you life<br>is easier with<br>
+        <h1>Make your life<br>is easier with<br>
         easyTicket
       </h1>
       <h2>Simplify your payments with EasyTicket PayPay for your EasyTicket rides and food orders, send funds to your family, and so much more with Careem Pay.</h2>
@@ -32,46 +32,45 @@
               <div>Metro</div>
             </button>
         </div>
-        <form id='BuyformBus' class='input-group-Bus'>
-            <select class="input-field ">
-              <option selected>Destination</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-            <!-- <select class="input-field ">
-              <option selected>Loction</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select> -->
-            <select class="input-field ">
-              <option selected>How Many Ticktes</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+        <form id='BuyformBus' class='input-group-Bus'method="post" action="{{route('cheakTicketsBus')}}" >
+        @csrf
+
+        
+            <select class="input-field " name="PriceBus">
+            <option selected>select type and number of staton</option>
+              @foreach ($TicketsBus as $TicketsBus )
+              <option value="{{$TicketsBus->id}}">{{$TicketsBus->starting_station}} : {{$TicketsBus->end_station}}</option>
+              @endforeach
             </select>
 
+            <select class="input-field " name="ManyBus">
+              <option selected>How Many Ticktes</option>
+              <option value= 1 > 1 </option>
+              <option value= 2 > 2 </option>
+              <option value= 3 > 3 </option>
+            </select>
+            <div style="color:red;text-align:center; margin-left:47px">{{ session()->get('erorr') }}</div>
+            <div style="color:#fe8668;text-align:center;margin-left:47px">{{ session()->get('succsse') }}</div>
             <button type='submit'class='submit-btn'>Buy Ticket Now</button>
         </form>
-        <form id='BuyformMetro' class='input-group-Metro'>
-            <select class="input-field ">
-            <option selected>Starting station</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+
+
+        <form id='BuyformMetro' class='input-group-Metro' method="post" action="{{route('cheakTicketsMetro')}}"  >
+        @csrf
+
+            <select class="input-field " name="TicketsMetro">
+            <option selected>select type and number of staton</option>
+              @foreach ($TicketsMetro as $TicketMetro )
+              <option value="{{$TicketMetro->id}}">{{$TicketMetro->type}} {{$TicketMetro->number_of_stations}}</option>
+              @endforeach
+            </select>
           </select>
-          <!-- <select class="input-field ">
-            <option selected>Fainal station</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select> -->
-          <select class="input-field ">
+          
+          <select class="input-field " name="ManyMetro">
             <option selected>How Many Ticktes</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <option value= 1 >1</option>
+            <option value= 2 >2</option>
+            <option value= 3 >3</option>
           </select>
             <button type='submit'class='submit-btn'>Buy Ticket Now</button>
           </form>
@@ -87,6 +86,7 @@
     <div class="content">
       <div class="article">
         <h3>
+          
           Lorem ipsum dolor sit amet<br>
           consectetur adipiscing elit, sed do eiusmod tempor incididunt ut<br>
           labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud <br>
@@ -139,6 +139,7 @@
       <h1 class="Contact-US-titel">Contact US</h1>
   </div>
   <div class="contant-0">
+
       <form action="">
           <div class="Form_Contact-Us">
               <div class="Input_Form-00">

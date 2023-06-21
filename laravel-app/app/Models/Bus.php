@@ -21,9 +21,9 @@ class Bus extends Model
     }
     public function stations(){
         return $this -> belongsToMany(
-        related:'App\Models\station',
-        table:'stations_and_buss',
-        foreignPivotKey:' bus_id',
+        related:'App\Models\Station',
+        table:'Stations_and_Buss',
+        foreignPivotKey:'bus_id',
         relatedPivotKey:'station_id');
     }
     public function drivers(){
@@ -34,11 +34,7 @@ class Bus extends Model
         relatedPivotKey:'driver_id');
     }
 
-    public function bus_route(){
-        return $this->belongsto(
-            related:'App\Models\Bus_route',
-            foreignKey:'bus_line_id',
-            localKey:'id'
-        );
+    public function Bus_timings(){
+        return $this-> hasMany(related:'App\Models\Bus_timing',foreignKey:'bus_id');
     }
 }

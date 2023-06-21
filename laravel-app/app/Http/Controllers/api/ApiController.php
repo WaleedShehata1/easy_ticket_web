@@ -11,9 +11,15 @@ use App\Models\Metro_line;
 use App\Models\Metro;
 use App\Models\Metro_timing;
 use App\Models\Visa;
+use App\Models\Bus;
+use App\Models\notifications;
+use App\Models\Transaction;
+use App\Models\Drivers_and_bus;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\EmailverificationNotification;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\ChargWallet;
 
 class ApiController extends Controller
 {
@@ -277,6 +283,248 @@ class ApiController extends Controller
         return response($metros,201);
     }
 
+    public function BusAndStations(){
+        
+        $bus_count=Bus::count('id');
 
+        for($i=1;$i<=$bus_count;$i++){
+
+            $bus[]=Bus::with('Bus_timings')->find($i);
+
+        }
+
+        return response($bus,201);
+
+    }
+/////////////////////////////////////////////////////////////////////
+
+
+    public function PaymentWallet(Request $request){
+        
+        // $user_id;
+        // $ticket_id;
+        // $totalPrice;
+        // $count;
+        // $password;
+        // $ticket_type;
+        // $bus_id;
+
+        $user= User::where('id', $request->user_id)->first();
+        // print_r($data);
+            if (!$user || !Hash::check($request->password, $user->password)) {
+                return response([
+                    'message' => 'the password  is invalid',
+                    'status'=> false
+                ], 201);
+            }elseif($user->wallet >= $request->totalPrice){
+
+                $userwallet=$user->wallet - $request->totalPrice;
+                $user->update(['wallet'=>$userwallet]);
+
+                for($i=1 ; $i <= $request->count ; $i++ ){
+                $Transaction=Transaction::create([
+                    'tickets_status'=>'not used',
+                    'value_price'=>($request ->totalPrice/$request->count),
+                    'user_id'=>$request ->user_id,
+                    'ticket_id'=>$request ->ticket_id,
+                    'bus_id'=>$request ->bus_id
+
+                ]);
+                
+            }
+            $notification="hellow: {$user->first_Name} you have pay {$request->count} the ticket {$request->ticket_type} {$request ->totalPrice} EL";
+            Notification::send($user, new ChargWallet($notification));
+
+                return response([
+                    'message' => 'succeeded',
+                    'status'=> true
+                ], 201);
+                
+            }else{
+
+                return response([
+                    'message' => 'There is not enough balance',
+                    'status'=> false
+                ], 201);
+
+            }
+
+    }
+
+
+
+    public function notifications(Request $request){
+
+        $user_id;
+
+        $notification=notifications::where('notifiable_id','=',$request->user_id)->get();
+        return response([
+            'data'=>$notification,
+            'message' => 'succeeded',
+            'status'=> true
+        ], 201);
+
+    }
+
+    public function BusDriver(){
+
+        $buss=Bus::all('id','bus_number');
+        return response([
+            'data'=>$buss,
+            'message' => 'succeeded',
+            'status'=> true
+        ], 201);
+    }
+
+
+
+
+    public function Drivers_and_bus(Request $request){
+
+        $bus_id;
+        $driver_id;
+
+        $Drivers_and_bus=Drivers_and_bus::create([
+            'bus_id'=>$request ->bus_id,
+            'driver_id'=>$request ->driver_id,
+        ]);
+
+        return response([
+            'message' => 'succeeded',
+            'status'=> true
+        ], 201);
+
+
+    }
+
+    public function scan(Request $request){
+
+        $transaction_id;
+        $tickets_status;
+
+        $transaction=Transaction::find($request->transaction_id);
+        $transaction->update([
+            'tickets_status'=>$request->tickets_status
+        ]);
+        return response([
+            'message' => 'succeeded',
+            'status'=> true
+        ], 201);
+
+    }
+
+
+
+
+    public function deletTransaction(Request $request){
+
+        $transaction_id;
+
+        $transaction=Transaction::find($request->transaction_id);
+
+        if(!$transaction){
+
+        return response([
+            'message' => 'faild',
+            'status'=> false
+        ], 201);
+
+        }
+        $user=User::find($transaction->user_id);
+
+        $user->update([
+            'wallet'=>$user->wallet + $transaction->value_price
+        ]);
+        $transaction->delete();
+
+        return response([
+            'message' => 'succeeded',
+            'status'=> true
+        ], 201);
+
+    }
+
+    public function ShowTicketUser(Request $request){
+
+        $user_id;
+
+        $user=User::find($request->user_id);
+        return response([
+            'data'=>$user->Transaction,
+            'message' => 'succeeded',
+            'status'=> true
+        ], 201);
+
+    }
+
+
+    public function PaymentVisa(Request $request){
+
+        $visa_number;
+        $expire;
+        $The_owner_of_the_visa;
+        $cvv;
+        $totalprice;
+
+        $count;
+        $user_id;
+        $bus_id;
+        $ticket_id;
+        $ticket_type;
+
+        $wallet = Validator::make($request->all(), [
+            'visa_number' => ['required','integer','exists:visas,visa_number'],
+        ]);
+
+        if ( $wallet->fails()){
+            return response(['message'=> 'the visa is invalid','status'=> false,'data' => null,],201);
+        }
+
+        $visa = visa::where('visa_number', $request->visa_number)->first();
+
+        if($visa->expire !== $request->expire){
+            return response(['message'=> 'the visa is invalid','status'=> false,'data' => null,],201);
+        }
+
+        if($visa->The_owner_of_the_visa !== $request->The_owner_of_the_visa){
+            return response(['message'=> 'the visa is invalid','status'=> false,'data' => null,],201);
+        }
+
+        if($visa->cvv != $request->cvv){
+            return response(['message'=> 'the visa is invalid','status'=> false,'data' => null,],201);
+        }
+
+        if ($request->totalprice > $visa->Visa_balance){
+            return response(['message'=> 'Your balance is not enough','status'=> false,'data' => null,],201);
+        }
+
+        $visa->update([
+            'Visa_balance'=>$visa->Visa_balance - $request->totalprice
+        ]);
+
+        $user= User::where('id', $request->user_id)->first();
+
+
+        for($i=1 ; $i <= $request->count ; $i++ ){
+            $Transaction=Transaction::create([
+                'tickets_status'=>'not used',
+                'value_price'=>($request->totalprice/$request->count),
+                'user_id'=>$request ->user_id,
+                'ticket_id'=>$request ->ticket_id,
+                'bus_id'=>$request ->bus_id
+
+            ]);}
+
+            
+
+            $notification="hellow: {$user->first_Name} you have pay {$request->count} the ticket {$request->ticket_type} {$request ->totalprice} EL";
+            Notification::send($user, new ChargWallet($notification));
+
+                return response([
+                    'message' => 'succeeded',
+                    'status'=> true
+                ], 201);
+
+    }
 
 }

@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Ticket extends Model
 {
     use HasFactory;
+    public function transactions (){
+        return $this->hasMany(
+            related:'App\Models\transaction',
+            foreignKey:'transaction_id',
+            localKey:'id'
+        );
+    }
+
 }

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Illuminate\support\facades\Validator;
 use App\Models\User;
+use App\Models\Transaction;
 
 class ProfileController extends Controller
 {
@@ -19,7 +20,10 @@ class ProfileController extends Controller
     public function edit()
     {
         $user= User::find(auth()->user()->id);
-        return view('auth.edit-profil',['user'=>$user]);
+        $userQR=Transaction::where('user_id','=',auth()->user()->id)->get();
+
+
+        return view('auth.edit-profil',['user'=>$user,'userQR'=>$userQR]);
     }
 
     /**
