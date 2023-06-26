@@ -39,9 +39,8 @@ class PaymentPaypalTickets extends Controller
         $TicketsBus= Bus::find($ticketId);
 
         $totalPrice= $TicketsBus->Ticket_price * $request->ManyBus;
-
         return view('auth.payment',
-        ['TicketsBus'=>$TicketsBus,'totalPrice'=>$totalPrice]);
+        ['TicketsBus'=>$TicketsBus,'totalPrice'=>$totalPrice,'count'=>$request->ManyBus]);
 
     }
 
@@ -69,7 +68,7 @@ class PaymentPaypalTickets extends Controller
         $totalPrice= $TicketsMetro->ticket_price * $request->ManyMetro;
 
         return view('auth.payment',
-        ['TicketsMetro'=>$TicketsMetro,'totalPrice'=>$totalPrice]);
+        ['TicketsMetro'=>$TicketsMetro,'totalPrice'=>$totalPrice,'count'=>$request->ManyMetro]);
 
     }
 
@@ -87,12 +86,15 @@ class PaymentPaypalTickets extends Controller
                 $user=User::where('id', $user_id )->first();
                 $user->update(['wallet' => $UserWallet]);
                 
-                $Transaction=Transaction::create([
-                    'tickets_status'=>'not used',
-                    'value_price'=>$request ->totalPrice,
-                    'user_id'=>$request ->user_id,
-                    'bus_id'=>$request ->ticket_id,
-                ]);
+                for($i=1 ; $i <= $request->count ; $i++ ){
+                    $Transaction=Transaction::create([
+                        'tickets_status'=>'not used',
+                        'value_price'=>($request ->totalPrice/$request->count),
+                        'user_id'=>$request ->user_id,
+                        'bus_id'=>$request ->ticket_id,
+    
+                    ]);
+                }
 
                 $notification="hellow: {$user->first_Name}
                 you have pay the ticket Bus {$request ->totalPrice} EL";
@@ -127,12 +129,15 @@ class PaymentPaypalTickets extends Controller
 
         $response = $provider->setExpressCheckout($data, true);
 
-        $Transaction=Transaction::create([
-            'tickets_status'=>'not used',
-            'value_price'=>$request ->totalPrice,
-            'user_id'=>$request ->user_id,
-            'bus_id'=>$request ->ticket_id,
-        ]);
+        for($i=1 ; $i <= $request->count ; $i++ ){
+            $Transaction=Transaction::create([
+                'tickets_status'=>'not used',
+                'value_price'=>($request ->totalPrice/$request->count),
+                'user_id'=>$request ->user_id,
+                'bus_id'=>$request ->ticket_id,
+
+            ]);
+        }
 
         return redirect($response['paypal_link']);
 
@@ -179,12 +184,16 @@ class PaymentPaypalTickets extends Controller
                 $user=User::where('id', $user_id )->first();
                 $user->update(['wallet' => $UserWallet]);
                 
-                $Transaction=Transaction::create([
-                    'tickets_status'=>'not used',
-                    'value_price'=>$request ->totalPrice,
-                    'user_id'=>$request ->user_id,
-                    'ticket_id'=>$request ->ticket_id,
-                ]);
+                for($i=1 ; $i <= $request->count ; $i++ ){
+                    $Transaction=Transaction::create([
+                        'tickets_status'=>'not used',
+                        'value_price'=>($request ->totalPrice/$request->count),
+                        'user_id'=>$request ->user_id,
+                        'ticket_id'=>$request ->ticket_id,
+    
+                    ]);
+                }
+
                 $notification="hellow: {$user->first_Name}
             you have pay the ticket Metro {$request ->totalPrice} EL";
             Notification::send($user, new ChargWallet($notification));
@@ -218,12 +227,15 @@ class PaymentPaypalTickets extends Controller
 
         $response = $provider->setExpressCheckout($data, true);
 
-        $Transaction=Transaction::create([
-            'tickets_status'=>'not used',
-            'value_price'=>$request ->totalPrice,
-            'user_id'=>$request ->user_id,
-            'ticket_id'=>$request ->ticket_id,
-        ]);
+        for($i=1 ; $i <= $request->count ; $i++ ){
+            $Transaction=Transaction::create([
+                'tickets_status'=>'not used',
+                'value_price'=>($request ->totalPrice/$request->count),
+                'user_id'=>$request ->user_id,
+                'ticket_id'=>$request ->ticket_id,
+
+            ]);
+        }
 
         return redirect($response['paypal_link']);
 
@@ -252,6 +264,15 @@ class PaymentPaypalTickets extends Controller
 
         return redirect()->route('dashboard')->with([ 'succsse' => 'Reservation completed' ]);
         }
+
+    }
+
+
+    public function DeletTransactionTicket($Transaction_id){
+
+        $Transaction=Transaction::find($Transaction_id);
+        $Transaction->delete();
+        return redirect()->back();
 
     }
 }

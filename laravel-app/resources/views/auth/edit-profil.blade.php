@@ -382,14 +382,14 @@
         </div>
       </div>
 
-      @forelse ($userQR as $userQRs)
+      @forelse ($BusQR as $BusQRs)
       </div>
     <!-- tow  -->
    <div class="myticket-contant-two">
     <div class="contant-ticket-metro" >
       <form action="" method="get">
        <div class="time-date-ticket-metro">
-        <label for="" >Bus 12</label>
+        <label for="" >Bus {{$BusQRs->bus_id}}</label>
         <label for=""></label>
        </div>
        <div class="icfst">
@@ -408,7 +408,7 @@
         <label   class=" price-2" for="">price:  10</label>
       </div>
       <div class="icon-my-ticket-two">
-        <a href="http://"><i class="fa-solid fa-trash-can"></i></a>
+        <a href="{{route('DeletTransactionTicket',$BusQRs->id)}}">  <i class="fa-solid fa-trash-can"></i></a>
         <a id="edit-time-ticket"></a>
         <a id="icon-Qr2"><i class="fa-solid fa-qrcode"></i></a>
       </div>
@@ -420,13 +420,52 @@
    
     </div>
     <div class="Qr-popup" id="Qr-popup">
-    {!!DNS2D::getBarcodeHTML($userQRs, 'QRCODE',4,3.8)!!}
+    {!!DNS2D::getBarcodeHTML($BusQRs, 'QRCODE',4,3.8)!!}
       <!-- <div class="overlay-2"></div> -->
       <div class="close-qr" id="close-qr">&times;</div> 
     </div>
     @empty
-">
-    no notification here
+      </div>
+    <!-- tow  -->
+   <div class="myticket-contant-two">
+    <div class="contant-ticket-metro" >
+      <form action="" method="get">
+       <div class="time-date-ticket-metro">
+        <label for="" >no ticket</label>
+        <label for=""></label>
+       </div>
+       <div class="icfst">
+        <a href="http://"><i class="fa-solid fa-location-arrow "></i></a>
+        <a href="http://"><i class="fa-solid fa-location-dot "></i></a>
+      </div>
+       
+       <div class="information-ticket-metro-1"> 
+        <label for=""class="station" >no ticket</label>
+       
+        <label for=""class="station2" >no ticket</label>
+        <label for="" class="top-title0" style="color:#fe8668" >no ticket</label>
+      </div>
+      <div class="information-Button-metro">
+        <button class="button-2">Bus</button>
+        <label   class=" price-2" for="">no ticket</label>
+      </div>
+      <div class="icon-my-ticket-two">
+        <a href="">  <i class="fa-solid fa-trash-can"></i></a>
+        <a id="edit-time-ticket"></a>
+        <a id="icon-Qr2"><i class="fa-solid fa-qrcode"></i></a>
+      </div>
+      </form>
+
+     </div>
+   </div>
+   <!-- popup qr-my ticket -->
+   
+    </div>
+    <div class="Qr-popup" id="Qr-popup">
+
+      <!-- <div class="overlay-2"></div> -->
+      <div class="close-qr" id="close-qr">&times;</div> 
+    </div>
 
     @endforelse
   

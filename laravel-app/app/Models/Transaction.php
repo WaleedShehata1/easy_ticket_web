@@ -41,9 +41,19 @@ class Transaction extends Model
 
     public function tickets (){
         return $this->belongsTo(
-            related:'App\Models\ticket',
+            related:'App\Models\Ticket',
             foreignKey:'ticket_id',
-            localKey:'id'
         );
     }
+
+    public function bus (){
+
+        return $this->belongsTo(
+            related:'App\Models\Bus',
+            foreignKey:'bus_id',
+        );
+
+    }
+
+
 }

@@ -19,6 +19,7 @@ class Bus extends Model
         parentKey:'id',
         realtedKey:'id');
     }
+
     public function stations(){
         return $this -> belongsToMany(
         related:'App\Models\Station',
@@ -26,6 +27,7 @@ class Bus extends Model
         foreignPivotKey:'bus_id',
         relatedPivotKey:'station_id');
     }
+
     public function drivers(){
         return $this -> belongsToMany(
         related:'App\Models\Bus',
@@ -37,4 +39,13 @@ class Bus extends Model
     public function Bus_timings(){
         return $this-> hasMany(related:'App\Models\Bus_timing',foreignKey:'bus_id');
     }
+
+
+    public function trnsaction (){
+        return $this->hasMany(
+            related:'App\Models\Transaction',
+            foreignKey:'bus_id',
+        );
+    }
+
 }

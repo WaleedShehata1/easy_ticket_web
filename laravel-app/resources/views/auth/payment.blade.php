@@ -78,6 +78,7 @@
     {{$TicketsMetro->id}}
   @endif" 
   required>
+  <input type="hidden" name="count" value="{{$count}}" required>
   <input type="hidden" name="user_id" value="{{auth()->user()->id}}" required>
   <input type="hidden" name="totalPrice" value="{{$totalPrice}}" required>
     <div class="visa">

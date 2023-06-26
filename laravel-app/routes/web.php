@@ -21,7 +21,9 @@ use App\Models\Bus;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $TicketsMetro= Ticket::where('type','=','LRT')->orwhere('type','=','Metro')->get();
+    $TicketsBus= Bus::all();
+    return view('home',['TicketsMetro'=>$TicketsMetro,'TicketsBus'=>$TicketsBus]);
 });
 
 Route::get('/home', function () {
@@ -50,12 +52,13 @@ Route::get('payment/success', [PapPalController::class, 'success'])->name('payme
 Route::get('test', [Homecontroller::class, 'test'])->name('');
 
 
-Route::post('cheakTicketsBus', [PaymentPaypalTickets::class, 'cheakTicketsBus'])->name('cheakTicketsBus');
-Route::post('cheakTicketsMetro', [PaymentPaypalTickets::class, 'cheakTicketsMetro'])->name('cheakTicketsMetro');
-Route::post('paymentTicketsBus',[PaymentPaypalTickets::class, 'paymentTicketsBus'])->name('paymentTicketsBus');
-Route::post('paymentTicketsMetro',[PaymentPaypalTickets::class, 'paymentTicketsMetro'])->name('paymentTicketsMetro');
-Route::get('paymentpaymentTicketsBus',[PaymentPaypalTickets::class, 'paymentpaymentTicketsBus'])->name('paymentpaymentTicketsBus');
-Route::get('successpaymentTicketsBus', [PaymentPaypalTickets::class, 'successpaymentTicketsBus'])->name('successpaymentTicketsBus');
+Route::post('/cheakTicketsBus', [PaymentPaypalTickets::class, 'cheakTicketsBus'])->name('cheakTicketsBus');
+Route::post('/cheakTicketsMetro', [PaymentPaypalTickets::class, 'cheakTicketsMetro'])->name('cheakTicketsMetro');
+Route::post('/paymentTicketsBus',[PaymentPaypalTickets::class, 'paymentTicketsBus'])->name('paymentTicketsBus');
+Route::post('/paymentTicketsMetro',[PaymentPaypalTickets::class, 'paymentTicketsMetro'])->name('paymentTicketsMetro');
+Route::get('/paymentpaymentTicketsBus',[PaymentPaypalTickets::class, 'paymentpaymentTicketsBus'])->name('paymentpaymentTicketsBus');
+Route::get('/successpaymentTicketsBus', [PaymentPaypalTickets::class, 'successpaymentTicketsBus'])->name('successpaymentTicketsBus');
+Route::get('/DeletTransactionTicket/{Transaction_id}', [PaymentPaypalTickets::class, 'DeletTransactionTicket'])->name('DeletTransactionTicket');
 
 // Route::get('/home',[Homecontroller::class, 'showhome'])->name('home')->middleware(['auth', 'verified']);
 

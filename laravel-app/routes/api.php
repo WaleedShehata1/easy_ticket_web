@@ -28,7 +28,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 |--------------------------------------------------------------------------
 */
 Route::post("login",[ApiController::class,'login']);
-Route::post("driver",[ApiController::class,'login_driver']);
+Route::post("logindriver",[ApiController::class,'login_driver']);
 Route::post("register",[ApiController::class,'register']);
 
 /*
@@ -58,7 +58,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/updatae/{id}', [ApiController::class, 'update']);
     Route::get('/show/{id}', [ApiController::class, 'show']);
     Route::post('/logout', [ApiController::class, 'logout']);
-    Route::post('/logoutdriver', [ApiController::class, 'logout_driver']);
+    Route::post('/driver', [ApiController::class, 'logout_driver']);
 
 });
 
@@ -77,6 +77,16 @@ Route::post('/charge-wallet', [ApiController::class, 'charge']);
 */
 
 Route::post('/PaymentWallet', [ApiController::class, 'PaymentWallet']);
+
+
+/*
+|--------------------------------------------------------------------------
+| payment SelfWallet
+|--------------------------------------------------------------------------
+*/
+
+Route::post('/SelfWallet', [ApiController::class, 'SelfWallet']);
+
 
 /*
 |--------------------------------------------------------------------------
@@ -136,6 +146,15 @@ Route::post('/PaymentVisa', [ApiController::class, 'PaymentVisa']);
 */
 
 Route::post('/scan', [ApiController::class, 'scan']);
+
+
+/*
+|--------------------------------------------------------------------------
+| transaction_id
+|--------------------------------------------------------------------------
+*/
+
+Route::post('/transaction_id', [ApiController::class, 'transaction_id']);
 
 /*
 |--------------------------------------------------------------------------

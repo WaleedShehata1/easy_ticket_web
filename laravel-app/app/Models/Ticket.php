@@ -10,9 +10,8 @@ class Ticket extends Model
     use HasFactory;
     public function transactions (){
         return $this->hasMany(
-            related:'App\Models\transaction',
-            foreignKey:'transaction_id',
-            localKey:'id'
+            related:'App\Models\Transaction',
+            foreignKey:'ticket_id',
         );
     }
 

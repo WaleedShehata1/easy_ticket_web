@@ -330,8 +330,8 @@ class ApiController extends Controller
                     'bus_id'=>$request ->bus_id
 
                 ]);
-                
             }
+
             $notification="hellow: {$user->first_Name} you have pay {$request->count} the ticket {$request->ticket_type} {$request ->totalPrice} EL";
             Notification::send($user, new ChargWallet($notification));
 
@@ -340,14 +340,106 @@ class ApiController extends Controller
                     'status'=> true
                 ], 201);
                 
-            }else{
+                
+        }elseif($user->wallet+5 >= $request->totalPrice){
+
 
                 return response([
-                    'message' => 'There is not enough balance',
-                    'status'=> false
+                    'message' => 'Do you want to advance the rest and pay upon shipment?',
+                    'status'=> true
                 ], 201);
 
+
+        }else{
+
+            return response([
+                'message' => 'Your balance is not enough ',
+                'status'=> false
+            ], 201);
+        }
+            
+
+    }
+
+
+    public function SelfWallet(Request $request){
+
+        // $user_id;
+        // $ticket_id;
+        // $totalPrice;
+        // $count;
+        // $password;
+        // $ticket_type;
+        // $bus_id;
+
+        $user= User::where('id', $request->user_id)->first();
+        // print_r($data);
+            if (!$user || !Hash::check($request->password, $user->password)) {
+                return response([
+                    'message' => 'the password  is invalid',
+                    'status'=> false
+                ], 201);
+            }elseif($user->wallet >= $request->totalPrice){
+
+                $userwallet=$user->wallet - $request->totalPrice;
+                $user->update(['wallet'=>$userwallet]);
+
+                for($i=1 ; $i <= $request->count ; $i++ ){
+                $Transaction=Transaction::create([
+                    'tickets_status'=>'not used',
+                    'value_price'=>($request ->totalPrice/$request->count),
+                    'user_id'=>$request ->user_id,
+                    'ticket_id'=>$request ->ticket_id,
+                    'bus_id'=>$request ->bus_id
+
+                ]);
             }
+
+            $notification="hellow: {$user->first_Name} you have pay {$request->count} the ticket {$request->ticket_type} {$request ->totalPrice} EL";
+            Notification::send($user, new ChargWallet($notification));
+
+                return response([
+                    'message' => 'succeeded',
+                    'status'=> true
+                ], 201);
+                
+                
+        }elseif($user->wallet+5 >= $request->totalPrice){
+
+
+                $userwallet=$user->wallet - 5;
+                $user->update(['wallet'=>$userwallet]);
+
+                for($i=1 ; $i <= $request->count ; $i++ ){
+                    $Transaction=Transaction::create([
+                        'tickets_status'=>'not used',
+                        'value_price'=>($request ->totalPrice/$request->count),
+                        'user_id'=>$request ->user_id,
+                        'ticket_id'=>$request ->ticket_id,
+                        'bus_id'=>$request ->bus_id
+    
+                    ]);
+                }
+    
+                $notification="hellow: {$user->first_Name} you have pay {$request->count} the ticket {$request->ticket_type} {$request ->totalPrice} EL";
+                Notification::send($user, new ChargWallet($notification));
+    
+
+    
+                return response([
+                    'message' => 'The borrowing process succeeded',
+                    'status'=> true
+                ], 201);
+
+            
+
+        }else{
+
+            return response([
+                'message' => 'Your balance is not enough ',
+                'status'=> false
+            ], 201);
+        }
 
     }
 
@@ -402,16 +494,47 @@ class ApiController extends Controller
         $transaction_id;
         $tickets_status;
 
+        
+
         $transaction=Transaction::find($request->transaction_id);
-        $transaction->update([
-            'tickets_status'=>$request->tickets_status
-        ]);
-        return response([
-            'message' => 'succeeded',
-            'status'=> true
-        ], 201);
+        if($transaction->tickets_status === 'used'){
+
+            return response([
+                'message' => 'it is already used',
+                'status'=> false
+            ], 201);
+
+        }else{
+            $transaction->update([
+                'tickets_status'=>$request->tickets_status
+            ]);
+            return response([
+                'message' => 'succeeded',
+                'status'=> true
+            ], 201);
+        }
 
     }
+
+
+    public function transaction_id (Request $request){
+
+        $transaction_id;
+
+
+        $transaction=Transaction::find($request->transaction_id);
+
+            return response([
+                'data'=> $transaction,
+                'message' => 'it is already used',
+                'status'=> false
+            ], 201);
+
+    }
+
+
+
+
 
 
 
@@ -448,9 +571,10 @@ class ApiController extends Controller
 
         $user_id;
 
-        $user=User::find($request->user_id);
+        $ticket=Transaction::where('user_id','=',$request->user_id)->with('tickets')->with('bus')->get();
+
         return response([
-            'data'=>$user->Transaction,
+            'data'=>$ticket,
             'message' => 'succeeded',
             'status'=> true
         ], 201);

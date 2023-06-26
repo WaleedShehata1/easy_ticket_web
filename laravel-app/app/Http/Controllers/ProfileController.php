@@ -20,10 +20,13 @@ class ProfileController extends Controller
     public function edit()
     {
         $user= User::find(auth()->user()->id);
-        $userQR=Transaction::where('user_id','=',auth()->user()->id)->get();
+        $BusQR=Transaction::where('user_id','=',auth()->user()->id)
+        ->where('ticket_id','=',NULL)
+        ->get();
+        
 
 
-        return view('auth.edit-profil',['user'=>$user,'userQR'=>$userQR]);
+        return view('auth.edit-profil',['user'=>$user,'BusQR'=>$BusQR]);
     }
 
     /**
